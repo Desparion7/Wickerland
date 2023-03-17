@@ -1,4 +1,5 @@
 import styles from './HeaderMiddle.module.css';
+import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { GiBasket } from 'react-icons/gi';
@@ -8,15 +9,22 @@ import MobileMenu from './MobileMenu';
 
 const HeaderMiddle = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
+	const [isMobileMenu, setIsMobileMenu] = useState(false);
 
 	return (
 		<div className={styles.headerMiddle}>
 			{!isDesktop && (
-				<div className={styles.headerMiddle__burger}>
-					<MobileMenu/>
-					<GiHamburgerMenu />
-					<p>Menu</p>
-				</div>
+				<>
+					<div className={styles.headerMiddle__burger}>
+						<GiHamburgerMenu
+							onClick={() => {
+								setIsMobileMenu(true);
+							}}
+						/>
+						<p>Menu</p>
+					</div>
+					{isMobileMenu && <MobileMenu setIsMobileMenu={setIsMobileMenu} />}
+				</>
 			)}
 			<div className={styles.headerMiddle__logo}>
 				<h2>Wik</h2>
