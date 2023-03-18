@@ -8,10 +8,13 @@
 	z-index: 2;
 }
 .mobileMenu__main {
-	width: 60%;
 	height: 100%;
 	background: white;
 	z-index: 3;
+	overflow: auto;
+	overflow-y: auto;
+	width: 16em;
+	padding-bottom: 10rem;
 }
 .mobileMenu__backdrop {
 	position: absolute;
@@ -20,14 +23,28 @@
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 2;
 }
-.mobileMenu__main_search {
+.mobileMenu__main_search input {
+	padding: 1rem;
+	border: none;
+	width: 80%;
+}
+.mobileMenu__main_search button {
+	width: 20%;
+	padding: 1rem;
+	color: var(--text-color);
+	background-color: var(--main-background-color);
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.mobileMenu__main_search button:hover {
+	color: var(--text-color-hover);
 }
 .mobileMenu__main_modes {
 	position: relative;
 	display: flex;
 	width: 100%;
 	height: 3em;
-	/* border-bottom: 3px solid var(--main-background-color); */
 }
 .mobileMenu__main_mode {
 	display: flex;
@@ -42,13 +59,69 @@
 	position: absolute;
 	width: 50%;
 	bottom: 0;
-	height: 3px;
+	height: 2px;
 	background: var(--main-background-color);
 }
 .active {
 	background: rgb(224, 223, 223);
 }
 .mobileMenu__main_options {
+	display: flex;
+	flex-direction: column;
+}
+.mobileMenu__main_options_title {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid rgb(176, 176, 176);
+	border-top: 1px solid rgb(176, 176, 176);
+}
+.mobileMenu__main_options_title_icon {
+	margin-right: 0.5rem;
+}
+.mobileMenu__main_options_title h3 {
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+	font-weight: normal;
+	width: 85%;
+	padding-left: 0.8rem;
+	padding: 0.5rem;
+	cursor: pointer;
+}
+.mobileMenu__main_options_title_arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 15%;
+	padding: 0.8rem;
+	cursor: pointer;
+	border-left: 1px solid rgb(176, 176, 176);
+}
+.arrow_active {
+	color: var(--text-color);
+	background-color: var(--main-background-color);
+}
+.mobileMenu__main_options_categories {
+	display: none;
+	flex-direction: column;
+}
+.categories_active {
+	display: flex;
+}
+.mobileMenu__main_options_category {
+	text-decoration: none;
+	color: var(--text-color2);
+	font-size: 0.9rem;
+	padding: 0.7rem;
+	padding-left: 1.3rem;
+	border-bottom: 1px solid var(--border-color);
+	border-top: 1px solid var(--border-color);
+}
+
+@media screen and (min-width: 600px) {
+	.mobileMenu__main {
+		width: 22em;
+	}
 }
 
 /* Animation  */

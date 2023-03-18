@@ -6,13 +6,16 @@ import { GiBasket } from 'react-icons/gi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useMediaQuery } from 'react-responsive';
 import MobileMenu from './MobileMenu';
+import Cart from '../Cart/Cart';
 
 const HeaderMiddle = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
 	const [isMobileMenu, setIsMobileMenu] = useState(false);
+	const [isCart, setIsCart] = useState(false);
 
 	return (
 		<div className={styles.headerMiddle}>
+			{isCart && <Cart setIsCart={setIsCart} />}
 			{!isDesktop && (
 				<>
 					<div className={styles.headerMiddle__burger}>
@@ -51,7 +54,11 @@ const HeaderMiddle = () => {
 						<span>0</span>
 					</div>
 					<div className={styles.headerMiddle__options_icons_box}>
-						<GiBasket />
+						<GiBasket
+							onClick={() => {
+								setIsCart(true);
+							}}
+						/>
 						<span>0</span>
 					</div>
 					{isDesktop && <p>0,00 zł</p>}
