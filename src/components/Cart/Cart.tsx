@@ -47,58 +47,6 @@ const cartProducts = [
 		amount: 10,
 		price: 250,
 	},
-	{
-		id: '4',
-		img: [
-			'../public/products/kufer1.PNG',
-			'../public/products/kufer1a.PNG',
-			'../public/products/kufer1b.PNG',
-			'../public/products/kufer1c.PNG',
-			'../public/products/kufer1d.PNG',
-		],
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '5',
-		img: [
-			'../public/products/kufer1.PNG',
-			'../public/products/kufer1a.PNG',
-			'../public/products/kufer1b.PNG',
-			'../public/products/kufer1c.PNG',
-			'../public/products/kufer1d.PNG',
-		],
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '6',
-		img: [
-			'../public/products/kufer1.PNG',
-			'../public/products/kufer1a.PNG',
-			'../public/products/kufer1b.PNG',
-			'../public/products/kufer1c.PNG',
-			'../public/products/kufer1d.PNG',
-		],
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '7',
-		img: [
-			'../public/products/kufer1.PNG',
-			'../public/products/kufer1a.PNG',
-			'../public/products/kufer1b.PNG',
-			'../public/products/kufer1c.PNG',
-			'../public/products/kufer1d.PNG',
-		],
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
 ];
 
 const Cart = ({ setIsCart }: propsType) => {

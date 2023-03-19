@@ -1,0 +1,19 @@
+.productPreview {
+}
+.productPreview_img {
+}
+.productPreview_img img {
+	width: 10em;
+	height: auto;
+	cursor: pointer;
+}
+.productPreview_info_name {
+}
+.productPreview_info_category {
+	font-size: 0.8rem;
+	color: var(--text-color2);
+}
+.productPreview_info_price {
+    font-size: 0.8rem;
+	color: var(--main-background-color);
+}

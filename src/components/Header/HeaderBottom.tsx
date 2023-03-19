@@ -1,8 +1,7 @@
 import styles from './HeaderBottom.module.css';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import DesktopMenu from './DesktopMenu';
 
 const HeaderBottom = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
@@ -12,11 +11,8 @@ const HeaderBottom = () => {
 			{isDesktop && (
 				<div className={styles.headerBottom}>
 					<div className={styles.headerBottom_navigation}>
-						<div className={styles.headerBottom_navigation_menu}>
-							<GiHamburgerMenu />
-							Produkty
-							<MdOutlineKeyboardArrowDown />
-						</div>
+						<DesktopMenu />
+
 						<Link to='/'>
 							<div className={styles.headerBottom_navigation_link}>Sklep</div>
 						</Link>

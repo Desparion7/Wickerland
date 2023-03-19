@@ -103,7 +103,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								Koszyki wielkanocne
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Koszyki na drewno
+								Koszyki na kwiaty, owoce, grzyby
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
 								Koszyki piknikowe
@@ -112,10 +112,10 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								Kosze na pranie, zabawki
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Koszyki na kwiaty, owoce
+								Koszyki na rower
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Koszyki na rower
+								Koszyki na drewno
 							</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
@@ -149,7 +149,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								Ławki wiklinowe
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Fotele
+								Fotele, bujaki, krzesła
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
 								Pułki
@@ -187,10 +187,10 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 							}`}
 						>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Kufry
+								Kufry, skrzynie
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Skrzynie
+								Kufry, skrzynie z oparciem
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
 								Małe kosze na akcesoria
@@ -219,10 +219,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 							}`}
 						>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Kwietniki
-							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Donice
+								Kwietniki, donice
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
 								Transportery dla zwierząt

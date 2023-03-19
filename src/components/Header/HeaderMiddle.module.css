@@ -3,6 +3,7 @@
 	justify-content: space-between;
 	padding: 1.3em 1em;
 	border-bottom: 1px solid rgb(162, 162, 162);
+	background-color: white;
 }
 .headerMiddle__burger {
 	display: flex;
@@ -21,8 +22,8 @@
 	font-size: 1rem;
 	line-height: 2rem;
 }
-.headerMiddle__logo h2{
-	font-size: 1.7rem;
+.headerMiddle__logo h2 {
+	font-size: 1.4rem;
 }
 .headerMiddle__logo img {
 	width: 2em;
@@ -36,6 +37,9 @@
 	width: 90%;
 	border: 2px solid grey;
 	border-right: none;
+}
+.headerMiddle__search input:focus {
+	outline: none;
 }
 .headerMiddle__search button {
 	padding: 0.5em;
@@ -93,7 +97,7 @@
 	.headerMiddle {
 		padding: 1.5em 4em;
 	}
-	.headerMiddle__logo {
-		font-size: 1.5rem;
+	.headerMiddle__logo h2 {
+		font-size: 1.7rem;
 	}
 }
