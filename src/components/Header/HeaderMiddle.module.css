@@ -1,7 +1,6 @@
 .headerMiddle {
 	display: flex;
 	justify-content: space-between;
-	/* align-items: end; */
 	padding: 1.3em 1em;
 	border-bottom: 1px solid rgb(162, 162, 162);
 }
@@ -21,6 +20,9 @@
 	align-items: end;
 	font-size: 1rem;
 	line-height: 2rem;
+}
+.headerMiddle__logo h2{
+	font-size: 1.7rem;
 }
 .headerMiddle__logo img {
 	width: 2em;

@@ -35,7 +35,7 @@ const cartProducts = [
 		price: 250,
 	},
 	{
-		id: '2',
+		id: '3',
 		img: [
 			'../public/products/kufer1.PNG',
 			'../public/products/kufer1a.PNG',
@@ -48,7 +48,7 @@ const cartProducts = [
 		price: 250,
 	},
 	{
-		id: '2',
+		id: '4',
 		img: [
 			'../public/products/kufer1.PNG',
 			'../public/products/kufer1a.PNG',
@@ -61,7 +61,7 @@ const cartProducts = [
 		price: 250,
 	},
 	{
-		id: '2',
+		id: '5',
 		img: [
 			'../public/products/kufer1.PNG',
 			'../public/products/kufer1a.PNG',
@@ -74,7 +74,7 @@ const cartProducts = [
 		price: 250,
 	},
 	{
-		id: '2',
+		id: '6',
 		img: [
 			'../public/products/kufer1.PNG',
 			'../public/products/kufer1a.PNG',
@@ -87,7 +87,7 @@ const cartProducts = [
 		price: 250,
 	},
 	{
-		id: '2',
+		id: '7',
 		img: [
 			'../public/products/kufer1.PNG',
 			'../public/products/kufer1a.PNG',

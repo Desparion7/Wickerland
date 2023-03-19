@@ -30,7 +30,7 @@ const HeaderMiddle = () => {
 				</>
 			)}
 			<div className={styles.headerMiddle__logo}>
-				<h2>Wik</h2>
+				<h2>Wicker</h2>
 				<img src='../public/basket.PNG' />
 				<h2>Land</h2>
 			</div>
