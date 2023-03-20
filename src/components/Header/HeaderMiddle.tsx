@@ -1,7 +1,6 @@
 import styles from './HeaderMiddle.module.css';
 import { useState } from 'react';
-import { BsSearch } from 'react-icons/bs';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { BsSearch,BsHeart } from 'react-icons/bs';
 import { GiBasket } from 'react-icons/gi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useMediaQuery } from 'react-responsive';
@@ -31,7 +30,7 @@ const HeaderMiddle = () => {
 			)}
 			<div className={styles.headerMiddle__logo}>
 				<h2>Wicker</h2>
-				<img src='../public/basket.PNG' />
+				<img src='./basket.PNG' />
 				<h2>Land</h2>
 			</div>
 			{isDesktop && (
@@ -50,7 +49,7 @@ const HeaderMiddle = () => {
 				)}
 				<div className={styles.headerMiddle__options_icons}>
 					<div className={styles.headerMiddle__options_icons_box}>
-						<AiOutlineHeart />
+						<BsHeart />
 						<span>0</span>
 					</div>
 					<div className={styles.headerMiddle__options_icons_box}>

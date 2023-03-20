@@ -40,20 +40,15 @@
 	color: var(--text-color-hover);
 }
 
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 600px) {
 	.headerTop__companyName {
 		margin-left: 4em;
 		padding: 0em;
+		font-size: 1rem;
 	}
-
 	.headerTop__contactBox_media a {
 		padding: 0 0.5rem;
 		font-size: 1.1rem;
-	}
-}
-@media screen and (min-width: 450px) {
-	.headerTop__companyName {
-		font-size: 1rem;
 	}
 	.headerTop__contactBox {
 		margin-right: 4em;

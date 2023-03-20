@@ -23,7 +23,7 @@
 	line-height: 2rem;
 }
 .headerMiddle__logo h2 {
-	font-size: 1.4rem;
+	font-size: 1.1rem;
 }
 .headerMiddle__logo img {
 	width: 2em;
@@ -98,6 +98,6 @@
 		padding: 1.5em 4em;
 	}
 	.headerMiddle__logo h2 {
-		font-size: 1.7rem;
+		font-size: 2rem;
 	}
 }

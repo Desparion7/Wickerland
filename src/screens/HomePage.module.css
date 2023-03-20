@@ -5,6 +5,5 @@
 .homepage__photo img {
 	width: 100%;
 	height: auto;
-	min-height: 12em;
 	object-fit: cover;
 }

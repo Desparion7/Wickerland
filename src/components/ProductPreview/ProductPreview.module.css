@@ -1,19 +1,133 @@
-.productPreview {
-}
-.productPreview_img {
-}
 .productPreview_img img {
-	width: 10em;
-	height: auto;
+	width: 6em;
+	height: 6em;
+	cursor: pointer;
+}
+.productPreview_img_focus {
+	position: relative;
+}
+.productPreview_img_focus_options {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	top: 0.5rem;
+	right: 0.5rem;
+	width: 2.5rem;
+	height: 4.5rem;
+	background-color: white;
+}
+.productPreview_img_focus_options svg {
+	font-size: 1.1rem;
 	cursor: pointer;
 }
 .productPreview_info_name {
+	font-size: 0.5rem;
 }
 .productPreview_info_category {
 	font-size: 0.8rem;
+	margin-bottom: 0.5rem;
 	color: var(--text-color2);
 }
+.productPreview_info_cart {
+	animation: show-cart 0.3s forwards;
+}
+.productPreview_info_cart p {
+	margin-top: 1rem;
+	font-size: 0.8rem;
+	text-align: end;
+	cursor: pointer;
+}
+.productPreview_info_cart span {
+	display: block;
+	margin-top: 1rem;
+	font-size: 0.8rem;
+	text-align: end;
+}
+.productPreview_info_cart p::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0%;
+	height: 3px;
+	background-color: var(--main-background-color);
+	transition: width 0.3s ease;
+}
+.productPreview_info_cart p:hover::after {
+	width: 70%;
+}
 .productPreview_info_price {
-    font-size: 0.8rem;
+	font-size: 0.8rem;
+	margin-top: 0.5rem;
+	text-align: end;
 	color: var(--main-background-color);
+}
+
+@media screen and (min-width: 600px) {
+	.productPreview_img img {
+		width: 10em;
+		height: 10em;
+	}
+	.productPreview_info_name {
+		font-size: 1rem;
+	}
+	.productPreview_info_category {
+		font-size: 0.9rem;
+	}
+	.productPreview_info_price {
+		margin-top: 1rem;
+		font-size: 1rem;
+	}
+}
+
+/* Adnimation */
+
+@keyframes show-cart {
+	from {
+		transform: translateY(0.5rem);
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.zoom {
+	animation: zoom ease-out 0.8s forwards;
+}
+@keyframes zoom {
+	from {
+		transform: scale(0.9);
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+.show_options {
+	animation: show_options ease-out 0.3s forwards;
+}
+@keyframes show_options {
+	from {
+		transform: translateX(10px);
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@media screen and(min-width:600px) {
+	.productPreview {
+		padding: 1rem;
+	}
+	.productPreview_img img {
+		width: 12em;
+		height: 12em;
+	}
 }

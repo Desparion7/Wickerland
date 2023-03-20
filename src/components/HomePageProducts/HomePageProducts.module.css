@@ -3,7 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	margin: 2em;
+	margin: 2em 0;
 }
 .homepage_products_titles {
 	display: flex;
@@ -24,7 +24,7 @@
 	bottom: 0;
 	left: 0;
 	width: 0%;
-	height: 2px;
+	height: 3px;
 	background-color: var(--main-background-color);
 	transition: width 0.3s ease;
 }
@@ -39,14 +39,17 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: 2em;
+	gap: 0.5rem;
 }
 
 @media screen and (min-width: 600px) {
 	.homepage_products {
-		margin: 3em 10em;
+		margin: 3em 4em;
 	}
 	.homepage_products_titles h3 {
 		font-size: 1.1rem;
+	}
+	.homepage_products_box {
+		gap: 4em;
 	}
 }

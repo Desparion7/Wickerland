@@ -5,6 +5,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
 }
 h2 {
 	margin: 0;
@@ -21,4 +22,5 @@ h2 {
 	--text-color-hover: rgb(203, 198, 198);
 	--border-color: rgb(191, 191, 191);
 	--button-bg-hover: rgb(91, 129, 24);
+	--button-border-hover: rgb(181, 181, 181);
 }
