@@ -2,6 +2,7 @@ import styles from './HomePage.module.css';
 import Header from '../components/Header/Header';
 import HomePageProducts from '../components/HomePageProducts/HomePageProducts';
 import HomePageCarousel from '../components/HomePageCarousel/HomePageCarousel';
+import AbooutUs from '../components/AboutUs/AbooutUs';
 
 const HomePage = () => {
 	return (
@@ -12,6 +13,7 @@ const HomePage = () => {
 			</div>
 			<HomePageProducts />
 			<HomePageCarousel />
+			<AbooutUs />
 		</header>
 	);
 };
