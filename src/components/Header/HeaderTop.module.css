@@ -21,8 +21,13 @@
 	gap: 1em;
 	margin-right: 1em;
 }
+.headerTop__contactBox_media {
+	display: flex;
+	flex-direction: row;
+}
 .headerTop__contactBox_media a {
 	padding: 0 0.3rem;
+
 	color: var(--text-color);
 	transition: color 0.3s;
 }

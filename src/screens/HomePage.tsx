@@ -3,6 +3,7 @@ import Header from '../components/Header/Header';
 import HomePageProducts from '../components/HomePageProducts/HomePageProducts';
 import HomePageCarousel from '../components/HomePageCarousel/HomePageCarousel';
 import AbooutUs from '../components/AboutUs/AbooutUs';
+import Footer from '../components/Footer/Footer';
 
 const HomePage = () => {
 	return (
@@ -14,6 +15,7 @@ const HomePage = () => {
 			<HomePageProducts />
 			<HomePageCarousel />
 			<AbooutUs />
+			<Footer />
 		</header>
 	);
 };
