@@ -8,7 +8,7 @@ import Footer from '../components/Footer/Footer';
 const HomePage = () => {
 	return (
 		<header className={styles.homepage}>
-			<Header></Header>
+			<Header />
 			<div className={styles.homepage__photo}>
 				<img src='./wicker1.PNG' alt='wiklinowy koszyk' />
 			</div>

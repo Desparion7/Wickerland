@@ -10,4 +10,3 @@ function App() {
 export default App;
 
 
-// Kontak na samej górze dodać Link jak bedzie gotowa strona
