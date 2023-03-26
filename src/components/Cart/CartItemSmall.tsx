@@ -15,7 +15,9 @@ const CartItemSmall = ({ item }: propsType) => {
 		<div className={styles.cartItemSmall}>
 			<img src={item.img[0]} alt={item.name} />
 			<div className={styles.cartItemSmall__info}>
-				<p className={styles.cartItemSmall__info_name}>{item.name}</p>
+				<p className={styles.cartItemSmall__info_name}>
+					{item.name.length > 30 ? item.name.slice(0, 30) + '...' : item.name}
+				</p>
 				<div className={styles.cartItemSmall__info_box}>
 					<p className={styles.cartItemSmall__info_box_amount}>
 						{item.amount} x

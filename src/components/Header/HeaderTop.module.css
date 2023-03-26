@@ -49,16 +49,17 @@
 	.headerTop__companyName {
 		margin-left: 4em;
 		padding: 0em;
-		font-size: 1rem;
+		font-size: 1.2rem;
 	}
 	.headerTop__contactBox_media a {
 		padding: 0 0.5rem;
-		font-size: 1.1rem;
+		font-size: 1.2rem;
 	}
 	.headerTop__contactBox {
 		margin-right: 4em;
 	}
 	.headerTop__contactBox_message {
+		font-size: 1.2rem;
 		padding: 0 1em;
 		border-left: 1px solid var(--text-color);
 		border-right: 1px solid var(--text-color);

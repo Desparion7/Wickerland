@@ -30,7 +30,7 @@
 }
 
 .headerBottom_navigation_link {
-	padding: 0.5rem;
+	padding: 0.8rem;
 	transition: color 0.3s;
 	color: var(--text-color3);
 
@@ -40,5 +40,11 @@
 	color: var(--main-background-color);
 }
 .headerBottom_contact {
-	padding: 0.5rem;
+	padding: 0.8rem;
+}
+
+@media screen and (min-width: 600px) {
+	.headerBottom {
+		font-size: 1.3rem;
+	}
 }

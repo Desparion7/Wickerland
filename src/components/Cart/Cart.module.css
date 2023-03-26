@@ -85,6 +85,11 @@
 		width: 22em;
 	}
 }
+@media screen and (min-width: 1000px) {
+	.cart {
+		font-size: 1.2rem;
+	}
+}
 
 /* Animation  */
 .show_cart {

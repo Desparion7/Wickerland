@@ -1,6 +1,6 @@
 import styles from './HeaderMiddle.module.css';
 import { useState } from 'react';
-import { BsSearch,BsHeart } from 'react-icons/bs';
+import { BsSearch, BsHeart } from 'react-icons/bs';
 import { GiBasket } from 'react-icons/gi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useMediaQuery } from 'react-responsive';
@@ -60,7 +60,16 @@ const HeaderMiddle = () => {
 						/>
 						<span>0</span>
 					</div>
-					{isDesktop && <p>0,00 zł</p>}
+					{isDesktop && (
+						<p
+							className={styles.headerMiddle__options_icons_price}
+							onClick={() => {
+								setIsCart(true);
+							}}
+						>
+							12,99 zł
+						</p>
+					)}
 				</div>
 			</div>
 		</div>

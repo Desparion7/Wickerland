@@ -26,18 +26,20 @@
 }
 
 .cartItemSmall__info_name {
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 }
 .cartItemSmall__info_box {
 	display: flex;
 	margin-top: 0.5rem;
 }
 .cartItemSmall__info_box_amount {
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	color: var(--text-color2);
 }
 .cartItemSmall__info_box_price {
 	color: var(--main-background-color);
 	margin-left: 0.5rem;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
+}
+@media screen and (min-width: 600px) {
 }

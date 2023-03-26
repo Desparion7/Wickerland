@@ -1,7 +1,7 @@
 .headerMiddle {
 	display: flex;
 	justify-content: space-between;
-	padding: 1.3em 1em;
+	padding: 1.1em 1em;
 	border-bottom: 1px solid rgb(162, 162, 162);
 	background-color: white;
 }
@@ -77,6 +77,12 @@
 	position: relative;
 	cursor: pointer;
 }
+.headerMiddle__options_icons_price {
+	cursor: pointer;
+}
+.headerMiddle__options_icons_price:hover {
+	color: var(--text-color-hover);
+}
 .headerMiddle__options_icons_box span {
 	position: absolute;
 	top: -0.4rem;
@@ -99,5 +105,22 @@
 	}
 	.headerMiddle__logo h2 {
 		font-size: 2rem;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.headerMiddle__logo h2 {
+		font-size: 2.5rem;
+	}
+	.headerMiddle__search input {
+		font-size: 1rem;
+	}
+	.headerMiddle__search button {
+		font-size: 1rem;
+	}
+	.headerMiddle__options_icons {
+		font-size: 1.3rem;
+	}
+	.headerMiddle__options_access {
+		font-size: 1.2rem;
 	}
 }
