@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useMediaQuery } from 'react-responsive';
 import MobileMenu from './MobileMenu';
 import Cart from '../Cart/Cart';
+import { Link } from 'react-router-dom';
 
 const HeaderMiddle = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
@@ -29,9 +30,11 @@ const HeaderMiddle = () => {
 				</>
 			)}
 			<div className={styles.headerMiddle__logo}>
-				<h2>Wicker</h2>
-				<img src='./basket.PNG' />
-				<h2>Land</h2>
+				<Link to='/'>
+					<h2>Wicker</h2>
+					<img src='./basket.PNG' />
+					<h2>Land</h2>
+				</Link>
 			</div>
 			{isDesktop && (
 				<div className={styles.headerMiddle__search}>

@@ -5,6 +5,11 @@
 	border-bottom: 1px solid rgb(162, 162, 162);
 	background-color: white;
 }
+.headerMiddle a {
+	display: flex;
+	text-decoration: none;
+	color: var(--text-color3);
+}
 .headerMiddle__burger {
 	display: flex;
 	justify-content: space-between;

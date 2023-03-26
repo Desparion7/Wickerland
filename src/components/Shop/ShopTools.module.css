@@ -1,0 +1,59 @@
+.shopTools {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	font-size: 1rem;
+	
+}
+.shopTools_path {
+	display: flex;
+	gap: 0.5em;
+	flex-direction: row;
+}
+.shopTools_path a {
+	text-decoration: none;
+	color: var(--text-color-hover);
+}
+.shopTools_options {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+}
+.shopTools_options_amount {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+.shopTools_options_amount_number {
+	cursor: pointer;
+	transition: 0.3s;
+	color: var(--text-color2);
+}
+.shopTools_options_amount_number:hover {
+	color: var(--text-color3);
+}
+
+.shopTools_options_view {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	font-size: 1.3rem;
+}
+.shopTools_options_view svg {
+	cursor: pointer;
+	color: var(--text-color2);
+}
+.shopTools_options_sorting select {
+	padding: 0.3rem;
+	cursor: pointer;
+}
+
+.active_shopNav {
+	font-weight: bold;
+}
+
+@media screen and (min-width: 1200px) {
+	.shopTools {
+		justify-content: space-between;
+	}
+}

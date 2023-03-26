@@ -27,7 +27,6 @@
 }
 .headerTop__contactBox_media a {
 	padding: 0 0.3rem;
-
 	color: var(--text-color);
 	transition: color 0.3s;
 }
@@ -39,9 +38,13 @@
 	align-items: center;
 	height: 100%;
 	cursor: pointer;
+}
+.headerTop__contactBox_message a {
+	color: var(--text-color);
+	text-decoration: none;
 	transition: color 0.3s;
 }
-.headerTop__contactBox_message:hover {
+.headerTop__contactBox_message a:hover {
 	color: var(--text-color-hover);
 }
 

@@ -4,11 +4,11 @@ import HeaderBottom from './HeaderBottom';
 
 const Header = () => {
 	return (
-		<>
+		<header>
 			<HeaderTop />
 			<HeaderMiddle />
 			<HeaderBottom />
-		</>
+		</header>
 	);
 };
 

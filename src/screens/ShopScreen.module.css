@@ -1,0 +1,12 @@
+.shopScreen {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 3rem 4rem;
+}
+.shopScreen_boxLeft {
+	width: 15%;
+}
+.shopScreen_boxRight {
+	width: 75%;
+}

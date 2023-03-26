@@ -1,5 +1,6 @@
 import styles from './HeaderTop.module.css';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const HeaderTop = () => {
 	return (
@@ -14,7 +15,9 @@ const HeaderTop = () => {
 						<FaInstagram />
 					</a>
 				</div>
-				<div className={styles.headerTop__contactBox_message}>Kontakt</div>
+				<div className={styles.headerTop__contactBox_message}>
+					<Link to='/kontakt'>Kontakt</Link>
+				</div>
 			</div>
 		</div>
 	);
