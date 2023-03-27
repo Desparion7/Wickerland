@@ -141,7 +141,7 @@ const DesktopMenu = () => {
 										styles.desktopMenu__options_option_subcategory_link
 									}
 								>
-									Pułki
+									Półki
 								</Link>
 								<Link
 									to='/'
@@ -196,7 +196,7 @@ const DesktopMenu = () => {
 										styles.desktopMenu__options_option_subcategory_link
 									}
 								>
-									Małe kosze na akcesoria
+									Skrzynie regałowe
 								</Link>
 							</div>
 						)}
@@ -244,14 +244,6 @@ const DesktopMenu = () => {
 									}
 								>
 									Wózki
-								</Link>
-								<Link
-									to='/'
-									className={
-										styles.desktopMenu__options_option_subcategory_link
-									}
-								>
-									Stoły, stoliki
 								</Link>
 							</div>
 						)}

@@ -1,65 +1,7 @@
 import { useState } from 'react';
 import styles from './HomePageProducts.module.css';
 import ProductPreview from '../ProductPreview/ProductPreview';
-
-const cartProducts = [
-	{
-		id: '1',
-		img: [
-			'./products/kufer1.PNG',
-			'./products/kufer1a.PNG',
-			'./products/kufer1b.PNG',
-			'./products/kufer1c.PNG',
-			'./products/kufer1d.PNG',
-		],
-		category: 'Kufry, skrzynie',
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '2',
-		img: [
-			'./products/kufer1.PNG',
-			'./products/kufer1a.PNG',
-			'./products/kufer1b.PNG',
-			'./products/kufer1c.PNG',
-			'./products/kufer1d.PNG',
-		],
-		category: 'Kufry, skrzynie',
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '3',
-		img: [
-			'./products/kufer1.PNG',
-			'./products/kufer1a.PNG',
-			'./products/kufer1b.PNG',
-			'./products/kufer1c.PNG',
-			'./products/kufer1d.PNG',
-		],
-		category: 'Kufry, skrzynie',
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '4',
-		img: [
-			'./products/kufer1.PNG',
-			'./products/kufer1a.PNG',
-			'./products/kufer1b.PNG',
-			'./products/kufer1c.PNG',
-			'./products/kufer1d.PNG',
-		],
-		category: 'Kufry, skrzynie',
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 0,
-		price: 250,
-	},
-];
+import { homeBasket, homeChest, homeFurniture } from '../../db/homePage';
 
 const HomePageProducts = () => {
 	const [activeProducts, setActiveProducts] = useState<string>('koszyki');
@@ -94,8 +36,8 @@ const HomePageProducts = () => {
 			</div>
 
 			<div className={styles.homepage_products_box}>
-				{cartProducts.map((product) => (
-					<ProductPreview key={product.id} product={product} />
+				{homeBasket.map((product) => (
+					<ProductPreview key={product.pid} product={product} />
 				))}
 			</div>
 		</div>

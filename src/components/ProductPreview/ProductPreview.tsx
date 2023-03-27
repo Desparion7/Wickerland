@@ -5,7 +5,7 @@ import { BsHeart } from 'react-icons/bs';
 
 interface propsType {
 	product: {
-		id: string;
+		pid: string;
 		img: string[];
 		category: string;
 		name: string;

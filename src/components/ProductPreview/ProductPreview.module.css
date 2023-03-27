@@ -1,5 +1,14 @@
+.productPreview {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 200px;
+	max-height: 350px;
+	gap: 1em;
+}
 .productPreview_img {
 	text-align: center;
+	height: 45%;
 }
 .productPreview_img img {
 	width: 6em;
@@ -25,6 +34,12 @@
 .productPreview_img_focus_options svg {
 	font-size: 1.1rem;
 	cursor: pointer;
+}
+.productPreview_info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 45%;
 }
 .productPreview_info_name {
 	font-size: 0.9rem;

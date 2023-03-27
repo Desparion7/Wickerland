@@ -2,7 +2,7 @@ import styles from './HeaderBottom.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import DesktopMenu from './DesktopMenu';
-import { useState } from 'react';
+
 
 const HeaderBottom = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });

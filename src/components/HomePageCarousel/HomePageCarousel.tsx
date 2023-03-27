@@ -29,7 +29,7 @@ const HomePageCarousel = () => {
 			{slideNumber === 1 && (
 				<div className={styles.homePageCarousel_item}>
 					<img
-						src='./products/kufer1-white.PNG'
+						src='./products on Homepage/kufer1-white.PNG'
 						alt='Kufer wiklinowy, skrzynia'
 						title='skrzynia'
 						loading='lazy'
@@ -50,7 +50,7 @@ const HomePageCarousel = () => {
 			{slideNumber === 2 && (
 				<div className={styles.homePageCarousel_item}>
 					<img
-						src='./products/koszyk1-white.PNG'
+						src='./products on Homepage/koszyk1-white.PNG'
 						alt='Kufer wiklinowy skrzynia'
 						title='skrzynia'
 						loading='lazy'
@@ -71,7 +71,7 @@ const HomePageCarousel = () => {
 			{slideNumber === 3 && (
 				<div className={styles.homePageCarousel_item}>
 					<img
-						src='./products/bujak1-white.PNG'
+						src='./products on Homepage/bujak1-white.PNG'
 						alt='Fotel bujany Wickerland'
 						title='fotel bujany'
 						loading='lazy'

@@ -152,7 +152,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								Fotele, bujaki, krzesła
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Pułki
+								Półki
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
 								Szafki
@@ -193,7 +193,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								Kufry, skrzynie z oparciem
 							</Link>
 							<Link to='/' className={styles.mobileMenu__main_options_category}>
-								Małe kosze na akcesoria
+								Skrzynie regałowe
 							</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
