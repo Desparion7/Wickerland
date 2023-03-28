@@ -5,7 +5,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 2;
+	z-index: 4;
 }
 .cart__main {
 	position: fixed;
@@ -14,7 +14,7 @@
 	background: white;
 	width: 18em;
 	padding-bottom: 5rem;
-	z-index: 3;
+	z-index: 4;
 }
 .cart__main_title {
 	display: flex;
@@ -77,7 +77,7 @@
 	height: 100%;
 	width: 100%;
 	background: rgba(0, 0, 0, 0.5);
-	z-index: 2;
+	z-index: 3;
 }
 
 @media screen and (min-width: 600px) {

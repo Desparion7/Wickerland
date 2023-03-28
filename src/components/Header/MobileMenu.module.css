@@ -5,12 +5,12 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 2;
+	z-index: 4;
 }
 .mobileMenu__main {
 	height: 100%;
 	background: white;
-	z-index: 3;
+	z-index: 4;
 	overflow: auto;
 	overflow-y: auto;
 	width: 16em;
@@ -21,7 +21,7 @@
 	height: 100%;
 	width: 100%;
 	background: rgba(0, 0, 0, 0.5);
-	z-index: 2;
+	z-index: 3;
 }
 .mobileMenu__main_search input {
 	padding: 1rem;
@@ -84,6 +84,7 @@
 	text-transform: uppercase;
 	font-weight: normal;
 	width: 85%;
+	font-size: 1rem;
 	padding-left: 0.8rem;
 	padding: 0.5rem;
 	cursor: pointer;

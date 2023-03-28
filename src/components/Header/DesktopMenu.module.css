@@ -1,6 +1,6 @@
 .desktopMenu {
 	position: relative;
-	z-index: 10;
+	z-index: 2;
 }
 .desktopMenu a {
 	text-decoration: none;

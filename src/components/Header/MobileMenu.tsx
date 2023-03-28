@@ -6,7 +6,6 @@ import { SlArrowUp, SlArrowDown } from 'react-icons/sl';
 import { MdTableBar } from 'react-icons/md';
 import { GiBasket } from 'react-icons/gi';
 import { CgBox } from 'react-icons/cg';
-import { RxPerson } from 'react-icons/rx';
 
 interface PropsType {
 	setIsMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -245,12 +244,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 							<h3>Kontakt</h3>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>
-								<RxPerson
-									className={styles.mobileMenu__main_options_title_icon}
-								/>
-								Logowanie/Rejstracja
-							</h3>
+							<h3>Logowanie/Rejstracja</h3>
 						</div>
 					</div>
 				)}
