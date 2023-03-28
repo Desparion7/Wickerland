@@ -1,7 +1,7 @@
 import styles from './PriceFilter.module.css';
 
 const ShopNavigation = () => {
-	return <div>ShopNavigation</div>;
+	return <div></div>;
 };
 
 export default ShopNavigation;

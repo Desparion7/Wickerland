@@ -1,12 +1,29 @@
 .shopScreen {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	padding: 3rem 4rem;
+	justify-content: center;
+	padding: 1rem;
+	margin-top: 1rem;
 }
 .shopScreen_boxLeft {
-	width: 15%;
+	width: 250px;
 }
 .shopScreen_boxRight {
-	width: 75%;
+	width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+	.shopScreen {
+		padding: 1rem 2rem;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.shopScreen {
+		padding: 3rem 4rem;
+		justify-content: space-between;
+		padding-right: 8rem;
+	}
+	.shopScreen_boxRight {
+		width: 70%;
+	}
 }

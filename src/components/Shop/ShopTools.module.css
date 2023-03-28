@@ -3,7 +3,7 @@
 	justify-content: end;
 	align-items: center;
 	font-size: 1rem;
-	
+	margin-bottom: 1em;
 }
 .shopTools_path {
 	display: flex;
@@ -21,7 +21,7 @@
 }
 .shopTools_options_amount {
 	display: flex;
-	align-items: center;
+	align-items: end;
 	gap: 0.5em;
 }
 .shopTools_options_amount_number {
@@ -44,7 +44,9 @@
 	color: var(--text-color2);
 }
 .shopTools_options_sorting select {
-	padding: 0.3rem;
+	padding: 0.1rem;
+	font-size: 0.8rem;
+	border: none;
 	cursor: pointer;
 }
 
@@ -52,7 +54,15 @@
 	font-weight: bold;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
+	.shopTools {
+		width: 100%;
+	}
+	.shopTools_options_sorting select {
+		font-size: 1rem;
+	}
+}
+@media screen and (min-width: 1250px) {
 	.shopTools {
 		justify-content: space-between;
 	}

@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const ShopTools = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
-	const isSmallDesktop = useMediaQuery({ minWidth: '1200px' });
+	const isSmallDesktop = useMediaQuery({ minWidth: '1250px' });
 
 	return (
 		<div className={styles.shopTools}>

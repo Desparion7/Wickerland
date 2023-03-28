@@ -52,18 +52,18 @@ const ProductPreview = ({ product }: propsType) => {
 				<div className={styles.productPreview_info_name}>{product.name}</div>
 				<div className={styles.productPreview_info_category}>
 					{product.category}
+					{isFocus ? (
+						<div className={styles.productPreview_info_cart}>
+							{product.amount !== 0 ? (
+								<p>Dodaj do koszyka</p>
+							) : (
+								<span>Brak na magazynie</span>
+							)}
+						</div>
+					) : (
+						<div className={styles.productPreview_info_price}>{price} zł</div>
+					)}
 				</div>
-				{isFocus ? (
-					<div className={styles.productPreview_info_cart}>
-						{product.amount !== 0 ? (
-							<p>Dodaj do koszyka</p>
-						) : (
-							<span>Brak na magazynie</span>
-						)}
-					</div>
-				) : (
-					<div className={styles.productPreview_info_price}>{price} zł</div>
-				)}
 			</div>
 		</div>
 	);

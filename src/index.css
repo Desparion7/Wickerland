@@ -14,7 +14,7 @@ h2 {
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-	--main-background-color: rgb(112, 160, 31);
+	--main-background-color: #70a01f;
 	--text-color: white;
 	--text-color2: rgb(113, 113, 113);
 	--text-color3: rgb(0, 0, 0);
