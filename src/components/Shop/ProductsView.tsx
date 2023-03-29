@@ -6,7 +6,7 @@ const ProductsView = () => {
 	return (
 		<section className={styles.productsView}>
 			{products.map((product) => (
-				<ProductPreview product={product} key={product.pid} />
+				<ProductPreview product={product} grid={4} key={product.pid} />
 			))}
 		</section>
 	);

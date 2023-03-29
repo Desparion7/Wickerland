@@ -4,6 +4,7 @@
 	align-items: center;
 	flex-direction: column;
 	margin: 2em 0;
+	padding: 2rem;
 }
 .homepage_products_titles {
 	display: flex;
@@ -39,7 +40,8 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: 0.5rem;
+	width: 100%;
+	gap: 1rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -50,6 +52,6 @@
 		font-size: 1.4rem;
 	}
 	.homepage_products_box {
-		gap: 4em;
+		gap: 1em;
 	}
 }

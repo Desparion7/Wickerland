@@ -12,15 +12,24 @@ interface propsType {
 		amount: number;
 		price: number;
 	};
+	// Render the same component in different gird view
+	grid: number;
 }
 
-const ProductPreview = ({ product }: propsType) => {
+const ProductPreview = ({ product, grid }: propsType) => {
 	const [isFocus, setIsFocus] = useState(false);
 
 	const price = product.price.toFixed(2);
 	return (
 		<div
-			className={styles.productPreview}
+		// Change styles if different grid
+			className={`${
+				grid === 2
+					? styles.productPreview
+					: grid === 3
+					? styles.productPreview3
+					: styles.productPreview4
+			}`}
 			onMouseEnter={() => {
 				setIsFocus(true);
 			}}
@@ -28,7 +37,16 @@ const ProductPreview = ({ product }: propsType) => {
 				setIsFocus(false);
 			}}
 		>
-			<div className={styles.productPreview_img}>
+			<div
+			// Change styles if different grid
+				className={`${
+					grid === 2
+						? styles.productPreview_img
+						: grid === 3
+						? styles.productPreview_img3
+						: styles.productPreview_img4
+				}`}
+			>
 				{!isFocus && <img src={product.img[0]} alt={product.name} />}
 				{isFocus && (
 					<div className={styles.productPreview_img_focus}>

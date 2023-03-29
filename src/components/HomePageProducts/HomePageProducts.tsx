@@ -36,9 +36,18 @@ const HomePageProducts = () => {
 			</div>
 
 			<div className={styles.homepage_products_box}>
-				{homeBasket.map((product) => (
-					<ProductPreview key={product.pid} product={product} />
-				))}
+				{activeProducts === 'koszyki' &&
+					homeBasket.map((product) => (
+						<ProductPreview key={product.pid} grid={4} product={product} />
+					))}
+				{activeProducts === 'meble' &&
+					homeFurniture.map((product) => (
+						<ProductPreview key={product.pid} grid={4} product={product} />
+					))}
+				{activeProducts === 'pojemniki' &&
+					homeChest.map((product) => (
+						<ProductPreview key={product.pid} grid={4} product={product} />
+					))}
 			</div>
 		</div>
 	);
