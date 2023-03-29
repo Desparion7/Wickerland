@@ -6,12 +6,22 @@
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
-.priceFilter_value {
-	display: flex;
-	gap: 0.5rem;
-}
 .priceFilter_slider {
 	font-size: 10em;
 	color: red;
 	margin: 2rem 0;
+}
+.priceFilter_value {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+.priceFilter_value_range {
+	display: flex;
+	gap: 0.3rem;
+}
+.priceFilter_value button {
+	text-transform: uppercase;
+	border: none;
+	cursor: pointer;
 }

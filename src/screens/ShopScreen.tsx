@@ -1,6 +1,6 @@
 import styles from './ShopScreen.module.css';
 import PriceFilter from '../components/Shop/PriceFilter';
-import ShopNavigation from '../components/Shop/ShopNavigation';
+import ShopCategoryNavigation from '../components/Shop/ShopCategoryNavigation';
 import ShopTools from '../components/Shop/ShopTools';
 import ProductsView from '../components/Shop/ProductsView';
 import { useMediaQuery } from 'react-responsive';
@@ -12,7 +12,7 @@ const ShopScreen = () => {
 			{isDesktop && (
 				<div className={styles.shopScreen_boxLeft}>
 					<PriceFilter />
-					<ShopNavigation />
+					<ShopCategoryNavigation />
 				</div>
 			)}
 			<div className={styles.shopScreen_boxRight}>

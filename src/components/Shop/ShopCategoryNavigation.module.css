@@ -1,0 +1,29 @@
+.shopCategoryNavigation {
+	width: 100%;
+	padding: 0.5rem;
+}
+.shopCategoryNavigation h3 {
+	text-transform: uppercase;
+	margin: 0.5rem 0;
+}
+
+.shopCategoryNavigation_category {
+	display: flex;
+	flex-direction: column;
+}
+.shopCategoryNavigation_category a {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	color: var(--text-color2);
+	margin: 0.3rem 0;
+	transition: color 0.3s;
+}
+.shopCategoryNavigation_category_main a {
+	text-transform: uppercase;
+	margin: 0.5rem 0;
+	color: var(--text-color3);
+}
+.shopCategoryNavigation_category a:hover {
+	color: var(--text-color3);
+}

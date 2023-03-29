@@ -71,10 +71,13 @@ const PriceFilter = () => {
 				/>
 			</div>
 			<div className={styles.priceFilter_value}>
-				<p>Cena:</p>
-				<p>{minValue} zł</p>
-				<span>-</span>
-				<p>{maxValue} zł</p>
+				<div className={styles.priceFilter_value_range}>
+					<p>Cena:</p>
+					<p>{minValue} zł</p>
+					<span>-</span>
+					<p>{maxValue} zł</p>
+				</div>
+				<button>Filtruj</button>
 			</div>
 		</div>
 	);

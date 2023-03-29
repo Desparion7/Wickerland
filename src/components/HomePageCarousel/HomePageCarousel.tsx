@@ -74,7 +74,6 @@ const HomePageCarousel = () => {
 						src='./products on Homepage/bujak1-white.PNG'
 						alt='Fotel bujany Wickerland'
 						title='fotel bujany'
-						loading='lazy'
 						className={styles.show_img}
 					/>
 					<div
