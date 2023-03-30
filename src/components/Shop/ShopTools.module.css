@@ -43,6 +43,9 @@
 	cursor: pointer;
 	color: var(--text-color2);
 }
+.shopTools_options_view_active {
+	color: black !important;
+}
 .shopTools_options_sorting select {
 	padding: 0.1rem;
 	font-size: 0.8rem;
