@@ -76,7 +76,7 @@
 
 @media screen and (min-width: 600px) {
 	.homePageCarousel {
-		height: 20em;
+		height: 24em;
 	}
 	.homePageCarousel_item_info p {
 		font-size: 1.1em;
