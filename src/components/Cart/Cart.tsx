@@ -2,59 +2,40 @@ import styles from './Cart.module.css';
 import { useState } from 'react';
 import { RiCloseFill } from 'react-icons/ri';
 import CartItemSmall from './CartItemSmall';
-
-interface propsType {
-	setIsCart: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { useDispatch } from 'react-redux';
+import { toggleCart } from '../../app/slices/shopViewSlice';
 
 const cartProducts = [
 	{
 		id: '1',
-		img: [
-			'./products/kufer1.PNG',
-			'./products/kufer1a.PNG',
-			'./products/kufer1b.PNG',
-			'./products/kufer1c.PNG',
-			'./products/kufer1d.PNG',
-		],
+		img: ['./products/pojemniki/pojemniki2-1.PNG'],
 		name: 'Kufer wiklinowy skrzynia',
 		amount: 10,
 		price: 250,
 	},
 	{
 		id: '2',
-		img: [
-			'./products/kufer1a.PNG',
-			'./products/kufer1b.PNG',
-			'./products/kufer1c.PNG',
-			'./products/kufer1.PNG',
-			'./products/kufer1d.PNG',
-		],
+		img: ['./products/pojemniki/pojemniki1-1.PNG'],
 		name: 'Kufer wiklinowy skrzynia',
 		amount: 10,
 		price: 250,
 	},
 	{
 		id: '3',
-		img: [
-			'./products/kufer1.PNG',
-			'./products/kufer1a.PNG',
-			'./products/kufer1b.PNG',
-			'./products/kufer1c.PNG',
-			'./products/kufer1d.PNG',
-		],
+		img: ['./products/pojemniki/pojemniki1-1.PNG'],
 		name: 'Kufer wiklinowy skrzynia',
 		amount: 10,
 		price: 250,
 	},
 ];
 
-const Cart = ({ setIsCart }: propsType) => {
+const Cart = () => {
 	const [cartAnimation, setCartAnimation] = useState(styles.show_cart);
+	const dispatch = useDispatch();
 
 	const handlerHideMenu = () => {
 		setTimeout(() => {
-			setIsCart(false);
+			dispatch(toggleCart(false));
 		}, 150);
 		setCartAnimation(styles.hide_cart);
 	};
@@ -64,10 +45,13 @@ const Cart = ({ setIsCart }: propsType) => {
 			<div className={`${styles.cart__main} ${cartAnimation}`}>
 				<div className={styles.cart__main_title}>
 					<p> Twój koszyk</p>
-					<RiCloseFill
+					<div
 						className={styles.cart__main_title_icon}
 						onClick={handlerHideMenu}
-					/>
+					>
+						<RiCloseFill />
+						<span>Zamknij</span>
+					</div>
 				</div>
 				<div className={styles.cart__main_items}>
 					{cartProducts.map((item) => (

@@ -1,8 +1,8 @@
 import styles from './ShopScreen.module.css';
-import PriceFilter from '../components/Shop/PriceFilter';
-import ShopCategoryNavigation from '../components/Shop/ShopCategoryNavigation';
-import ShopTools from '../components/Shop/ShopTools';
-import ProductsView from '../components/Shop/ProductsView';
+import PriceFilter from '../components/ShopScreen/PriceFilter';
+import ShopCategoryNavigation from '../components/ShopScreen/ShopCategoryNavigation';
+import ShopTools from '../components/ShopScreen/ShopTools';
+import ProductsView from '../components/ShopScreen/ProductsView';
 import { useMediaQuery } from 'react-responsive';
 
 const ShopScreen = () => {

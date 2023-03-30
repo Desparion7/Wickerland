@@ -1,8 +1,7 @@
 import styles from './HomePage.module.css';
-import HomePageProducts from '../components/HomePageProducts/HomePageProducts';
-import HomePageCarousel from '../components/HomePageCarousel/HomePageCarousel';
-import AbooutUs from '../components/AboutUs/AbooutUs';
-
+import HomePageProducts from '../components/HomePage/HomePageProducts/HomePageProducts';
+import HomePageCarousel from '../components/HomePage/HomePageCarousel/HomePageCarousel';
+import AbooutUs from '../components/HomePage/AboutUs/AbooutUs';
 
 const HomePage = () => {
 	return (

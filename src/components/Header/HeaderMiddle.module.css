@@ -80,6 +80,7 @@
 }
 .headerMiddle__options_icons_box {
 	position: relative;
+	padding: 0.2rem;
 	cursor: pointer;
 }
 .headerMiddle__options_icons_price {

@@ -4,6 +4,7 @@ import shopViewSlice from './slices/shopViewSlice';
 export interface State {
 	shopView: {
 		grid: number;
+		cart: boolean;
 	};
 }
 

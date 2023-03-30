@@ -7,15 +7,21 @@ import { useMediaQuery } from 'react-responsive';
 import MobileMenu from './MobileMenu';
 import Cart from '../Cart/Cart';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { cartView } from '../../app/slices/shopViewSlice';
+import { useDispatch } from 'react-redux';
+import { toggleCart } from '../../app/slices/shopViewSlice';
 
 const HeaderMiddle = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
 	const [isMobileMenu, setIsMobileMenu] = useState(false);
-	const [isCart, setIsCart] = useState(false);
+
+	const dispatch = useDispatch();
+	const isCart = useSelector(cartView);
 
 	return (
 		<div className={styles.headerMiddle}>
-			{isCart && <Cart setIsCart={setIsCart} />}
+			{isCart && <Cart />}
 			{!isDesktop && (
 				<>
 					<div className={styles.headerMiddle__burger}>
@@ -55,19 +61,20 @@ const HeaderMiddle = () => {
 						<BsHeart />
 						<span>0</span>
 					</div>
-					<div className={styles.headerMiddle__options_icons_box}>
-						<GiBasket
-							onClick={() => {
-								setIsCart(true);
-							}}
-						/>
+					<div
+						className={styles.headerMiddle__options_icons_box}
+						onClick={() => {
+							dispatch(toggleCart(true));
+						}}
+					>
+						<GiBasket />
 						<span>0</span>
 					</div>
 					{isDesktop && (
 						<p
 							className={styles.headerMiddle__options_icons_price}
 							onClick={() => {
-								setIsCart(true);
+								dispatch(toggleCart(true));
 							}}
 						>
 							12,99 zł

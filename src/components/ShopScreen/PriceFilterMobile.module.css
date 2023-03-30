@@ -1,0 +1,78 @@
+.priceFilterMobile {
+	position: fixed;
+	display: flex;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 4;
+}
+.priceFilterMobile__main {
+	height: 100%;
+	padding: 1rem;
+	background: white;
+	overflow: auto;
+	overflow-y: auto;
+	width: 18em;
+	z-index: 4;
+}
+.priceFilterMobile__backdrop {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 3;
+}
+.priceFilterMobile__main_close {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+}
+.priceFilterMobile__main_close svg {
+	font-size: 1.5rem;
+	padding: 0.2rem;
+}
+.priceFilterMobile__main_category {
+	display: flex;
+	flex-direction: column;
+	padding: 0.5rem;
+}
+.priceFilterMobile__main_category a {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	color: var(--text-color2);
+	margin: 0.3rem 0;
+}
+.priceFilterMobile__main_category a {
+	margin: 0.5rem 0;
+	color: var(--text-color3);
+}
+
+/* Animation  */
+.show_menu {
+	animation: show-menu 0.3s forwards;
+}
+@keyframes show-menu {
+	from {
+		transform: translateX(-40em);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+.hide_menu {
+	animation: hide-menu 0.3s forwards;
+}
+@keyframes hide-menu {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-40em);
+	}
+}

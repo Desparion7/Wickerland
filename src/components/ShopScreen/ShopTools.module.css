@@ -18,6 +18,8 @@
 	display: flex;
 	flex-direction: row;
 	gap: 1em;
+	width: 100%;
+	justify-content: space-between;
 }
 .shopTools_options_amount {
 	display: flex;
@@ -51,10 +53,23 @@
 	font-size: 0.8rem;
 	border: none;
 	cursor: pointer;
+	width: 180px;
+}
+.shopTools_options_filtrs {
+	display: flex;
+	align-items: center;
+	font-size: 0.8rem;
+	gap: 0.3em;
+	cursor: pointer;
 }
 
 .active_shopNav {
 	font-weight: bold;
+}
+@media screen and (min-width: 600px) {
+	.shopTools_options_sorting select {
+		width: auto;
+	}
 }
 
 @media screen and (min-width: 1000px) {
@@ -63,6 +78,10 @@
 	}
 	.shopTools_options_sorting select {
 		font-size: 1rem;
+	}
+	.shopTools_options {
+		width: auto;
+		justify-content: space-between;
 	}
 }
 @media screen and (min-width: 1250px) {

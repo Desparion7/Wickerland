@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './HomePageProducts.module.css';
-import ProductPreview from '../ProductPreview/ProductPreview';
-import { homeBasket, homeChest, homeFurniture } from '../../db/homePage';
+import ProductPreview from '../../ProductPreview/ProductPreview';
+import { homeBasket, homeChest, homeFurniture } from '../../../db/homePage';
 
 const HomePageProducts = () => {
 	const [activeProducts, setActiveProducts] = useState<string>('koszyki');

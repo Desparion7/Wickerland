@@ -38,8 +38,8 @@ const HomePageCarousel = () => {
 					<div
 						className={`${styles.homePageCarousel_item_info} ${styles.show_info}`}
 					>
-						<p>Wytrzymały ekologiczny pojemnik</p>
-						<h3>Kufer wiklinowy, skrzynia</h3>
+						<h3>Wytrzymały ekologiczny pojemnik</h3>
+						<p>Kufer wiklinowy, skrzynia</p>
 						<div className={styles.homePageCarousel_item_info_buy}>
 							<p>250 zł</p>
 							<button>Kup Teraz</button>
