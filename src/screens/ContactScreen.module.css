@@ -1,0 +1,49 @@
+.contactScreen {
+	width: 100%;
+}
+.contactScreen iframe {
+	width: 100%;
+}
+.contactScreen_map {
+	position: relative;
+}
+.contactScreen_map_address {
+	position: absolute;
+	max-width: 340px;
+	top: 20%;
+	margin: 1rem;
+	padding: 1rem 3rem;
+	background-color: white;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+.contactScreen_map_address p {
+	margin: 1rem 0;
+}
+.contactScreen_contact {
+	margin: 2em 4em;
+}
+.contactScreen_contact_questions {
+	width: 45%;
+}
+.collapseQuestio_question {
+	border: none;
+	color: red;
+}
+
+
+
+
+
+
+
+
+
+.contactScreen_contact_form {
+}
+
+@media screen and (min-width: 1000px) {
+	.contactScreen_map_address {
+		left: 10%;
+	}
+}

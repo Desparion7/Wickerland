@@ -56,7 +56,7 @@ const HeaderBottom = () => {
 							</div>
 						</Link>
 					</div>
-					<div className={styles.headerBottom_contact}>Tel. (15) 87 62 271</div>
+					<div className={styles.headerBottom_contact}>Tel. 723 930 427</div>
 				</div>
 			)}
 		</>

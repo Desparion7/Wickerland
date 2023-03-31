@@ -22,7 +22,7 @@ const Footer = () => {
 				<div className={styles.footer_box_title}>Kontakt</div>
 				<p>
 					<FaPhone />{' '}
-					<span className={styles.footer_box_link}>(15) 87 62 271</span>
+					<span className={styles.footer_box_link}>723 930 427</span>
 				</p>
 				<p>
 					<MdEmail />

@@ -1,0 +1,28 @@
+.collapseQuestio {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 1rem 0;
+}
+.collapseQuestio_question {
+	display: flex;
+	justify-content: space-between;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: color 0.3s;
+}
+.collapseQuestio_question:hover {
+	color: var(--main-background-color);
+}
+.collapseQuestio_question_active {
+	color: var(--main-background-color);
+}
+.collapseQuestio_answear {
+	height: 0;
+	overflow: hidden;
+	transition: height 0.3s ease;
+}
+/* .show {
+	height: auto;
+	visibility: 1;
+} */
