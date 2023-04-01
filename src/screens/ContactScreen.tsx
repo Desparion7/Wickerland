@@ -1,7 +1,11 @@
 import styles from './ContactScreen.module.css';
 import CollapseQuestion from '../components/ContactScreen/CollapseQuestion';
+import { useState } from 'react';
+import ContactForm from '../components/ContactScreen/ContactForm';
 
 const ContactScreen = () => {
+	const [active, setActive] = useState('0');
+
 	return (
 		<div className={styles.contactScreen}>
 			<div className={styles.contactScreen_map}>
@@ -25,7 +29,9 @@ const ContactScreen = () => {
 				<div className={styles.contactScreen_contact_questions}>
 					<h3>Najczęściej zadawane pytania?</h3>
 					<CollapseQuestion
-						id={1}
+						id={'1'}
+						setActive={setActive}
+						active={active}
 						question={
 							'Czy otrzymam ten sam produkt jaki jest widoczny na zdjęciu?'
 						}
@@ -37,20 +43,26 @@ const ContactScreen = () => {
 							najlepszych materiałów i zgodny z naszymi standardami jakości.`}
 					/>
 					<CollapseQuestion
-						id={2}
+						id={'2'}
+						setActive={setActive}
+						active={active}
 						question={'Czy otrzymam dokument zakupu?'}
 						answer={`Tak, jesteśmy w pełni legalnie działającą firmą. Jesteśmy
 							również zwolnieni z Vatu. Twoim dokumentem będzie Faktura z
 							informacją o zwolnieniu z Vatu.`}
 					/>
 					<CollapseQuestion
-						id={3}
+						id={'3'}
+						setActive={setActive}
+						active={active}
 						question={'Jak mogę zwrócić zakupiony przedmiot?'}
 						answer={`Jako osoba prywatna masz prawo zwrócić zakupiony produkt w ciągu
 							14 dni od daty zakupu.`}
 					/>
 					<CollapseQuestion
-						id={4}
+						id={'4'}
+						setActive={setActive}
+						active={active}
 						question={'Czy stany magazynowe są aktualne?'}
 						answer={`Nasze stany magazynowe są aktualizowane raz na 24h. Niestety
 							czasami może zdarzyć się tak, że produkt zostanie wysprzedany a
@@ -59,10 +71,11 @@ const ContactScreen = () => {
 							od daty zakupu (nie wliczając weekendów.)`}
 					/>
 				</div>
-				<div className={styles.contactScreen_contact_form}></div>
+				<ContactForm />
 			</div>
 		</div>
 	);
 };
 
 export default ContactScreen;
+

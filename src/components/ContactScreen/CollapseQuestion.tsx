@@ -1,24 +1,30 @@
 import styles from './CollapseQuestion.module.css';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
-import { useState } from 'react';
+import { useRef } from 'react';
 
 interface PropsType {
-	id: number;
+	setActive: React.Dispatch<React.SetStateAction<string>>;
+	active: string;
+	id: string;
 	question: string;
 	answer: string;
 }
 
-const CollapseQuestion = ({ id, question, answer }: PropsType) => {
-	const [toggle, setToggle] = useState(false);
+const CollapseQuestion = ({
+	id,
+	active,
+	setActive,
+	question,
+	answer,
+}: PropsType) => {
+	const questionRef = useRef<HTMLDivElement>(null);
 
 	const handleCollapse = () => {
-		const collapses = document.querySelectorAll(
-			'[class*="collapseQuestio_answear"]'
-		);
-		collapses.forEach((item) => {
-			item.classList.remove('show');
-			console.log(item);
-		});
+		if (active === id) {
+			setActive('0');
+		} else {
+			setActive(id);
+		}
 	};
 
 	return (
@@ -29,20 +35,27 @@ const CollapseQuestion = ({ id, question, answer }: PropsType) => {
 					handleCollapse();
 				}}
 			>
-				<p className={`${toggle && styles.collapseQuestio_question_active}`}>
-					Czy otrzymam ten sam produkt jaki jest widoczny na zdjęciu?
+				<p
+					className={`${
+						active === id && styles.collapseQuestio_question_active
+					}`}
+				>
+					{question}
 				</p>
-				{toggle ? <SlArrowUp /> : <SlArrowDown />}
+				{active === id ? <SlArrowUp /> : <SlArrowDown />}
 			</div>
-			<div className={styles.collapseQuestio_answear}>
-				<p>
-					Staramy się, aby wszystkie nasze produkty były jak najbardziej zgodne
-					z tym, co widzisz na zdjęciu, ale musisz pamiętać, że nasze wyroby są
-					wykonane ręcznie z wikliny, co może wprowadzać pewne niewielkie
-					różnice w wyglądzie produktu. Mimo to, zapewniamy Cię, że każdy
-					produkt jest starannie wykonany z najlepszych materiałów i zgodny z
-					naszymi standardami jakości.
-				</p>
+			<div
+				className={`${styles.collapseQuestio_answear}`}
+				ref={questionRef}
+				style={
+					active === id && questionRef.current
+						? {
+								height: questionRef.current.scrollHeight + 'px',
+						  }
+						: { height: '0px' }
+				}
+			>
+				<p>{answer}</p>
 			</div>
 		</div>
 	);
