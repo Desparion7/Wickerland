@@ -1,0 +1,70 @@
+.aboutUsScreen {
+	margin: 1em;
+}
+.aboutUsScreen_quote {
+	margin: 2rem 0;
+}
+.aboutUsScreen_quote h2 {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+	color: var(--main-background-color);
+}
+.aboutUsScreen_quote p {
+	font-size: 1.2rem;
+}
+.aboutUsScreen_processBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+	margin: 1rem 0;
+}
+.aboutUsScreen_processBox_subtitle {
+	font-size: 1.1rem;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
+	letter-spacing: 3px;
+	color: var(--main-background-color);
+}
+.aboutUsScreen_processBox_text {
+	font-size: 1rem;
+}
+.aboutUsScreen_processBox_img {
+	width: 100%;
+	height: auto;
+}
+.aboutUsScreen_processBox_img img {
+	width: 100%;
+	display: inline-block;
+}
+
+@media screen and (min-width: 600px) {
+	.aboutUsScreen {
+		max-width: 1500px;
+		margin: 2em 4em;
+	}
+	.aboutUsScreen_quote h2 {
+		font-size: 2rem;
+	}
+	.aboutUsScreen_quote p {
+		font-size: 1.5rem;
+	}
+	.aboutUsScreen_processBox_subtitle {
+		font-size: 1.2rem;
+	}
+	.aboutUsScreen_processBox_text {
+		font-size: 1.1rem;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.aboutUsScreen_processBox {
+		flex-direction: row;
+	}
+	.aboutUsScreen_processBox_img {
+		width: 250px;
+	}
+	.aboutUsScreen_processBox_img img {
+		width: 250px;
+	}
+}

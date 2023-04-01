@@ -23,11 +23,12 @@
 .contactScreen_contact {
 	display: flex;
 	justify-content: space-around;
+	flex-direction: column;
+	margin: 2rem;
 	gap: 2rem;
-	margin: 2em 4em;
 }
 .contactScreen_contact_questions {
-	width: 45%;
+	width: 100%;
 }
 .collapseQuestio_question {
 	border: none;
@@ -36,5 +37,12 @@
 @media screen and (min-width: 1000px) {
 	.contactScreen_map_address {
 		left: 10%;
+	}
+	.contactScreen_contact {
+		flex-direction: row;
+		margin: 2em 4em;
+	}
+	.contactScreen_contact_questions {
+		width: 45%;
 	}
 }
