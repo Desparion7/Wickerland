@@ -1,0 +1,26 @@
+.articleScreen {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem 4rem;
+}
+.articleScreen h2 {
+	text-transform: uppercase;
+	font-size: 2rem;
+	margin: 2rem 0;
+	text-align: center;
+	color: var(--text-color2);
+}
+.articleScreen_content {
+	font-size: 1.1rem;
+	line-height: 2rem;
+	text-align: justify;
+}
+.articleScreen_content img {
+	width: 50%;
+	margin: 2rem;
+	float: right;
+	border-radius: 5px;
+}
+.articleScreen_content p {
+	margin-bottom: 1rem;
+}

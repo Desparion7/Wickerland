@@ -175,7 +175,7 @@
 	}
 }
 .zoom {
-	animation: zoom ease-out 0.8s forwards;
+	animation: zoom ease-out 1s forwards;
 }
 @keyframes zoom {
 	from {

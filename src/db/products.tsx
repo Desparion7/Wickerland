@@ -17,8 +17,8 @@ export const products = [
 			{ Szerokość: '20 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk1-1.PNG',
-			'./products/koszyki/koszyk1-1a.PNG',
+			'/products/koszyki/koszyk1-1.PNG',
+			'/products/koszyki/koszyk1-1a.PNG',
 		],
 	},
 	{
@@ -37,8 +37,8 @@ export const products = [
 			{ Szerokość: '25 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk1-2.PNG',
-			'./products/koszyki/koszyk1-2a.PNG',
+			'/products/koszyki/koszyk1-2.PNG',
+			'/products/koszyki/koszyk1-2a.PNG',
 		],
 	},
 	{
@@ -57,8 +57,8 @@ export const products = [
 			{ Szerokość: '20 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk1-3.PNG',
-			'./products/koszyki/koszyk1-3a.PNG',
+			'/products/koszyki/koszyk1-3.PNG',
+			'/products/koszyki/koszyk1-3a.PNG',
 		],
 	},
 	// Koszyki-na kwiaty,owoce,grzyby pid k-2
@@ -78,8 +78,8 @@ export const products = [
 			{ Szerokość: '25 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk2-1.PNG',
-			'./products/koszyki/koszyk2-1a.PNG',
+			'/products/koszyki/koszyk2-1.PNG',
+			'/products/koszyki/koszyk2-1a.PNG',
 		],
 	},
 	{
@@ -98,8 +98,8 @@ export const products = [
 			{ Szerokość: '18 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk2-2.PNG',
-			'./products/koszyki/koszyk2-2a.PNG',
+			'/products/koszyki/koszyk2-2.PNG',
+			'/products/koszyki/koszyk2-2a.PNG',
 		],
 	},
 	{
@@ -118,8 +118,8 @@ export const products = [
 			{ Szerokość: '32 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk2-3.PNG',
-			'./products/koszyki/koszyk2-3a.PNG',
+			'/products/koszyki/koszyk2-3.PNG',
+			'/products/koszyki/koszyk2-3a.PNG',
 		],
 	},
 	// Koszyki-piknikowe pid k-3
@@ -139,8 +139,8 @@ export const products = [
 			{ Szerokość: '30 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk3-1.PNG',
-			'./products/koszyki/koszyk3-1a.PNG',
+			'/products/koszyki/koszyk3-1.PNG',
+			'/products/koszyki/koszyk3-1a.PNG',
 		],
 	},
 	{
@@ -159,8 +159,8 @@ export const products = [
 			{ Szerokość: '30 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk3-2.PNG',
-			'./products/koszyki/koszyk3-2a.PNG',
+			'/products/koszyki/koszyk3-2.PNG',
+			'/products/koszyki/koszyk3-2a.PNG',
 		],
 	},
 	// Koszyki-koszyki na pranie zabawkipid k-4
@@ -180,8 +180,8 @@ export const products = [
 			{ Szerokość: '26 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk4-1.PNG',
-			'./products/koszyki/koszyk4-1a.PNG',
+			'/products/koszyki/koszyk4-1.PNG',
+			'/products/koszyki/koszyk4-1a.PNG',
 		],
 	},
 	{
@@ -200,8 +200,8 @@ export const products = [
 			{ Pojemność: '80 l' },
 		],
 		img: [
-			'./products/koszyki/koszyk4-2.PNG',
-			'./products/koszyki/koszyk4-2a.PNG',
+			'/products/koszyki/koszyk4-2.PNG',
+			'/products/koszyki/koszyk4-2a.PNG',
 		],
 	},
 
@@ -222,8 +222,8 @@ export const products = [
 			{ Szerokość: '21 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk5-1.PNG',
-			'./products/koszyki/koszyk5-1a.PNG',
+			'/products/koszyki/koszyk5-1.PNG',
+			'/products/koszyki/koszyk5-1a.PNG',
 		],
 	},
 	{
@@ -242,8 +242,8 @@ export const products = [
 			{ Szerokość: '21 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk5-2.PNG',
-			'./products/koszyki/koszyk5-2a.PNG',
+			'/products/koszyki/koszyk5-2.PNG',
+			'/products/koszyki/koszyk5-2a.PNG',
 		],
 	},
 	// Koszyki-drewno k-6
@@ -263,8 +263,8 @@ export const products = [
 			{ Wysokość: '43 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk6-1.PNG',
-			'./products/koszyki/koszyk6-1a.PNG',
+			'/products/koszyki/koszyk6-1.PNG',
+			'/products/koszyki/koszyk6-1a.PNG',
 		],
 	},
 	{
@@ -283,8 +283,8 @@ export const products = [
 			{ Wysokość: '40 cm' },
 		],
 		img: [
-			'./products/koszyki/koszyk6-2.PNG',
-			'./products/koszyki/koszyk6-2a.PNG',
+			'/products/koszyki/koszyk6-2.PNG',
+			'/products/koszyki/koszyk6-2a.PNG',
 		],
 	},
 
@@ -305,7 +305,7 @@ export const products = [
 			{ Długośc: '110 cm' },
 			{ Głebokość: '50 cm' },
 		],
-		img: ['./products/meble/meble1-1.PNG', './products/meble/meble1-1a.PNG'],
+		img: ['/products/meble/meble1-1.PNG', '/products/meble/meble1-1a.PNG'],
 	},
 	{
 		pid: 'm-1-2',
@@ -322,7 +322,7 @@ export const products = [
 			{ Długośc: '110 cm' },
 			{ Głebokość: '50 cm' },
 		],
-		img: ['./products/meble/meble1-2.PNG', './products/meble/meble1-2a.PNG'],
+		img: ['/products/meble/meble1-2.PNG', '/products/meble/meble1-2a.PNG'],
 	},
 	// Meble-fotele,bujaki,krzesła m-2
 	{
@@ -340,7 +340,7 @@ export const products = [
 			{ Szerokość: '60 cm' },
 			{ Głebokość: '42 cm' },
 		],
-		img: ['./products/meble/meble2-1.PNG', './products/meble/meble2-1a.PNG'],
+		img: ['/products/meble/meble2-1.PNG', '/products/meble/meble2-1a.PNG'],
 	},
 	{
 		pid: 'm-2-2',
@@ -358,7 +358,7 @@ export const products = [
 			{ Szerokość: '55 cm' },
 			{ Głebokość: '50 cm' },
 		],
-		img: ['./products/meble/meble2-2.PNG', './products/meble/meble2-2a.PNG'],
+		img: ['/products/meble/meble2-2.PNG', '/products/meble/meble2-2a.PNG'],
 	},
 	// Meble-półki m-3
 	{
@@ -376,7 +376,7 @@ export const products = [
 			{ Wysokośc: '42 cm' },
 			{ Głebokość: '18 cm' },
 		],
-		img: ['./products/meble/meble3-1.PNG', './products/meble/meble3-1a.PNG'],
+		img: ['/products/meble/meble3-1.PNG', '/products/meble/meble3-1a.PNG'],
 	},
 	{
 		pid: 'm-3-2',
@@ -393,7 +393,7 @@ export const products = [
 			{ Wysokośc: '25 cm' },
 			{ Głebokość: '18 cm' },
 		],
-		img: ['./products/meble/meble3-2.PNG', './products/meble/meble3-2a.PNG'],
+		img: ['/products/meble/meble3-2.PNG', '/products/meble/meble3-2a.PNG'],
 	},
 	// Meble-szafki m-4
 	{
@@ -411,7 +411,7 @@ export const products = [
 			{ Szerokość: '50 cm' },
 			{ Głebokość: '30 cm' },
 		],
-		img: ['./products/meble/meble4-1.PNG', './products/meble/meble4-1a.PNG'],
+		img: ['/products/meble/meble4-1.PNG', '/products/meble/meble4-1a.PNG'],
 	},
 	{
 		pid: 'm-4-2',
@@ -428,7 +428,7 @@ export const products = [
 			{ Szerokość: '30 cm' },
 			{ Głebokość: '30 cm' },
 		],
-		img: ['./products/meble/meble4-2.PNG', './products/meble/meble4-2a.PNG'],
+		img: ['/products/meble/meble4-2.PNG', '/products/meble/meble4-2a.PNG'],
 	},
 	// Meble-stoły-stoliki m-5
 	{
@@ -445,7 +445,7 @@ export const products = [
 			{ Średnica: '40 cm' },
 			{ Wysokość: '65 cm' },
 		],
-		img: ['./products/meble/meble5-1.PNG', './products/meble/meble5-1a.PNG'],
+		img: ['/products/meble/meble5-1.PNG', '/products/meble/meble5-1a.PNG'],
 	},
 	{
 		pid: 'm-5-2',
@@ -462,7 +462,7 @@ export const products = [
 			{ Szerokość: '60 cm' },
 			{ Długość: '80 cm' },
 		],
-		img: ['./products/meble/meble5-2.PNG', './products/meble/meble5-2a.PNG'],
+		img: ['/products/meble/meble5-2.PNG', '/products/meble/meble5-2a.PNG'],
 	},
 
 	// Pojemniki p-1
@@ -484,11 +484,11 @@ export const products = [
 			{ Pojemność: '100 l' },
 		],
 		img: [
-			'./products/pojemniki/pojemniki1-1.PNG',
-			'./products/pojemniki/pojemniki1-1a.PNG',
-			'./products/pojemniki/pojemniki1-1b.PNG',
-			'./products/pojemniki/pojemniki1-1c.PNG',
-			'./products/pojemniki/pojemniki1-1d.PNG',
+			'/products/pojemniki/pojemniki1-1.PNG',
+			'/products/pojemniki/pojemniki1-1a.PNG',
+			'/products/pojemniki/pojemniki1-1b.PNG',
+			'/products/pojemniki/pojemniki1-1c.PNG',
+			'/products/pojemniki/pojemniki1-1d.PNG',
 		],
 	},
 
@@ -509,8 +509,8 @@ export const products = [
 			{ Wysokość: '76 cm' },
 		],
 		img: [
-			'./products/pojemniki/pojemniki2-1.PNG',
-			'./products/pojemniki/pojemniki2-1a.PNG',
+			'/products/pojemniki/pojemniki2-1.PNG',
+			'/products/pojemniki/pojemniki2-1a.PNG',
 		],
 	},
 	{
@@ -529,8 +529,8 @@ export const products = [
 			{ Wysokość: '72 cm' },
 		],
 		img: [
-			'./products/pojemniki/pojemniki2-2.PNG',
-			'./products/pojemniki/pojemniki2-2a.PNG',
+			'/products/pojemniki/pojemniki2-2.PNG',
+			'/products/pojemniki/pojemniki2-2a.PNG',
 		],
 	},
 	// Pojemniki - skrzynie reagałowe p-3
@@ -550,8 +550,8 @@ export const products = [
 			{ Wysokość: '20 cm' },
 		],
 		img: [
-			'./products/pojemniki/pojemniki3-1.PNG',
-			'./products/pojemniki/pojemniki3-1a.PNG',
+			'/products/pojemniki/pojemniki3-1.PNG',
+			'/products/pojemniki/pojemniki3-1a.PNG',
 		],
 	},
 	{
@@ -570,8 +570,8 @@ export const products = [
 			{ Wysokość: '20 cm' },
 		],
 		img: [
-			'./products/pojemniki/pojemniki3-2.PNG',
-			'./products/pojemniki/pojemniki3-2a.PNG',
+			'/products/pojemniki/pojemniki3-2.PNG',
+			'/products/pojemniki/pojemniki3-2a.PNG',
 		],
 	},
 
@@ -593,8 +593,8 @@ export const products = [
 			{ Wysokość: '78 cm' },
 		],
 		img: [
-			'./products/pozostałe/pozostałe1-1.PNG',
-			'./products/pozostałe/pozostałe1-1a.PNG',
+			'/products/pozostałe/pozostałe1-1.PNG',
+			'/products/pozostałe/pozostałe1-1a.PNG',
 		],
 	},
 	{
@@ -613,8 +613,8 @@ export const products = [
 			{ 'Średnice donic': '20cm, 24cm' },
 		],
 		img: [
-			'./products/pozostałe/pozostałe1-2.PNG',
-			'./products/pozostałe/pozostałe1-2a.PNG',
+			'/products/pozostałe/pozostałe1-2.PNG',
+			'/products/pozostałe/pozostałe1-2a.PNG',
 		],
 	},
 	// Pozostałe-transportety dla zwierząt po-2
@@ -635,8 +635,8 @@ export const products = [
 			{ 'Średnica wejścia': '25 cm' },
 		],
 		img: [
-			'./products/pozostałe/pozostałe2-1.PNG',
-			'./products/pozostałe/pozostałe2-1a.PNG',
+			'/products/pozostałe/pozostałe2-1.PNG',
+			'/products/pozostałe/pozostałe2-1a.PNG',
 		],
 	},
 	// Pozostałe-lampiony
@@ -656,8 +656,8 @@ export const products = [
 			{ 'Średnica w najszerszym punkcie': '15 cm' },
 		],
 		img: [
-			'./products/pozostałe/pozostałe3-1.PNG',
-			'./products/pozostałe/pozostałe3-1a.PNG',
+			'/products/pozostałe/pozostałe3-1.PNG',
+			'/products/pozostałe/pozostałe3-1a.PNG',
 		],
 	},
 	{
@@ -676,8 +676,8 @@ export const products = [
 			{ 'Średnica w najszerszym punkcie': '23 cm' },
 		],
 		img: [
-			'./products/pozostałe/pozostałe3-2.PNG',
-			'./products/pozostałe/pozostałe3-2a.PNG',
+			'/products/pozostałe/pozostałe3-2.PNG',
+			'/products/pozostałe/pozostałe3-2a.PNG',
 		],
 	},
 	// Pozostałe-wózki po-4
@@ -697,8 +697,8 @@ export const products = [
 			{ Wysokość: '38 cm' },
 		],
 		img: [
-			'./products/pozostałe/pozostałe4-1.PNG',
-			'./products/pozostałe/pozostałe4-1a.PNG',
+			'/products/pozostałe/pozostałe4-1.PNG',
+			'/products/pozostałe/pozostałe4-1a.PNG',
 		],
 	},
 	{
@@ -717,8 +717,8 @@ export const products = [
 			{ Wysokość: '55 cm' },
 		],
 		img: [
-			'./products/pozostałe/pozostałe4-2.PNG',
-			'./products/pozostałe/pozostałe4-2a.PNG',
+			'/products/pozostałe/pozostałe4-2.PNG',
+			'/products/pozostałe/pozostałe4-2a.PNG',
 		],
 	},
 ];

@@ -1,0 +1,12 @@
+.blogScreen {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	max-width: 1500px;
+}
+
+@media screen and (min-width: 600px) {
+	.blogScreen {
+		margin: 1rem 4rem;
+	}
+}

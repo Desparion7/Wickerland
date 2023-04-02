@@ -10,7 +10,7 @@ const Footer = () => {
 			<div className={styles.footer_box}>
 				<div className={styles.footer_box__logo}>
 					<h2>Wicker</h2>
-					<img src='./basket.PNG' />
+					<img src='/basket.PNG' />
 					<h2>Land</h2>
 				</div>
 				<div className={styles.footer_box__contact}>

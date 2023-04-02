@@ -38,7 +38,7 @@ const HeaderMiddle = () => {
 			<div className={styles.headerMiddle__logo}>
 				<Link to='/'>
 					<h2>Wicker</h2>
-					<img src='./basket.PNG' />
+					<img src='/basket.PNG' />
 					<h2>Land</h2>
 				</Link>
 			</div>

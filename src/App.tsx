@@ -5,6 +5,7 @@ import ShopScreen from './screens/ShopScreen';
 import BlogScreen from './screens/BlogScreen';
 import AboutUsScreen from './screens/AboutUsScreen';
 import ContactScreen from './screens/ContactScreen';
+import ArticleScreen from './screens/ArticleScreen';
 
 const router = createBrowserRouter([
 	{
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
 			{
 				path: '/blog',
 				element: <BlogScreen />,
+			},
+			{
+				path: '/blog/:id',
+				element: <ArticleScreen />,
 			},
 			{
 				path: '/onas',

@@ -22,7 +22,7 @@ const ProductPreview = ({ product, grid }: propsType) => {
 	const price = product.price.toFixed(2);
 	return (
 		<div
-		// Change styles if different grid
+			// Change styles if different grid
 			className={`${
 				grid === 2
 					? styles.productPreview
@@ -38,7 +38,7 @@ const ProductPreview = ({ product, grid }: propsType) => {
 			}}
 		>
 			<div
-			// Change styles if different grid
+				// Change styles if different grid
 				className={`${
 					grid === 2
 						? styles.productPreview_img
@@ -47,7 +47,7 @@ const ProductPreview = ({ product, grid }: propsType) => {
 						: styles.productPreview_img4
 				}`}
 			>
-				{!isFocus && <img src={product.img[0]} alt={product.name} />}
+				<div>{!isFocus && <img src={product.img[0]} alt={product.name} />}</div>
 				{isFocus && (
 					<div className={styles.productPreview_img_focus}>
 						<img
@@ -71,7 +71,9 @@ const ProductPreview = ({ product, grid }: propsType) => {
 				<div className={styles.productPreview_info_category}>
 					{product.category}
 					{isFocus ? (
-						<div className={styles.productPreview_info_cart}>
+						<div
+							className={`${styles.productPreview_info_cart} ${styles.show_options}`}
+						>
 							{product.amount !== 0 ? (
 								<p>Dodaj do koszyka</p>
 							) : (
