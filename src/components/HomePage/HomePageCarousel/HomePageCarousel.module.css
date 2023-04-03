@@ -11,6 +11,10 @@
 .homePageCarousel svg {
 	font-size: 2em;
 }
+.homePageCarousel:hover .homePageCarousel_arrowLeft,
+.homePageCarousel:hover .homePageCarousel_arrowRight {
+	opacity: 1;
+}
 .homePageCarousel_arrowLeft,
 .homePageCarousel_arrowRight {
 	position: absolute;
@@ -19,9 +23,12 @@
 	justify-content: center;
 	height: 100%;
 	width: 5%;
-	cursor: pointer;
+	font-weight: bold;
 	transition: background-color 0.3s;
 	z-index: 2;
+	transition: opacity 0.3s;
+	cursor: pointer;
+	opacity: 0;
 }
 .homePageCarousel_arrowLeft:hover,
 .homePageCarousel_arrowRight:hover {

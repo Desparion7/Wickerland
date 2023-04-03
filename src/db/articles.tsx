@@ -26,7 +26,8 @@ export const articles = [
 		alt: 'ścięta wiklina',
 		day: '17',
 		month: 'MAR',
-		title: 'Piękno i funkcjonalność naturalnej wikliny',
+		title:
+			'Z wierzby do koszyka: jak pozyskać i przygotować materiał do produkcji',
 		text1: `Materiał, który jest wykorzystywany do produkcji koszy wiklinowych, to oczywiście wiklina. Jest to rodzaj rośliny z rodziny wierzbowatych, charakteryzującej się giętkimi i elastycznymi pędami...`,
 		text2: [
 			'Materiał, który jest wykorzystywany do produkcji koszy wiklinowych, to oczywiście wiklina. Jest to rodzaj rośliny z rodziny wierzbowatych, charakteryzującej się giętkimi i elastycznymi pędami, które idealnie nadają się do wyplatania różnego rodzaju przedmiotów, w tym koszy.',
@@ -43,7 +44,7 @@ export const articles = [
 		alt: 'biżuteria z wikliny',
 		day: '12',
 		month: 'LUT',
-		title: 'Nietypowe wyroby z wikliny',
+		title: 'Piękno i funkcjonalność naturalnej wikliny',
 		text1: `Materiał, który jest wykorzystywany do produkcji koszy wiklinowych, to oczywiście wiklina. Jest to rodzaj rośliny z rodziny wierzbowatych, charakteryzującej się giętkimi i elastycznymi pędami...`,
 		text2: [
 			'Wiklina to materiał, który od tysięcy lat jest wykorzystywany do wyplatania różnego rodzaju przedmiotów. Zazwyczaj kojarzy się ona przede wszystkim z koszami, ale w rzeczywistości z wikliny można wykonać wiele innych ciekawych i nietypowych wyrobów. W tym artykule przedstawimy kilka nietypowych wyrobów z wikliny i opowiemy o ich zastosowaniach.',

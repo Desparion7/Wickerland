@@ -1,31 +1,54 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './HomePageCarousel.module.css';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 
 const HomePageCarousel = () => {
 	const [slideNumber, setSlideNumber] = useState(1);
+	const [intervalId, setIntervalId] = useState(null);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setSlideNumber((prevCounter) => {
+				if (prevCounter < 3) {
+					return prevCounter + 1;
+				} else {
+					return (prevCounter = 1);
+				}
+			});
+		}, 6000);
+
+		return () => clearInterval(interval);
+	}, [slideNumber]);
+
+	setInterval;
 	return (
 		<div className={styles.homePageCarousel}>
-			{!(slideNumber === 1) && (
-				<div
-					className={styles.homePageCarousel_arrowLeft}
-					onClick={() => {
+			<div
+				className={styles.homePageCarousel_arrowLeft}
+				onClick={() => {
+					if (slideNumber === 1) {
+						setSlideNumber(3);
+					} else {
 						setSlideNumber(slideNumber - 1);
-					}}
-				>
-					<MdArrowBackIosNew />
-				</div>
-			)}
-			{!(slideNumber === 3) && (
-				<div
-					className={styles.homePageCarousel_arrowRight}
-					onClick={() => {
+					}
+				}}
+			>
+				<MdArrowBackIosNew />
+			</div>
+
+			<div
+				className={styles.homePageCarousel_arrowRight}
+				onClick={() => {
+					if (slideNumber === 3) {
+						setSlideNumber(1);
+					} else {
 						setSlideNumber(slideNumber + 1);
-					}}
-				>
-					<MdArrowForwardIos />
-				</div>
-			)}
+					}
+				}}
+			>
+				<MdArrowForwardIos />
+			</div>
+
 			{slideNumber === 1 && (
 				<div className={styles.homePageCarousel_item}>
 					<img
