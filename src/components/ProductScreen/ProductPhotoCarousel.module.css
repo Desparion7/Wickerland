@@ -1,9 +1,24 @@
 .productPhotoCarousel {
 	position: relative;
-	width: 50%;
 	text-align: center;
+	width: 100%;
+	max-height: 500px;
 }
 .productPhotoCarousel img {
 	position: relative;
-	width: 80%;
+	width: 100%;
+	height: auto;
+}
+
+@media screen and (min-width: 600px) {
+	.productPhotoCarousel {
+		position: relative;
+		max-width: 500px;
+		text-align: center;
+	}
+	.productPhotoCarousel img {
+		position: relative;
+		max-width: 500px;
+		max-height: 500px;
+	}
 }

@@ -48,7 +48,7 @@ export const products = [
 			'Do zaoferowania mamy wykonany z pełnowartościowej mocnej wikliny koszyk, który idealnie nadaje się na prezent lub jako ozdoba. Koszyk jest bardzo precyzyjnie i solidnie wykonany, gwarantuje bezpieczne przenoszenie zawartości i niebanalną prezentację.',
 		category: 'koszyki',
 		subcategory: 'koszyki-wielkanocne',
-		amount: 10,
+		amount: 0,
 		price: 55,
 		parameters: [
 			{ Marka: 'Wickerland' },
