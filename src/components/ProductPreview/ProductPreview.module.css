@@ -51,6 +51,7 @@
 }
 .productPreview_info_name {
 	font-size: 0.9rem;
+	cursor: pointer;
 }
 .productPreview_info_category {
 	font-size: 0.8rem;

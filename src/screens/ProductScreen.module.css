@@ -1,0 +1,116 @@
+.productScreen {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.productScreen_product {
+	display: flex;
+	justify-content: space-evenly;
+    align-items: center;
+	width: 100%;
+	margin-top: 2rem;
+}
+.productScreen_product_info {
+	width: 40%;
+}
+.productScreen_product_info_name {
+	text-transform: uppercase;
+}
+.productScreen_product_info_price {
+	margin: 0.5rem 0;
+	font-size: 1.8rem;
+	color: var(--main-background-color);
+}
+.productScreen_product_info_path {
+	display: flex;
+	gap: 0.3rem;
+	margin-bottom: 1rem;
+}
+.productScreen_product_info_path a {
+	color: var(--text-color2);
+	text-decoration: none;
+	transition: color 0.4s;
+}
+.productScreen_product_info_path a:hover {
+	color: var(--text-color1);
+}
+.productScreen_product_info_path span {
+	color: var(--text-color2);
+}
+
+.productScreen_product_info_buy_amount {
+	display: flex;
+	align-items: center;
+	margin: 1rem 0;
+	gap: 0.5rem;
+}
+.productScreen_product_info_buy_amount svg {
+	font-size: 1.1rem;
+	color: var(--main-background-color);
+}
+.productScreen_product_info_buy_lack {
+	margin: 1rem 0;
+	color: var(--error-text);
+}
+.productScreen_product_info_buy_cart {
+	margin: 0.5rem 0;
+}
+.productScreen_product_info_buy_cart_btn {
+	height: 40px;
+	font-size: 1rem;
+	padding: 0.3rem;
+	border: none;
+	border: 1px solid grey;
+	cursor: pointer;
+	transition: 0.4s;
+}
+.productScreen_product_info_buy_cart_btn:hover {
+	color: white;
+	background-color: var(--main-background-color);
+	border: 1px solid rgb(73, 193, 52);
+}
+.productScreen_product_info_buy_cart input {
+	width: 30px;
+	height: 40px;
+	padding: 0.3rem;
+	font-size: 1rem;
+	text-align: center;
+	border: none;
+	border: 1px solid grey;
+}
+.productScreen_product_info_buy_cart_btnAdd {
+	font-size: 1rem;
+	text-transform: uppercase;
+	margin-left: 1rem;
+	padding: 0.5rem 1rem;
+	border: none;
+	color: var(--text-color);
+	background-color: var(--main-background-color);
+	cursor: pointer;
+	transition: background-color 0.4s;
+}
+.productScreen_product_info_buy_cart_btnAdd:hover {
+	background-color: var(--button-bg-hover);
+}
+.productScreen_product_info_buy_like {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 1rem 0;
+	font-size: 1.1rem;
+	transition: color 0.4s;
+	cursor: pointer;
+}
+.productScreen_product_info_buy_like:hover p {
+	color: var(--text-color2);
+}
+.productScreen_product_info_buy_like:hover svg {
+	color: red;
+}
+.productScreen_product_info_buy_others p {
+	margin: 0.3rem;
+}
+.productScreen_product_info_buy_others span {
+	color: var(--text-color2);
+}

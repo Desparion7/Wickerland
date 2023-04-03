@@ -8,21 +8,21 @@ import { toggleCart } from '../../app/slices/shopViewSlice';
 const cartProducts = [
 	{
 		id: '1',
-		img: ['./products/pojemniki/pojemniki2-1.PNG'],
+		img: ['/products/pojemniki/pojemniki2-1.PNG'],
 		name: 'Kufer wiklinowy skrzynia',
 		amount: 10,
 		price: 250,
 	},
 	{
 		id: '2',
-		img: ['./products/pojemniki/pojemniki1-1.PNG'],
+		img: ['/products/pojemniki/pojemniki1-1.PNG'],
 		name: 'Kufer wiklinowy skrzynia',
 		amount: 10,
 		price: 250,
 	},
 	{
 		id: '3',
-		img: ['./products/pojemniki/pojemniki1-1.PNG'],
+		img: ['/products/pojemniki/pojemniki1-1.PNG'],
 		name: 'Kufer wiklinowy skrzynia',
 		amount: 10,
 		price: 250,

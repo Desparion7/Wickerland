@@ -6,6 +6,18 @@
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+/* input[type='number'] {
+	-moz-appearance: textfield;
+} */
+
 h2 {
 	margin: 0;
 	padding: 0;
@@ -18,6 +30,7 @@ h2 {
 	--text-color: white;
 	--text-color2: rgb(113, 113, 113);
 	--text-color3: rgb(0, 0, 0);
+	--error-text: rgb(110, 7, 7);
 	--text-color-hover: rgb(102, 102, 102);
 	--border-color: rgb(191, 191, 191);
 	--button-bg-hover: rgb(91, 129, 24);

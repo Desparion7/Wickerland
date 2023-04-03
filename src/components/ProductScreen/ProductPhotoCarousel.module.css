@@ -1,0 +1,9 @@
+.productPhotoCarousel {
+	position: relative;
+	width: 50%;
+	text-align: center;
+}
+.productPhotoCarousel img {
+	position: relative;
+	width: 80%;
+}

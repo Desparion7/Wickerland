@@ -6,6 +6,7 @@ import BlogScreen from './screens/BlogScreen';
 import AboutUsScreen from './screens/AboutUsScreen';
 import ContactScreen from './screens/ContactScreen';
 import ArticleScreen from './screens/ArticleScreen';
+import ProductScreen from './screens/ProductScreen';
 
 const router = createBrowserRouter([
 	{
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 						element: <ShopScreen />,
 					},
 				],
+			},
+			{
+				path: '/produkt/:name/:id',
+				element: <ProductScreen />,
 			},
 			{
 				path: '/blog',
@@ -51,3 +56,5 @@ function App() {
 }
 
 export default App;
+
+// Dodać strone Error
