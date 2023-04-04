@@ -10,7 +10,6 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 12em;
-	gap: 0.5rem;
 	padding: 0.8rem;
 	color: var(--text-color);
 	background-color: var(--main-background-color);
@@ -25,6 +24,9 @@
 	display: flex;
 	margin: 1.3rem 0;
 	padding-left: 1rem;
+}
+.desktopMenu_options_option a {
+	color: black;
 }
 .desktopMenu_options_option_category {
 	display: flex;

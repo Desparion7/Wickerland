@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './MobileMenu.module.css';
 import { BsSearch } from 'react-icons/bs';
 import { SlArrowUp, SlArrowDown } from 'react-icons/sl';
@@ -12,9 +12,18 @@ interface PropsType {
 }
 
 const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
+	const navigate = useNavigate();
+	const [initialPath, setInitialPath] = useState(window.location.pathname);
 	const [isActive, setIsActive] = useState('left');
 	const [menuAnimation, setMenuAnimation] = useState(styles.show_menu);
 	const [isCategoryOpen, setIsCategoryOpen] = useState<string[]>([]);
+
+	// use efekt to close mobile menu when click on link.
+	useEffect(() => {
+		if (window.location.pathname !== initialPath) {
+			setIsMobileMenu(false);
+		}
+	}, [navigate, initialPath]);
 
 	const handlerHideMenu = () => {
 		setTimeout(() => {
@@ -72,12 +81,12 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 				{isActive === 'left' && (
 					<div className={styles.mobileMenu__main_options}>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>
+							<Link to='/sklep/koszyki'>
 								<GiBasket
 									className={styles.mobileMenu__main_options_title_icon}
 								/>
 								Koszyki
-							</h3>
+							</Link>
 							<div
 								className={`${styles.mobileMenu__main_options_title_arrow} ${
 									isCategoryOpen.includes('koszyki') && styles.arrow_active
@@ -98,32 +107,50 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								isCategoryOpen.includes('koszyki') && styles.categories_active
 							}`}
 						>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/koszyki/koszyki-wielkanocne'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Koszyki wielkanocne
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/koszyki/koszyki-na-kwiaty-owoce-grzyby'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Koszyki na kwiaty, owoce, grzyby
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/koszyki/koszyki-piknikowe'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Koszyki piknikowe
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/koszyki/koszyki-na-pranie-zabawki'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Kosze na pranie, zabawki
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/koszyki/koszyki-na-rower'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Koszyki na rower
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/koszyki/koszyki-na-drewno'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Koszyki na drewno
 							</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>
+							<Link to='/sklep/meble'>
 								<MdTableBar
 									className={styles.mobileMenu__main_options_title_icon}
 								/>
 								Meble
-							</h3>
+							</Link>
 							<div
 								className={`${styles.mobileMenu__main_options_title_arrow} ${
 									isCategoryOpen.includes('meble') && styles.arrow_active
@@ -144,27 +171,42 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								isCategoryOpen.includes('meble') && styles.categories_active
 							}`}
 						>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/meble/ławki-wiklinowe'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Ławki wiklinowe
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/meble/fotele-bujaki-krzesła'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Fotele, bujaki, krzesła
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/meble/półki'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Półki
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/meble/szafki'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Szafki
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/meble/stoły-stoliki'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Stoły, stoliki
 							</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>
+							<Link to='/sklep/pojemniki'>
 								<CgBox className={styles.mobileMenu__main_options_title_icon} />
 								Pojemniki
-							</h3>
+							</Link>
 							<div
 								className={`${styles.mobileMenu__main_options_title_arrow} ${
 									isCategoryOpen.includes('pojemniki') && styles.arrow_active
@@ -185,18 +227,27 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								isCategoryOpen.includes('pojemniki') && styles.categories_active
 							}`}
 						>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/pojemniki/kufry-skrzynie'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Kufry, skrzynie
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/pojemniki/kufry-skrzynie-z-oparciem'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Kufry, skrzynie z oparciem
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/pojemniki/skrzynie-reagałowe'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Skrzynie regałowe
 							</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>Pozostałe</h3>
+							<Link to='/sklep/pozostałe'>Pozostałe</Link>
 							<div
 								className={`${styles.mobileMenu__main_options_title_arrow} ${
 									isCategoryOpen.includes('pozostałe') && styles.arrow_active
@@ -217,16 +268,28 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 								isCategoryOpen.includes('pozostałe') && styles.categories_active
 							}`}
 						>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/pozostałe/kwietniki-donice'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Kwietniki, donice
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/pozostałe/transportety-dla-zwierząt'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Transportery dla zwierząt
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/pozostałe/lampiony'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Lampiony
 							</Link>
-							<Link to='/' className={styles.mobileMenu__main_options_category}>
+							<Link
+								to='/sklep/pozostałe/wózki'
+								className={styles.mobileMenu__main_options_category}
+							>
 								Wózki
 							</Link>
 						</div>
@@ -235,16 +298,16 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 				{isActive === 'right' && (
 					<div className={styles.mobileMenu__main_options}>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>Sklep</h3>
+							<Link to='/sklep'>Sklep</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>O Nas</h3>
+							<Link to='/onas'>O Nas</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>Kontakt</h3>
+							<Link to='/kontakt'>Kontakt</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<h3>Logowanie/Rejstracja</h3>
+							<Link to='/logowanie'>Logowanie/Rejstracja</Link>
 						</div>
 					</div>
 				)}

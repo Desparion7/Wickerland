@@ -1,11 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './PriceFilter.module.css';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const PriceFilter = () => {
+	const params = useParams();
+	const navigate = useNavigate();
 	const [minValue, setMinValue] = useState<number>(0);
 	const [maxValue, setMaxValue] = useState<number>(2000);
+
+	// Price filter reset when path don't have min  and max price
+	useEffect(() => {
+		if (!params.max) {
+			setMinValue(0);
+			setMaxValue(2000);
+		}
+	}, [params]);
 
 	const handleSliderChange: (value: number | number[]) => void = (value) => {
 		if (Array.isArray(value)) {
@@ -21,6 +32,10 @@ const PriceFilter = () => {
 				setMaxValue(value);
 			}
 		}
+	};
+
+	const handlerPriceFilter = () => {
+		navigate(`cena/${minValue}/${maxValue}`);
 	};
 
 	return (
@@ -77,7 +92,7 @@ const PriceFilter = () => {
 					<span>-</span>
 					<p>{maxValue} zł</p>
 				</div>
-				<button>Filtruj</button>
+				<button onClick={handlerPriceFilter}>Filtruj</button>
 			</div>
 		</div>
 	);

@@ -18,11 +18,15 @@ const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: '/sklep',
+				path: '/sklep/:category?/:subcategory?',
 				element: <ShopScreen />,
 				children: [
 					{
-						path: '*',
+						path: 'szukaj/:search?',
+						element: <ShopScreen />,
+					},
+					{
+						path: 'cena/:min?/:max?',
 						element: <ShopScreen />,
 					},
 				],

@@ -21,8 +21,8 @@ const ProductPreview = ({ product, grid }: propsType) => {
 	const [isFocus, setIsFocus] = useState(false);
 	const navigation = useNavigate();
 
-	const handelNavigation = (id: string, name: string) => {
-		navigation(`/produkt/${name}/${id}`);
+	const handelNavigation = (id: string, category: string) => {
+		navigation(`/produkt/${category}/${id}`);
 	};
 
 	const price = product.price.toFixed(2);
@@ -73,7 +73,7 @@ const ProductPreview = ({ product, grid }: propsType) => {
 							className={styles.zoom}
 							loading='lazy'
 							onClick={() => {
-								handelNavigation(product.pid, product.name);
+								handelNavigation(product.pid, product.category);
 							}}
 						/>
 						<div

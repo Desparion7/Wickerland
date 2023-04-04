@@ -43,9 +43,15 @@ const DesktopMenu = () => {
 				<MdOutlineKeyboardArrowDown />
 			</div>
 			{isVisible && (
-				<div className={`${styles.desktopMenu_options} ${styles.show_options}`}>
+				<div
+					className={`${styles.desktopMenu_options} ${styles.show_options}`}
+					onClick={() => {
+						setIsVisible(false);
+					}}
+				>
 					<div className={styles.desktopMenu_options_option}>
-						<div
+						<Link
+							to='/sklep/koszyki'
 							className={styles.desktopMenu_options_option_category}
 							onMouseEnter={() => {
 								setSubcategory('koszyki');
@@ -53,11 +59,11 @@ const DesktopMenu = () => {
 						>
 							<div>Koszyki</div>
 							<MdOutlineKeyboardArrowRight />
-						</div>
+						</Link>
 						{subcategory === 'koszyki' && (
 							<div className={styles.desktopMenu_options_option_subcategory}>
 								<Link
-									to='/'
+									to='/sklep/koszyki/koszyki-wielkanocne'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -65,7 +71,7 @@ const DesktopMenu = () => {
 									Koszyki wielkanocne
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/koszyki/koszyki-na-kwiaty-owoce-grzyby'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -73,7 +79,7 @@ const DesktopMenu = () => {
 									Koszyki na kwiaty, owoce, grzyby
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/koszyki/koszyki-piknikowe'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -81,7 +87,7 @@ const DesktopMenu = () => {
 									Koszyki piknikowe
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/koszyki/koszyki-na-pranie-zabawki'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -89,7 +95,7 @@ const DesktopMenu = () => {
 									Kosze na pranie, zabawki
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/koszyki/koszyki-na-rower'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -97,7 +103,7 @@ const DesktopMenu = () => {
 									Koszyki na rower
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/koszyki/koszyki-na-drewno'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -108,7 +114,8 @@ const DesktopMenu = () => {
 						)}
 					</div>
 					<div className={styles.desktopMenu_options_option}>
-						<div
+						<Link
+							to='/sklep/meble'
 							className={styles.desktopMenu_options_option_category}
 							onMouseEnter={() => {
 								setSubcategory('meble');
@@ -116,11 +123,11 @@ const DesktopMenu = () => {
 						>
 							<div>Meble</div>
 							<MdOutlineKeyboardArrowRight />
-						</div>
+						</Link>
 						{subcategory === 'meble' && (
 							<div className={styles.desktopMenu_options_option_subcategory}>
 								<Link
-									to='/'
+									to='/sklep/meble/ławki-wiklinowe'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -128,7 +135,7 @@ const DesktopMenu = () => {
 									Ławki wiklinowe
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/meble/fotele-bujaki-krzesła'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -136,7 +143,7 @@ const DesktopMenu = () => {
 									Fotele, bujaki, krzesła
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/meble/półki'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -144,7 +151,7 @@ const DesktopMenu = () => {
 									Półki
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/meble/szafki'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -152,7 +159,7 @@ const DesktopMenu = () => {
 									Szafki
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/meble/stoły-stoliki'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -163,7 +170,8 @@ const DesktopMenu = () => {
 						)}
 					</div>
 					<div className={styles.desktopMenu_options_option}>
-						<div
+						<Link
+							to='/sklep/pojemniki'
 							className={styles.desktopMenu_options_option_category}
 							onMouseEnter={() => {
 								setSubcategory('pojemniki');
@@ -171,11 +179,11 @@ const DesktopMenu = () => {
 						>
 							<div>Pojemniki</div>
 							<MdOutlineKeyboardArrowRight />
-						</div>
+						</Link>
 						{subcategory === 'pojemniki' && (
 							<div className={styles.desktopMenu_options_option_subcategory}>
 								<Link
-									to='/'
+									to='/sklep/pojemniki/kufry-skrzynie'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -183,7 +191,7 @@ const DesktopMenu = () => {
 									Kufry, skrzynie
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/pojemniki/kufry-skrzynie-z-oparciem'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -191,7 +199,7 @@ const DesktopMenu = () => {
 									Kufry, skrzynie z oparciem
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/pojemniki/skrzynie-reagałowe'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -202,7 +210,8 @@ const DesktopMenu = () => {
 						)}
 					</div>
 					<div className={styles.desktopMenu_options_option}>
-						<div
+						<Link
+							to='/sklep/pozostałe'
 							className={styles.desktopMenu_options_option_category}
 							onMouseEnter={() => {
 								setSubcategory('pozostałe');
@@ -210,11 +219,11 @@ const DesktopMenu = () => {
 						>
 							<div>Pozostałe</div>
 							<MdOutlineKeyboardArrowRight />
-						</div>
+						</Link>
 						{subcategory === 'pozostałe' && (
 							<div className={styles.desktopMenu_options_option_subcategory}>
 								<Link
-									to='/'
+									to='/sklep/pozostałe/kwietniki-donice'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -222,7 +231,7 @@ const DesktopMenu = () => {
 									Kwietniki, donice
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/pozostałe/transportety-dla-zwierząt'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -230,7 +239,7 @@ const DesktopMenu = () => {
 									Transportery dla zwierząt
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/pozostałe/lampiony'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
@@ -238,7 +247,7 @@ const DesktopMenu = () => {
 									Lampiony
 								</Link>
 								<Link
-									to='/'
+									to='/sklep/pozostałe/wózki'
 									className={
 										styles.desktopMenu__options_option_subcategory_link
 									}
