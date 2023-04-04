@@ -1,13 +1,16 @@
 import styles from './ProductScreen.module.css';
+import { useState } from 'react';
 import { products } from '../db/products';
 import { useParams } from 'react-router-dom';
 import ProductPhotoCarousel from '../components/ProductScreen/ProductPhotoCarousel';
 import { BsHeart } from 'react-icons/bs';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import AboutProduct from '../components/ProductScreen/AboutProduct';
 
 const ProductScreen = () => {
 	const param = useParams();
+	const [productAmount, setProductAmount] = useState('1');
 	const product = products.find((obj) => obj.pid === param.id);
 
 	return (
@@ -57,6 +60,10 @@ const ProductScreen = () => {
 										autoComplete='off'
 										inputMode='numeric'
 										pattern='[0-9]*'
+										value={productAmount}
+										onChange={(e) => {
+											setProductAmount(e.target.value);
+										}}
 									/>
 									<button
 										className={styles.productScreen_product_info_buy_cart_btn}
@@ -93,7 +100,10 @@ const ProductScreen = () => {
 					</div>
 				</div>
 			</div>
-			<div></div>
+			<AboutProduct
+				parameters={product?.parameters}
+				description={product?.description}
+			></AboutProduct>
 		</div>
 	);
 };
