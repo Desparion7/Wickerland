@@ -19,6 +19,8 @@ export const products = [
 		img: [
 			'/products/koszyki/koszyk1-1.PNG',
 			'/products/koszyki/koszyk1-1a.PNG',
+			'/products/koszyki/koszyk1-1.PNG',
+			'/products/koszyki/koszyk1-1a.PNG',
 		],
 	},
 	{

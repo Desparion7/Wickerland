@@ -36,3 +36,27 @@ h2 {
 	--button-bg-hover: rgb(91, 129, 24);
 	--button-border-hover: rgb(181, 181, 181);
 }
+
+/* styles for product screen carousel */
+.carousel .slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.carousel .thumbs-wrapper {
+	overflow-x: scroll;
+}
+.carousel img {
+	object-fit: scale-down !important;
+}
+.thumb {
+	width: 100px !important;
+	height: 100px !important;
+	cursor: pointer;
+}
+.carousel img {
+	object-fit: fill;
+	width: 100%;
+	height: 100%;
+}
+

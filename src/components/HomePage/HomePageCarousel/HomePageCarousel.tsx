@@ -4,7 +4,6 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 
 const HomePageCarousel = () => {
 	const [slideNumber, setSlideNumber] = useState(1);
-	const [intervalId, setIntervalId] = useState(null);
 
 	useEffect(() => {
 		const interval = setInterval(() => {

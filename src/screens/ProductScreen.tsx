@@ -43,7 +43,7 @@ const ProductScreen = () => {
 								<div className={styles.productScreen_product_info_buy_amount}>
 									<AiOutlineCheck />
 
-									<p> Na stanie</p>
+									<p> Dostępna ilość {product?.amount} szt.</p>
 								</div>
 								<div className={styles.productScreen_product_info_buy_cart}>
 									<button
@@ -93,7 +93,6 @@ const ProductScreen = () => {
 					</div>
 				</div>
 			</div>
-			<div></div>
 			<div></div>
 		</div>
 	);

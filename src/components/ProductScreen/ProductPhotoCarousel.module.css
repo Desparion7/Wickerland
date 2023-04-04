@@ -1,13 +1,10 @@
+/* Styles for .thumb and .carousel in index.css */
+
 .productPhotoCarousel {
 	position: relative;
 	text-align: center;
 	width: 100%;
-	max-height: 500px;
-}
-.productPhotoCarousel img {
-	position: relative;
-	width: 100%;
-	height: auto;
+	max-height: 800px;
 }
 
 @media screen and (min-width: 600px) {
@@ -15,10 +12,5 @@
 		position: relative;
 		max-width: 500px;
 		text-align: center;
-	}
-	.productPhotoCarousel img {
-		position: relative;
-		max-width: 500px;
-		max-height: 500px;
 	}
 }
