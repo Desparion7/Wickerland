@@ -100,8 +100,9 @@
 .productScreen_product_info_buy_cart_btnAdd:hover {
 	background-color: var(--button-bg-hover);
 }
+
 .productScreen_product_info_buy_like {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
 	margin: 1rem 0;
