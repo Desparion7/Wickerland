@@ -36,12 +36,16 @@ h2 {
 	--button-bg-hover: rgb(91, 129, 24);
 	--button-border-hover: rgb(181, 181, 181);
 }
+.no-scroll {
+	overflow: hidden;
+}
 
 /* styles for product screen carousel */
 .carousel .slide {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: zoom-in;
 }
 .carousel .thumbs-wrapper {
 	overflow-x: scroll;

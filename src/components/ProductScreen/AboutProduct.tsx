@@ -10,6 +10,7 @@ interface PropsType {
 const AboutProduct = ({ parameters, description }: PropsType) => {
 	const [activeProducts, setActiveProducts] = useState<string>('opis');
 
+	// a function to organize product parameters( split it )
 	const parametersList = parameters.map((objekt: string, index: number) => {
 		const feature = Object.keys(objekt)[0];
 		const value = Object.values(objekt)[0];
