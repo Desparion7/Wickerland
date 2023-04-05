@@ -53,7 +53,7 @@ const ModalPhotoFull = ({ img, setFullImg, currentSlide }: PropsType) => {
 					img={img}
 					setFullImg={setFullImg}
 					currentSlide={currentSlide}
-				></PhotoFull>,
+				/>,
 				document.getElementById('popup-root')!
 			)}
 		</div>
