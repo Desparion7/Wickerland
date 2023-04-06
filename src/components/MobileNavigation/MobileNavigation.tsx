@@ -6,6 +6,7 @@ import { RxPerson } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toggleCart } from '../../app/slices/shopViewSlice';
+import { toggleLoginMenuView } from '../../app/slices/loginMenuSlice';
 
 const MobileNavigation = () => {
 	const dispatch = useDispatch();
@@ -31,7 +32,12 @@ const MobileNavigation = () => {
 				<span>0</span>
 				<p>Koszyk</p>
 			</div>
-			<div className={styles.mobileNavigation_iconBox}>
+			<div
+				className={styles.mobileNavigation_iconBox}
+				onClick={() => {
+					dispatch(toggleLoginMenuView(true));
+				}}
+			>
 				<RxPerson />
 				<p>Moje Konto</p>
 			</div>

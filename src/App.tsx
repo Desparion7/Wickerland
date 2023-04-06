@@ -7,6 +7,7 @@ import AboutUsScreen from './screens/AboutUsScreen';
 import ContactScreen from './screens/ContactScreen';
 import ArticleScreen from './screens/ArticleScreen';
 import ProductScreen from './screens/ProductScreen';
+import SignUpScreen from './screens/SignUpScreen';
 
 const router = createBrowserRouter([
 	{
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
 			{
 				path: '/kontakt',
 				element: <ContactScreen />,
+			},
+			{
+				path: '/rejestracja',
+				element: <SignUpScreen />,
 			},
 		],
 	},

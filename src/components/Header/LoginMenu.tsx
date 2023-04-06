@@ -1,11 +1,13 @@
-import { useDispatch } from 'react-redux';
 import styles from './LoginMenu.module.css';
-import { RiCloseFill } from 'react-icons/ri';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { RiCloseFill } from 'react-icons/ri';
 import { toggleLoginMenuView } from '../../app/slices/loginMenuSlice';
 
 const LoginMenu = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const [cartAnimation, setCartAnimation] = useState(styles.show_loginMenu);
 
 	// function to toggle login menu
@@ -46,7 +48,14 @@ const LoginMenu = () => {
 				<p className={styles.loginMenu__main_restore}>Zapomniałeś hasła?</p>
 				<div className={styles.loginMenu__main_sigupBox}>
 					<p>Nie masz jeszcze konta ?</p>
-					<button>Zarejestruj się</button>
+					<button
+						onClick={() => {
+							navigate('/rejestracja');
+							handlerHideMenu();
+						}}
+					>
+						Zarejestruj się
+					</button>
 				</div>
 			</div>
 			<div
