@@ -40,7 +40,24 @@
 	overflow: auto;
 	overflow-y: auto;
 }
-
+.cart__main_items_empty {
+	padding: 2rem;
+	font-size: 1rem;
+	text-align: center;
+}
+.cart__main_items_empty button {
+	text-transform: uppercase;
+	margin-top: 2rem;
+	padding: 0.5rem 1rem;
+	border: none;
+	color: var(--text-color);
+	background-color: var(--main-background-color);
+	cursor: pointer;
+	transition: background-color 0.4s;
+}
+.cart__main_items_empty button:hover {
+	background-color: var(--button-bg-hover);
+}
 .cart__main_bottom {
 	position: absolute;
 	display: flex;
@@ -72,13 +89,14 @@
 	padding: 0.5rem 2rem;
 	width: 90%;
 	font-size: 1rem;
+	text-transform: uppercase;
 	border: none;
-	border-radius: 5px;
 	color: var(--text-color);
 	background-color: var(--main-background-color);
 	transition: background-color 0.3s;
 	cursor: pointer;
 }
+
 .cart__main_bottom_order:hover {
 	background-color: var(--button-bg-hover);
 }

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { RiCloseFill } from 'react-icons/ri';
 import CartItemSmall from './CartItemSmall';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toggleCart } from '../../app/slices/shopViewSlice';
 
 const cartProducts = [
@@ -32,6 +33,7 @@ const cartProducts = [
 const Cart = () => {
 	const [cartAnimation, setCartAnimation] = useState(styles.show_cart);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handlerHideMenu = () => {
 		setTimeout(() => {
@@ -54,9 +56,23 @@ const Cart = () => {
 					</div>
 				</div>
 				<div className={styles.cart__main_items}>
-					{cartProducts.map((item) => (
-						<CartItemSmall key={item.id} item={item} />
-					))}
+					{cartProducts.length > 0 ? (
+						cartProducts.map((item) => (
+							<CartItemSmall key={item.id} item={item} />
+						))
+					) : (
+						<div className={styles.cart__main_items_empty}>
+							<p>Brak produktów w koszyku</p>
+							<button
+								onClick={() => {
+									navigate('/sklep');
+									handlerHideMenu();
+								}}
+							>
+								Powrót do sklepu
+							</button>
+						</div>
+					)}
 				</div>
 				<div className={styles.cart__main_bottom}>
 					<div className={styles.cart__main_bottom_total}>

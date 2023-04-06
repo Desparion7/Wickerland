@@ -4,13 +4,15 @@ import { BsSearch, BsHeart } from 'react-icons/bs';
 import { GiBasket } from 'react-icons/gi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import MobileMenu from './MobileMenu';
 import Cart from '../Cart/Cart';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { cartView } from '../../app/slices/shopViewSlice';
-import { useDispatch } from 'react-redux';
 import { toggleCart } from '../../app/slices/shopViewSlice';
+import LoginMenu from './LoginMenu';
+import { toggleLoginMenuView } from '../../app/slices/loginMenuSlice';
+import { loginMenuView } from '../../app/slices/loginMenuSlice';
 
 const HeaderMiddle = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
@@ -18,10 +20,12 @@ const HeaderMiddle = () => {
 
 	const dispatch = useDispatch();
 	const isCart = useSelector(cartView);
+	const isLoginMenu = useSelector(loginMenuView);
 
 	return (
 		<div className={styles.headerMiddle}>
 			{isCart && <Cart />}
+			{isLoginMenu && <LoginMenu />}
 			{!isDesktop && (
 				<>
 					<div className={styles.headerMiddle__burger}>
@@ -52,7 +56,12 @@ const HeaderMiddle = () => {
 			)}
 			<div className={styles.headerMiddle__options}>
 				{isDesktop && (
-					<div className={styles.headerMiddle__options_access}>
+					<div
+						className={styles.headerMiddle__options_access}
+						onClick={() => {
+							dispatch(toggleLoginMenuView(true));
+						}}
+					>
 						Logowanie/Rejestracja
 					</div>
 				)}
