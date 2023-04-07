@@ -2,12 +2,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	gap: 5%;
-	padding: 2rem;
 	min-height: 60vh;
+	padding: 2rem;
 }
 .signUpScreen_form {
-	width: 40%;
+	width: 100%;
+	margin-bottom: 2em;
 }
 .signUpScreen_form h1 {
 	margin-bottom: 1rem;
@@ -57,7 +59,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 40%;
+	width: 100%;
 }
 .signUpScreen_toggleView button {
 	font-size: 1rem;
@@ -72,4 +74,16 @@
 }
 .signUpScreen_toggleView button:hover {
 	background-color: rgb(214, 213, 213);
+}
+
+@media screen and (min-width: 600px) {
+	.signUpScreen {
+		flex-direction: row;
+	}
+	.signUpScreen_form {
+		width: 40%;
+	}
+	.signUpScreen_toggleView {
+		width: 40%;
+	}
 }

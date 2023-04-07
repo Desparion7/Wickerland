@@ -60,6 +60,7 @@ const SignUpScreen = () => {
 				<button
 					onClick={() => {
 						setToggleFrom(!toggleForm);
+						window.scrollTo(0, 0);
 					}}
 				>
 					{toggleForm ? 'Zarejestruj się' : 'Zaloguj się'}

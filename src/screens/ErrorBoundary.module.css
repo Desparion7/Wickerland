@@ -1,0 +1,16 @@
+.errorBoundary {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	flex-direction: column;
+	min-height: 60vh;
+	font-size: 2rem;
+	text-transform: uppercase;
+	color: var(--text-color);
+}
+.errorBoundary p {
+	position: absolute;
+	padding: 0.5rem;
+	background-color: var(--main-background-color);
+}
