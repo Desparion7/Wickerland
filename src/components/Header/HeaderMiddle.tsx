@@ -8,18 +8,18 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import MobileMenu from './MobileMenu';
 import Cart from '../Cart/Cart';
-import { cartView } from '../../app/slices/shopViewSlice';
-import { toggleCart } from '../../app/slices/shopViewSlice';
+import { cartMenuView } from '../../app/slices/slideMenuSlice';
+import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import LoginMenu from './LoginMenu';
-import { toggleLoginMenuView } from '../../app/slices/loginMenuSlice';
-import { loginMenuView } from '../../app/slices/loginMenuSlice';
+import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
+import { loginMenuView } from '../../app/slices/slideMenuSlice';
 
 const HeaderMiddle = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
 	const [isMobileMenu, setIsMobileMenu] = useState(false);
 
 	const dispatch = useDispatch();
-	const isCart = useSelector(cartView);
+	const isCart = useSelector(cartMenuView);
 	const isLoginMenu = useSelector(loginMenuView);
 
 	return (
@@ -73,7 +73,7 @@ const HeaderMiddle = () => {
 					<div
 						className={styles.headerMiddle__options_icons_box}
 						onClick={() => {
-							dispatch(toggleCart(true));
+							dispatch(toggleCartMenu(true));
 						}}
 					>
 						<GiBasket />
@@ -83,7 +83,7 @@ const HeaderMiddle = () => {
 						<p
 							className={styles.headerMiddle__options_icons_price}
 							onClick={() => {
-								dispatch(toggleCart(true));
+								dispatch(toggleCartMenu(true));
 							}}
 						>
 							12,99 zł

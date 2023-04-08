@@ -19,7 +19,6 @@
 .cart__main_title {
 	display: flex;
 	justify-content: space-between;
-
 	padding: 1rem;
 	border-bottom: 1px solid var(--border-color);
 }
@@ -33,7 +32,7 @@
 	padding: 0.2rem;
 }
 .cart__main_title_icon span {
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 }
 .cart__main_items {
 	height: 80%;

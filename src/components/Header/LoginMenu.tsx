@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RiCloseFill } from 'react-icons/ri';
-import { toggleLoginMenuView } from '../../app/slices/loginMenuSlice';
+import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
 
 const LoginMenu = () => {
 	const dispatch = useDispatch();

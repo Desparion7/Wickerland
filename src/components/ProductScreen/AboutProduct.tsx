@@ -1,86 +1,112 @@
 import styles from './AboutProduct.module.css';
 import { useState } from 'react';
+import { BsHeart } from 'react-icons/bs';
+import { AiOutlineCheck } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../app/slices/cartSlice';
+import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 
-interface PropsType {
-	description: string | undefined;
-	parameters: any;
+export interface ProductType {
+	product: {
+		pid: string;
+		name: string;
+		description: string;
+		category: string;
+		subcategory: string;
+		amount: number;
+		price: number;
+		parameters: Record<string, unknown>[];
+		img: string[];
+	};
 }
 
-const AboutProduct = ({ parameters, description }: PropsType) => {
-	const [activeProducts, setActiveProducts] = useState<string>('opis');
+const AboutProduct = ({ product }: ProductType) => {
+	const [productAmount, setProductAmount] = useState('1');
+	const dispatch = useDispatch();
 
-	// a function to organize product parameters( split it )
-	const parametersList = parameters.map((objekt: string, index: number) => {
-		const feature = Object.keys(objekt)[0];
-		const value = Object.values(objekt)[0];
-		return (
-			<div key={index} className={styles.parameters}>
-				<div>{feature}:</div>
-				<div>{value}</div>
-			</div>
+	const handlerAddToCart = () => {
+		dispatch(
+			addItem({
+				pid: product.pid,
+				qty: parseInt(productAmount),
+				price: product.price,
+			})
 		);
-	});
+		dispatch(toggleCartMenu(true));
+	};
 
 	return (
-		<div className={styles.aboutProduct}>
-			<div className={styles.aboutProduct_options}>
-				<p
-					className={`${activeProducts === 'opis' && styles.active}`}
-					onClick={() => {
-						setActiveProducts('opis');
-					}}
-				>
-					Opis
-				</p>
-				<p
-					className={`${activeProducts === 'dane techniczne' && styles.active}`}
-					onClick={() => {
-						setActiveProducts('dane techniczne');
-					}}
-				>
-					Dane techniczne
-				</p>
-				<p
-					className={`${activeProducts === 'opinie' && styles.active}`}
-					onClick={() => {
-						setActiveProducts('opinie');
-					}}
-				>
-					Opinie
-				</p>
-				<p
-					className={`${activeProducts === 'koszty wysyłki' && styles.active}`}
-					onClick={() => {
-						setActiveProducts('koszty wysyłki');
-					}}
-				>
-					Koszty wysyłki
-				</p>
+		<div className={styles.aboutProduct_product_info}>
+			<div className={styles.aboutProduct_product_info_path}>
+				<Link to='/'>
+					<p>Strona główna</p>
+				</Link>
+				<span>/</span>
+				<Link to={`/sklep/${product?.category}`}>
+					<p>{product?.category}</p>
+				</Link>
+				<span>/</span>
+				<Link to={`/sklep/${product?.category}/${product?.subcategory}`}>
+					<p>{product?.subcategory?.replace(/-/g, ' ')}</p>
+				</Link>
 			</div>
-			<div className={styles.aboutProduct_options_text}>
-				{activeProducts === 'opis' && <div>{description}</div>}
-				{activeProducts === 'dane techniczne' && <div>{parametersList}</div>}
-				{activeProducts === 'opinie' && (
-					<div className={styles.aboutProduct_options_text_opinions}>
-						<div>Aktualnie produkt nie posiada wystawionych opinii.</div>
-						<div>
-							Aby dodać opinie musisz się <Link to='/login'>zalogować</Link>.
+			<h1 className={styles.aboutProduct_product_info_name}>{product?.name}</h1>
+			<h2 className={styles.aboutProduct_product_info_price}>
+				{product?.price?.toFixed(2)} zł
+			</h2>
+			<div className={styles.aboutProduct_product_info_buy}>
+				{product && product?.amount > 0 ? (
+					<>
+						<div className={styles.aboutProduct_product_info_buy_amount}>
+							<AiOutlineCheck />
+
+							<p> Dostępna ilość {product?.amount} szt.</p>
 						</div>
-					</div>
+						<div className={styles.aboutProduct_product_info_buy_cart}>
+							<button className={styles.aboutProduct_product_info_buy_cart_btn}>
+								-
+							</button>
+							<input
+								type='number'
+								step='1'
+								autoComplete='off'
+								inputMode='numeric'
+								pattern='[0-9]*'
+								value={productAmount}
+								onChange={(e) => {
+									setProductAmount(e.target.value);
+								}}
+							/>
+							<button className={styles.aboutProduct_product_info_buy_cart_btn}>
+								+
+							</button>
+							<button
+								className={styles.aboutProduct_product_info_buy_cart_btnAdd}
+								onClick={handlerAddToCart}
+							>
+								Dodaj do koszyka
+							</button>
+						</div>
+					</>
+				) : (
+					<p className={styles.aboutProduct_product_info_buy_lack}>
+						Brak w magazynie
+					</p>
 				)}
-				{activeProducts === 'koszty wysyłki' && (
-					<div className={styles.aboutProduct_options_text_delivery}>
-						<div>
-							<p>Kurier Pocztex:</p>
-							<p>Kurier pobranie, Pocztex:</p>
-						</div>
-						<div>
-							<p>29,00 zł</p>
-							<p>39,00 zł</p>
-						</div>
-					</div>
-				)}
+				<div className={styles.aboutProduct_product_info_buy_like}>
+					<BsHeart />
+					<p>Dodaj do ulubionych</p>
+				</div>
+				<div className={styles.aboutProduct_product_info_buy_others}>
+					<p>
+						ID: <span>{product?.pid}</span>
+					</p>
+					<p>
+						Kategoria: <span>{product?.category}</span>{' '}
+					</p>
+					<p>Marka: WICKERLAND</p>
+				</div>
 			</div>
 		</div>
 	);

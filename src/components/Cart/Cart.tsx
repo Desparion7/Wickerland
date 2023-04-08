@@ -2,42 +2,24 @@ import styles from './Cart.module.css';
 import { useState } from 'react';
 import { RiCloseFill } from 'react-icons/ri';
 import CartItemSmall from './CartItemSmall';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toggleCart } from '../../app/slices/shopViewSlice';
-
-const cartProducts = [
-	{
-		id: '1',
-		img: ['/products/pojemniki/pojemniki2-1.PNG'],
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '2',
-		img: ['/products/pojemniki/pojemniki1-1.PNG'],
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-	{
-		id: '3',
-		img: ['/products/pojemniki/pojemniki1-1.PNG'],
-		name: 'Kufer wiklinowy skrzynia',
-		amount: 10,
-		price: 250,
-	},
-];
+import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
+import { cartItems } from '../../app/slices/cartSlice';
 
 const Cart = () => {
 	const [cartAnimation, setCartAnimation] = useState(styles.show_cart);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const cartProducts = useSelector(cartItems);
+
+	const totalPrice = cartProducts.reduce((acc, obiekt) => {
+		return acc + obiekt.qty * obiekt.price;
+	}, 0);
 
 	const handlerHideMenu = () => {
 		setTimeout(() => {
-			dispatch(toggleCart(false));
+			dispatch(toggleCartMenu(false));
 		}, 150);
 		setCartAnimation(styles.hide_cart);
 	};
@@ -58,7 +40,11 @@ const Cart = () => {
 				<div className={styles.cart__main_items}>
 					{cartProducts.length > 0 ? (
 						cartProducts.map((item) => (
-							<CartItemSmall key={item.id} item={item} />
+							<CartItemSmall
+								key={item.pid}
+								item={item}
+								handlerHideMenu={handlerHideMenu}
+							/>
 						))
 					) : (
 						<div className={styles.cart__main_items_empty}>
@@ -77,7 +63,9 @@ const Cart = () => {
 				<div className={styles.cart__main_bottom}>
 					<div className={styles.cart__main_bottom_total}>
 						<p>Kwota:</p>
-						<p className={styles.cart__main_bottom_total_price}>500 zł</p>
+						<p className={styles.cart__main_bottom_total_price}>
+							{totalPrice.toFixed(2)} zł
+						</p>
 					</div>
 					<button className={styles.cart__main_bottom_checkcart}>
 						Zobacz koszyk

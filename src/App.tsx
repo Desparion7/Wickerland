@@ -71,4 +71,4 @@ function App() {
 
 export default App;
 
-// Dodać strone Error
+// ustawić typ gdy bedzie backend dla product

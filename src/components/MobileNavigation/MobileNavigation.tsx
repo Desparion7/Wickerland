@@ -5,8 +5,8 @@ import { GiBasket } from 'react-icons/gi';
 import { RxPerson } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { toggleCart } from '../../app/slices/shopViewSlice';
-import { toggleLoginMenuView } from '../../app/slices/loginMenuSlice';
+import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
+import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
 
 const MobileNavigation = () => {
 	const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const MobileNavigation = () => {
 			<div
 				className={styles.mobileNavigation_iconBox}
 				onClick={() => {
-					dispatch(toggleCart(true));
+					dispatch(toggleCartMenu(true));
 				}}
 			>
 				<GiBasket />

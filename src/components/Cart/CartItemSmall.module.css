@@ -1,17 +1,19 @@
 .cartItemSmall {
 	position: relative;
 	display: flex;
-	justify-content: space-between;
+	gap: 1rem;
 	height: 6em;
 	padding: 1rem 0 0.5rem;
 	border-bottom: 1px solid var(--border-color);
 }
 .cartItemSmall img {
 	height: 100%;
-	width: auto;
+	width: 25%;
+	cursor: pointer;
 }
 .cartItemSmall button {
-	position: relative;
+	position: absolute;
+	right: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -26,7 +28,9 @@
 }
 
 .cartItemSmall__info_name {
+	width: 70%;
 	font-size: 0.9rem;
+	cursor: pointer;
 }
 .cartItemSmall__info_box {
 	display: flex;
