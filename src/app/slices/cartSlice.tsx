@@ -32,9 +32,25 @@ const cartSlice = createSlice({
 				(item) => item.pid !== action.payload
 			);
 		},
+		changeItemQty(state, action) {
+			const existItem = state.products.find(
+				(item) => item.pid === action.payload.pid
+			);
+			if (existItem) {
+				existItem.qty = action.payload.qty;
+			}
+		},
+		decrementItem(state, action) {
+			const existItem = state.products.find(
+				(item) => item.pid === action.payload.pid
+			);
+			if (existItem) {
+				existItem.qty = action.payload.qty;
+			}
+		},
 	},
 });
 export default cartSlice.reducer;
 
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, changeItemQty } = cartSlice.actions;
 export const cartItems = (state: State) => state.cart.products;

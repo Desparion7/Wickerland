@@ -67,7 +67,13 @@ const Cart = () => {
 							{totalPrice.toFixed(2)} zł
 						</p>
 					</div>
-					<button className={styles.cart__main_bottom_checkcart}>
+					<button
+						className={styles.cart__main_bottom_checkcart}
+						onClick={() => {
+							navigate('/koszyk');
+							handlerHideMenu();
+						}}
+					>
 						Zobacz koszyk
 					</button>
 					<button className={styles.cart__main_bottom_order}>Zamówienie</button>

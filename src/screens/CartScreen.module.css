@@ -1,0 +1,34 @@
+.cartScreen {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2em;
+	padding: 1.5em 4em;
+}
+.cartScreen_products {
+	width: 65%;
+}
+.cartScreen_products_parameters {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+}
+.cartScreen_products_parameters_name {
+	width: 50%;
+	text-align: center;
+}
+.cartScreen_products_parameters_price {
+	width: 20%;
+    text-align: center;
+}
+.cartScreen_products_parameters_amount {
+	width: 10%;
+}
+.cartScreen_products_parameters_totalPrice {
+	width: 10%;
+    text-align: end;
+}
+
+.cartScreen_summary {
+	width: 25%;
+}

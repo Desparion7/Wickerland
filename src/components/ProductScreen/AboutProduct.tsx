@@ -67,7 +67,7 @@ const AboutProduct = ({ product }: ProductType) => {
 							<button
 								className={styles.aboutProduct_product_info_buy_cart_btn}
 								onClick={() => {
-									if (productAmount > 0) {
+									if (productAmount > 1) {
 										setProductAmount(productAmount - 1);
 									}
 								}}
