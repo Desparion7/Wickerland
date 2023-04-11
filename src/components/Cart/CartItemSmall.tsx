@@ -1,6 +1,8 @@
 import styles from './CartItemSmall.module.css';
 import { useNavigate } from 'react-router-dom';
 import { products } from '../../db/products';
+import { removeItem } from '../../app/slices/cartSlice';
+import { useDispatch } from 'react-redux';
 
 interface propsType {
 	item: {
@@ -12,8 +14,10 @@ interface propsType {
 }
 
 const CartItemSmall = ({ item, handlerHideMenu }: propsType) => {
-	const product = products.find((obj) => obj.pid === item.pid);
 	const navigation = useNavigate();
+	const dispatch = useDispatch();
+
+	const product = products.find((obj) => obj.pid === item.pid);
 
 	const handelNavigation = (id: string, category: string) => {
 		navigation(`/produkt/${category}/${id}`);
@@ -51,7 +55,13 @@ const CartItemSmall = ({ item, handlerHideMenu }: propsType) => {
 					</p>
 				</div>
 			</div>
-			<button>x</button>
+			<button
+				onClick={() => {
+					dispatch(removeItem(product?.pid));
+				}}
+			>
+				x
+			</button>
 		</div>
 	);
 };
