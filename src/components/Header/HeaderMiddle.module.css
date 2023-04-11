@@ -84,6 +84,7 @@
 	cursor: pointer;
 }
 .headerMiddle__options_icons_price {
+	font-size: 1.2rem;
 	cursor: pointer;
 }
 .headerMiddle__options_icons_price:hover {
@@ -94,15 +95,15 @@
 	top: -0.4rem;
 	inset-inline-end: -0.6rem;
 	z-index: 1;
-	width: 0.9rem;
-	height: 0.9rem;
+	width: 1rem;
+	height: 1rem;
 	border-radius: 50%;
 	background-color: var(--main-background-color);
 	color: #fff;
 	text-align: center;
 	letter-spacing: 0;
 	font-size: 0.6rem;
-	line-height: 0.9rem;
+	line-height: 1rem;
 }
 
 @media screen and (min-width: 600px) {

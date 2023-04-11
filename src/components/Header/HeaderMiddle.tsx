@@ -8,11 +8,12 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import MobileMenu from './MobileMenu';
 import Cart from '../Cart/Cart';
+import LoginMenu from './LoginMenu';
 import { cartMenuView } from '../../app/slices/slideMenuSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
-import LoginMenu from './LoginMenu';
 import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
 import { loginMenuView } from '../../app/slices/slideMenuSlice';
+import { cartItems } from '../../app/slices/cartSlice';
 
 const HeaderMiddle = () => {
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
@@ -21,6 +22,11 @@ const HeaderMiddle = () => {
 	const dispatch = useDispatch();
 	const isCart = useSelector(cartMenuView);
 	const isLoginMenu = useSelector(loginMenuView);
+
+	const cartProducts = useSelector(cartItems);
+	const totalPrice = cartProducts.reduce((acc, obiekt) => {
+		return acc + obiekt.qty * obiekt.price;
+	}, 0);
 
 	return (
 		<div className={styles.headerMiddle}>
@@ -77,7 +83,7 @@ const HeaderMiddle = () => {
 						}}
 					>
 						<GiBasket />
-						<span>0</span>
+						<span>{cartProducts.length}</span>
 					</div>
 					{isDesktop && (
 						<p
@@ -86,7 +92,7 @@ const HeaderMiddle = () => {
 								dispatch(toggleCartMenu(true));
 							}}
 						>
-							12,99 zł
+							{totalPrice.toFixed(2)} zł
 						</p>
 					)}
 				</div>

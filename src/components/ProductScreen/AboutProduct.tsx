@@ -22,14 +22,14 @@ export interface ProductType {
 }
 
 const AboutProduct = ({ product }: ProductType) => {
-	const [productAmount, setProductAmount] = useState('1');
+	const [productAmount, setProductAmount] = useState(1);
 	const dispatch = useDispatch();
 
 	const handlerAddToCart = () => {
 		dispatch(
 			addItem({
 				pid: product.pid,
-				qty: parseInt(productAmount),
+				qty: productAmount,
 				price: product.price,
 			})
 		);
@@ -64,7 +64,14 @@ const AboutProduct = ({ product }: ProductType) => {
 							<p> Dostępna ilość {product?.amount} szt.</p>
 						</div>
 						<div className={styles.aboutProduct_product_info_buy_cart}>
-							<button className={styles.aboutProduct_product_info_buy_cart_btn}>
+							<button
+								className={styles.aboutProduct_product_info_buy_cart_btn}
+								onClick={() => {
+									if (productAmount > 0) {
+										setProductAmount(productAmount - 1);
+									}
+								}}
+							>
 								-
 							</button>
 							<input
@@ -75,10 +82,17 @@ const AboutProduct = ({ product }: ProductType) => {
 								pattern='[0-9]*'
 								value={productAmount}
 								onChange={(e) => {
-									setProductAmount(e.target.value);
+									setProductAmount(parseInt(e.target.value));
 								}}
 							/>
-							<button className={styles.aboutProduct_product_info_buy_cart_btn}>
+							<button
+								className={styles.aboutProduct_product_info_buy_cart_btn}
+								onClick={() => {
+									if (productAmount < product.amount) {
+										setProductAmount(productAmount + 1);
+									}
+								}}
+							>
 								+
 							</button>
 							<button
