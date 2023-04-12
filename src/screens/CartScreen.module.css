@@ -1,8 +1,16 @@
 .cartScreen {
+	min-height: 55vh;
 	display: flex;
 	flex-direction: column;
 	gap: 2em;
 	padding: 1.5em 1em;
+}
+.cartScreen_empty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	font-size: 2rem;
 }
 .cartScreen_products {
 	width: 100%;
