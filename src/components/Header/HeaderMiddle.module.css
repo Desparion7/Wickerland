@@ -86,6 +86,7 @@
 .headerMiddle__options_icons_price {
 	font-size: 1.2rem;
 	cursor: pointer;
+	width: 100px;
 }
 .headerMiddle__options_icons_price:hover {
 	color: var(--text-color-hover);

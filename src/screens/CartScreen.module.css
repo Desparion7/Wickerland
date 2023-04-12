@@ -1,12 +1,11 @@
 .cartScreen {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
+	flex-direction: column;
 	gap: 2em;
-	padding: 1.5em 4em;
+	padding: 1.5em 1em;
 }
 .cartScreen_products {
-	width: 65%;
+	width: 100%;
 }
 .cartScreen_products_parameters {
 	display: flex;
@@ -15,20 +14,98 @@
 }
 .cartScreen_products_parameters_name {
 	width: 50%;
-	text-align: center;
 }
 .cartScreen_products_parameters_price {
 	width: 20%;
-    text-align: center;
+	text-align: center;
 }
 .cartScreen_products_parameters_amount {
 	width: 10%;
 }
 .cartScreen_products_parameters_totalPrice {
 	width: 10%;
-    text-align: end;
+	text-align: end;
 }
 
 .cartScreen_summary {
-	width: 25%;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	width: 100%;
+}
+.cartScreen_summary h2 {
+	font-size: 1.2rem;
+	text-transform: uppercase;
+}
+.cartScreen_summary_price,
+.cartScreen_summary_totalPrice {
+	display: flex;
+	justify-content: space-between;
+}
+
+.cartScreen_summary_price_text,
+.cartScreen_summary_delivery_text,
+.cartScreen_summary_totalPrice_text {
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+.cartScreen_summary_delivery_method {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	text-align: end;
+}
+.cartScreen_summary_delivery_method input {
+	margin-right: 0.5rem;
+	cursor: pointer;
+}
+.cartScreen_summary_delivery_method label {
+	cursor: pointer;
+}
+.cartScreen_summary_totalPrice_amount {
+	font-size: 1.2rem;
+	color: var(--main-background-color);
+}
+.cartScreen_summary button {
+	padding: 0.5rem 2rem;
+	width: 100%;
+	font-size: 1rem;
+	text-transform: uppercase;
+	border: none;
+	color: var(--text-color);
+	background-color: var(--main-background-color);
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+.cartScreen_summary button:hover {
+	background-color: var(--button-bg-hover);
+}
+@media screen and (min-width: 600px) {
+	.cartScreen {
+		padding: 1.5em 4em;
+	}
+	.cartScreen_summary h2 {
+		font-size: 1.4rem;
+		margin-bottom: 1rem;
+	}
+	.cartScreen_summary_price,
+	.cartScreen_summary_totalPrice {
+		margin-bottom: 1rem;
+	}
+	.cartScreen_summary_totalPrice_amount {
+		font-size: 1.5rem;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.cartScreen {
+		flex-direction: row;
+	}
+	.cartScreen_products {
+		width: 65%;
+	}
+	.cartScreen_summary {
+		width: 30%;
+		margin-left: 4em;
+	}
 }

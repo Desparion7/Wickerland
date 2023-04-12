@@ -40,14 +40,6 @@ const cartSlice = createSlice({
 				existItem.qty = action.payload.qty;
 			}
 		},
-		decrementItem(state, action) {
-			const existItem = state.products.find(
-				(item) => item.pid === action.payload.pid
-			);
-			if (existItem) {
-				existItem.qty = action.payload.qty;
-			}
-		},
 	},
 });
 export default cartSlice.reducer;
