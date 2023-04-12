@@ -85,7 +85,7 @@
 	transition: width 0.3s ease;
 }
 .productPreview_info_cart p:hover::after {
-	width: 70%;
+	width: 50%;
 }
 .productPreview_info_price {
 	font-size: 0.9rem;

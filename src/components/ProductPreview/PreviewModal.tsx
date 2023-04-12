@@ -1,10 +1,13 @@
 import styles from './PreviewModal.module.css';
 import ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { RiCloseFill } from 'react-icons/ri';
 import { BsHeart } from 'react-icons/bs';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import { addItem } from '../../app/slices/cartSlice';
+import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 
 interface PropsType {
 	setShowPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +23,8 @@ interface PropsType {
 
 const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 	const navigation = useNavigate();
-	const [productAmount, setProductAmount] = useState('1');
+	const dispatch = useDispatch();
+	const [productAmount, setProductAmount] = useState(1);
 
 	// useEffect to close full screen img on ESC
 	useEffect(() => {
@@ -39,6 +43,19 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 
 	const handelNavigation = (id: string, category: string) => {
 		navigation(`/produkt/${category}/${id}`);
+	};
+
+	// add product to cart
+	const handlerAddToCart = () => {
+		dispatch(
+			addItem({
+				pid: product.pid,
+				qty: productAmount,
+				price: product.price,
+			})
+		);
+		dispatch(toggleCartMenu(true));
+		setShowPreviewModal(false);
 	};
 
 	return (
@@ -89,6 +106,11 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 										className={
 											styles.previewModal_main_product_info_buy_cart_btn
 										}
+										onClick={() => {
+											if (productAmount > 1) {
+												setProductAmount(productAmount - 1);
+											}
+										}}
 									>
 										-
 									</button>
@@ -100,13 +122,18 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 										pattern='[0-9]*'
 										value={productAmount}
 										onChange={(e) => {
-											setProductAmount(e.target.value);
+											setProductAmount(parseInt(e.target.value));
 										}}
 									/>
 									<button
 										className={
 											styles.previewModal_main_product_info_buy_cart_btn
 										}
+										onClick={() => {
+											if (productAmount < product.amount) {
+												setProductAmount(productAmount + 1);
+											}
+										}}
 									>
 										+
 									</button>
@@ -114,6 +141,7 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 										className={
 											styles.previewModal_main_product_info_buy_cart_btnAdd
 										}
+										onClick={handlerAddToCart}
 									>
 										Dodaj do koszyka
 									</button>

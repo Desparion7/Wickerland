@@ -3,6 +3,9 @@ import styles from './ProductPreview.module.css';
 import { BsSearch } from 'react-icons/bs';
 import { BsHeart } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../app/slices/cartSlice';
+import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import PreviewModal from './PreviewModal';
 
 interface propsType {
@@ -22,9 +25,21 @@ const ProductPreview = ({ product, grid }: propsType) => {
 	const [isFocus, setIsFocus] = useState(false);
 	const [showPreviewModal, setShowPreviewModal] = useState(false);
 	const navigation = useNavigate();
+	const dispatch = useDispatch();
 
 	const handelNavigation = (id: string, category: string) => {
 		navigation(`/produkt/${category}/${id}`);
+	};
+
+	const handlerAddToCart = () => {
+		dispatch(
+			addItem({
+				pid: product.pid,
+				qty: 1,
+				price: product.price,
+			})
+		);
+		dispatch(toggleCartMenu(true));
 	};
 
 	const price = product.price.toFixed(2);
@@ -115,7 +130,7 @@ const ProductPreview = ({ product, grid }: propsType) => {
 								className={`${styles.productPreview_info_cart} ${styles.show_options}`}
 							>
 								{product.amount !== 0 ? (
-									<p>Dodaj do koszyka</p>
+									<p onClick={handlerAddToCart}>Dodaj do koszyka</p>
 								) : (
 									<span>Brak na magazynie</span>
 								)}
