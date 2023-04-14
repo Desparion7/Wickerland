@@ -6,8 +6,11 @@ import {
 	FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 
+// https://sangria-hummingbird-kilt.cyclic.app
+// http://localhost:3000
+
 const baseQuery = fetchBaseQuery({
-	baseUrl: 'http://localhost:3000',
+	baseUrl: 'https://sangria-hummingbird-kilt.cyclic.app',
 	// credentials: 'include',
 	// prepareHeaders: (headers, { getState }) => {
 	// 	const token = (getState() as StoreState).auth.token;
