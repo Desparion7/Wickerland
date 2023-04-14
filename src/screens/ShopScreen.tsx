@@ -4,11 +4,8 @@ import ShopCategoryNavigation from '../components/ShopScreen/ShopCategoryNavigat
 import ShopTools from '../components/ShopScreen/ShopTools';
 import ProductsView from '../components/ShopScreen/ProductsView';
 import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
 
 const ShopScreen = () => {
-	const params = useParams();
-
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
 	return (
 		<section className={styles.shopScreen}>

@@ -2,7 +2,7 @@ import styles from './ShopTools.module.css';
 import { TfiLayoutGrid4Alt } from 'react-icons/tfi';
 import { BsFillGrid3X3GapFill, BsFillGridFill } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux/es/exports';
@@ -12,14 +12,42 @@ import { setGrid } from '../../app/slices/shopViewSlice';
 import PriceFilterMobile from './PriceFilterMobile';
 
 const ShopTools = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { size, pageNumber } = useParams();
 	const [isFilterMenu, setIsFilterMenu] = useState(false);
+	const [productsOnPage, setProductsOnPage] = useState('9');
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
 	const isSmallDesktop = useMediaQuery({ minWidth: '1250px' });
-	const dispatch = useDispatch();
 	const grid = useSelector(shopGrid);
 
 	const handlerChangeGrid = (gridNumber: number) => {
 		dispatch(setGrid(gridNumber));
+	};
+
+	const handlerPageSize = (newSize: string) => {
+		if (size) {
+			// If the size parameter is already present in the URL, replace it with the new value
+			if (pageNumber) {
+				const newPath = window.location.pathname
+					.replace(`/nastronie/${size}`, `/nastronie/${newSize}`)
+					.replace(`/strona/${pageNumber}`, `/strona/1`);
+
+				navigate(newPath);
+			} else {
+				const newPath = window.location.pathname.replace(
+					`/nastronie/${size}`,
+					`/nastronie/${newSize}`
+				);
+
+				navigate(newPath);
+			}
+		} else {
+			// If the size parameter is not present in the URL, add it as a new parameter
+			navigate(`nastronie/${newSize}`);
+		}
+
+		setProductsOnPage(newSize);
 	};
 
 	return (
@@ -41,13 +69,53 @@ const ShopTools = () => {
 						<>
 							<div className={styles.shopTools_options_amount}>
 								<div>Pokaż</div>
-								<p className={styles.shopTools_options_amount_number}>9</p>
+								<p
+									className={`${styles.shopTools_options_amount_number} ${
+										productsOnPage === '9' &&
+										styles.shopTools_options_amount_number_active
+									} `}
+									onClick={() => {
+										handlerPageSize('9');
+									}}
+								>
+									9
+								</p>
 								<span>/</span>
-								<p className={styles.shopTools_options_amount_number}>12</p>
+								<p
+									className={`${styles.shopTools_options_amount_number} ${
+										productsOnPage === '12' &&
+										styles.shopTools_options_amount_number_active
+									} `}
+									onClick={() => {
+										handlerPageSize('12');
+									}}
+								>
+									12
+								</p>
 								<span>/</span>
-								<p className={styles.shopTools_options_amount_number}>18</p>
+								<p
+									className={`${styles.shopTools_options_amount_number} ${
+										productsOnPage === '18' &&
+										styles.shopTools_options_amount_number_active
+									} `}
+									onClick={() => {
+										handlerPageSize('18');
+									}}
+								>
+									18
+								</p>
 								<span>/</span>
-								<p className={styles.shopTools_options_amount_number}>24</p>
+								<p
+									className={`${styles.shopTools_options_amount_number} ${
+										productsOnPage === '24' &&
+										styles.shopTools_options_amount_number_active
+									} `}
+									onClick={() => {
+										handlerPageSize('24');
+									}}
+								>
+									24
+								</p>
 							</div>
 							<div className={styles.shopTools_options_view}>
 								<BsFillGridFill

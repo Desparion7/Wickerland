@@ -1,0 +1,27 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+	margin-top: 5em;
+	list-style: none;
+}
+.pagination a {
+	padding: 10px;
+	color: rgb(56, 56, 56);
+	margin: 0.3rem;
+	cursor: pointer;
+}
+.pagination svg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pagination a:hover {
+	color: var(--text-color-hover1);
+	font-weight: bold;
+}
+.active_page a {
+	color: rgb(56, 56, 56);
+	font-weight: bold;
+}

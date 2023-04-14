@@ -34,6 +34,10 @@
 .shopTools_options_amount_number:hover {
 	color: var(--text-color3);
 }
+.shopTools_options_amount_number_active {
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+}
 
 .shopTools_options_view {
 	display: flex;

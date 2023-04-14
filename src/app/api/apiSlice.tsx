@@ -1,0 +1,26 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { StoreState } from '../store';
+import {
+	BaseQueryFn,
+	FetchArgs,
+	FetchBaseQueryError,
+} from '@reduxjs/toolkit/query';
+
+const baseQuery = fetchBaseQuery({
+	baseUrl: 'http://localhost:3000',
+	// credentials: 'include',
+	// prepareHeaders: (headers, { getState }) => {
+	// 	const token = (getState() as StoreState).auth.token;
+
+	// 	if (token) {
+	// 		headers.set('authorization', `Bearer ${token}`);
+	// 	}
+	// 	return headers;
+	// },
+});
+export const apiSlice = createApi({
+	reducerPath: 'api', // optional
+	baseQuery: baseQuery,
+	tagTypes: ['Products'],
+	endpoints: (builder) => ({}),
+});
