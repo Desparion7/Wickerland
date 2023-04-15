@@ -6,11 +6,11 @@ import {
 	FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 
-// https://sangria-hummingbird-kilt.cyclic.app
+// https://comfortable-wasp-neckerchief.cyclic.app
 // http://localhost:3000
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: 'https://sangria-hummingbird-kilt.cyclic.app',
+	baseUrl: 'https://comfortable-wasp-neckerchief.cyclic.app',
 	// credentials: 'include',
 	// prepareHeaders: (headers, { getState }) => {
 	// 	const token = (getState() as StoreState).auth.token;
