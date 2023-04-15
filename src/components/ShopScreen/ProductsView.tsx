@@ -5,6 +5,7 @@ import { shopGrid } from '../../app/slices/shopViewSlice';
 import { useParams } from 'react-router-dom';
 import { useGetProductsQuery } from '../../app/slices/productsApiSlice';
 import Pagination from '../../ui/Pagination';
+import LoadingSpinner from '../../ui/LoadingSpinner';
 
 const ProductsView = () => {
 	const grid = useSelector(shopGrid);
@@ -16,6 +17,7 @@ const ProductsView = () => {
 
 	return (
 		<>
+			{isLoading && <LoadingSpinner />}
 			<section className={styles.productsView}>
 				{data?.products.map((product) => (
 					<ProductPreview product={product} grid={grid} key={product.pid} />
