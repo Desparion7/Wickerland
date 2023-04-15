@@ -25,8 +25,19 @@ const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: '/sklep/kategoria?/:kategoria?/podkategoria?/:podkategoria?/szukaj?/:search?/cena?/:min?/:max?/nastronie?/:size?/strona?/:pageNumber?',
+				path: '/sklep',
 				element: <ShopScreen />,
+				children: [
+					{
+						path: ':category',
+						element: <ShopScreen />,
+						children: [{ path: ':subcategory', element: <ShopScreen /> }],
+					},
+					{
+						path: '*',
+						element: <ShopScreen />,
+					},
+				],
 			},
 			{
 				path: '/produkt/:name/:id',

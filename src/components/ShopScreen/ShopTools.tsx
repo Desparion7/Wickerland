@@ -2,7 +2,7 @@ import styles from './ShopTools.module.css';
 import { TfiLayoutGrid4Alt } from 'react-icons/tfi';
 import { BsFillGrid3X3GapFill, BsFillGridFill } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux/es/exports';
@@ -14,7 +14,10 @@ import PriceFilterMobile from './PriceFilterMobile';
 const ShopTools = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { size, pageNumber } = useParams();
+	const location = useLocation();
+	const { search } = useLocation();
+	const queryParams = new URLSearchParams(search);
+
 	const [isFilterMenu, setIsFilterMenu] = useState(false);
 	const [productsOnPage, setProductsOnPage] = useState('9');
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
@@ -26,26 +29,14 @@ const ShopTools = () => {
 	};
 
 	const handlerPageSize = (newSize: string) => {
-		if (size) {
-			// If the size parameter is already present in the URL, replace it with the new value
-			if (pageNumber) {
-				const newPath = window.location.pathname
-					.replace(`/nastronie/${size}`, `/nastronie/${newSize}`)
-					.replace(`/strona/${pageNumber}`, `/strona/1`);
+		queryParams.set('nastronie', newSize);
+		queryParams.set('strona', '1');
+		const newSearch = queryParams.toString();
 
-				navigate(newPath);
-			} else {
-				const newPath = window.location.pathname.replace(
-					`/nastronie/${size}`,
-					`/nastronie/${newSize}`
-				);
-
-				navigate(newPath);
-			}
-		} else {
-			// If the size parameter is not present in the URL, add it as a new parameter
-			navigate(`nastronie/${newSize}`);
-		}
+		navigate({
+			pathname: location.pathname,
+			search: newSearch,
+		});
 
 		setProductsOnPage(newSize);
 	};

@@ -1,5 +1,5 @@
 import ReactPaginate from 'react-paginate';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Pagination.module.css';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 
@@ -10,7 +10,10 @@ let activePage;
 
 const Pagination = ({ pages }: PaginationPropsType) => {
 	const navigate = useNavigate();
-	const { pageNumber } = useParams();
+	const location = useLocation();
+	const { search } = useLocation();
+	const queryParams = new URLSearchParams(search);
+	const pageNumber = queryParams.get('strona');
 
 	// Set active page on pagination
 	if (pageNumber) {
@@ -20,17 +23,13 @@ const Pagination = ({ pages }: PaginationPropsType) => {
 	}
 
 	const pageChange = (newPageNumber: number) => {
-		if (pageNumber) {
-			// If the pageNumber parameter is already present in the URL, replace it with the new value
-			const newPath = window.location.pathname.replace(
-				`/strona/${pageNumber}`,
-				`/strona/${newPageNumber}`
-			);
-			navigate(newPath);
-		} else {
-			// If the pageNumber parameter is not present in the URL, add it as a new parameter
-			navigate(`strona/${newPageNumber}`);
-		}
+		queryParams.set('strona', newPageNumber.toString());
+		const newSearch = queryParams.toString();
+
+		navigate({
+			pathname: location.pathname,
+			search: newSearch,
+		});
 	};
 
 	return pages && pages > 1 ? (

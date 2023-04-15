@@ -2,17 +2,22 @@ import { useState, useEffect } from 'react';
 import styles from './PriceFilter.module.css';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 const PriceFilter = () => {
 	const params = useParams();
 	const navigate = useNavigate();
+	const location = useLocation();
+	const { search } = useLocation();
+	const queryParams = new URLSearchParams(search);
+
 	const [minValue, setMinValue] = useState<number>(0);
 	const [maxValue, setMaxValue] = useState<number>(2000);
 
 	// Price filter reset when path don't have min  and max price
 	useEffect(() => {
-		if (!params.max) {
+		const min = queryParams.get('min');
+		if (!min) {
 			setMinValue(0);
 			setMaxValue(2000);
 		}
@@ -35,7 +40,15 @@ const PriceFilter = () => {
 	};
 
 	const handlerPriceFilter = () => {
-		navigate(`cena/${minValue}/${maxValue}`);
+		queryParams.set('min', minValue.toString());
+		queryParams.set('max', maxValue.toString());
+
+		const newSearch = queryParams.toString();
+
+		navigate({
+			pathname: location.pathname,
+			search: newSearch,
+		});
 	};
 
 	return (

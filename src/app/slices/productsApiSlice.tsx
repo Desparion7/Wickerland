@@ -5,8 +5,16 @@ import { ProductsQuery } from '../../interface/products-query-interface';
 const productsApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getProducts: builder.query<GetProductsResponse, ProductsQuery>({
-			query: ({ pageNumber = 1, pageSize = 9 }) => ({
-				url: `/products?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+			query: ({
+				pageNumber = 1,
+				pageSize = 9,
+				min,
+				max,
+				category,
+				subcategory,
+				search,
+			}) => ({
+				url: `/products?pageNumber=${pageNumber}&pageSize=${pageSize}&min=${min}&max=${max}&category=${category}&subcategory=${subcategory}&search=${search}`,
 				method: 'GET',
 			}),
 			providesTags: [{ type: 'Products', id: 'LIST' }],

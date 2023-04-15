@@ -4,7 +4,7 @@ import { BsSearch, BsHeart } from 'react-icons/bs';
 import { GiBasket } from 'react-icons/gi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import MobileMenu from './MobileMenu';
 import Cart from '../Cart/Cart';
@@ -16,10 +16,16 @@ import { loginMenuView } from '../../app/slices/slideMenuSlice';
 import { cartItems } from '../../app/slices/cartSlice';
 
 const HeaderMiddle = () => {
+	const dispatch = useDispatch();
+	const location = useLocation();
+	const navigate = useNavigate();
+	const { search } = useLocation();
+	const queryParams = new URLSearchParams(search);
+
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
 	const [isMobileMenu, setIsMobileMenu] = useState(false);
+	const [searchValue, setSearchValue] = useState('');
 
-	const dispatch = useDispatch();
 	const isCart = useSelector(cartMenuView);
 	const isLoginMenu = useSelector(loginMenuView);
 
@@ -27,6 +33,18 @@ const HeaderMiddle = () => {
 	const totalPrice = cartProducts.reduce((acc, obiekt) => {
 		return acc + obiekt.qty * obiekt.price;
 	}, 0);
+
+	const handlerSearch = () => {
+		queryParams.set('szukaj', searchValue);
+
+		const newSearch = queryParams.toString();
+
+		navigate({
+			pathname: location.pathname,
+			search: newSearch,
+		});
+		setSearchValue('');
+	};
 
 	return (
 		<div className={styles.headerMiddle}>
@@ -54,8 +72,24 @@ const HeaderMiddle = () => {
 			</div>
 			{isDesktop && (
 				<div className={styles.headerMiddle__search}>
-					<input type='text' placeholder='Szukaj' />
-					<button>
+					<input
+						type='text'
+						placeholder='Szukaj'
+						value={searchValue}
+						onChange={(e) => {
+							setSearchValue(e.target.value);
+						}}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') {
+								handlerSearch();
+							}
+						}}
+					/>
+					<button
+						onClick={() => {
+							handlerSearch();
+						}}
+					>
 						<BsSearch />
 					</button>
 				</div>
