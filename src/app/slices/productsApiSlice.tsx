@@ -13,8 +13,9 @@ const productsApiSlice = apiSlice.injectEndpoints({
 				category,
 				subcategory,
 				search,
+				sortByPrice,
 			}) => ({
-				url: `/products?pageNumber=${pageNumber}&pageSize=${pageSize}&min=${min}&max=${max}&category=${category}&subcategory=${subcategory}&search=${search}`,
+				url: `/products?pageNumber=${pageNumber}&pageSize=${pageSize}&min=${min}&max=${max}&category=${category}&subcategory=${subcategory}&search=${search}&sort=${sortByPrice}`,
 				method: 'GET',
 			}),
 			providesTags: [{ type: 'Products', id: 'LIST' }],

@@ -17,6 +17,7 @@ const ProductsView = () => {
 	const min = queryParams.get('min');
 	const max = queryParams.get('max');
 	const filter = queryParams.get('szukaj');
+	const sort = queryParams.get('sortuj');
 
 	const { data, isError, isLoading } = useGetProductsQuery({
 		category,
@@ -26,6 +27,7 @@ const ProductsView = () => {
 		min: min || undefined,
 		max: max || undefined,
 		search: filter || undefined,
+		sortByPrice: sort || undefined,
 	});
 
 	return (

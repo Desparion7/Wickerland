@@ -3,7 +3,7 @@ import { TfiLayoutGrid4Alt } from 'react-icons/tfi';
 import { BsFillGrid3X3GapFill, BsFillGridFill } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux/es/exports';
 import { useSelector } from 'react-redux';
@@ -17,7 +17,9 @@ const ShopTools = () => {
 	const location = useLocation();
 	const { search } = useLocation();
 	const queryParams = new URLSearchParams(search);
+	const sort = queryParams.get('sortuj');
 
+	const [sortMethod, setSortMethod] = useState('sortuj');
 	const [isFilterMenu, setIsFilterMenu] = useState(false);
 	const [productsOnPage, setProductsOnPage] = useState('9');
 	const isDesktop = useMediaQuery({ minWidth: '1000px' });
@@ -40,7 +42,21 @@ const ShopTools = () => {
 
 		setProductsOnPage(newSize);
 	};
+	const handlerSortByPrice = (option: string) => {
+		queryParams.set('sortuj', option);
+		const newSearch = queryParams.toString();
 
+		navigate({
+			pathname: location.pathname,
+			search: newSearch,
+		});
+	};
+	// filter by price reset when path dont have sort
+	useEffect(() => {
+		if (!sort) {
+			setSortMethod('sortuj');
+		}
+	}, [sort]);
 	return (
 		<>
 			{isFilterMenu && <PriceFilterMobile setIsFilterMenu={setIsFilterMenu} />}
@@ -150,9 +166,20 @@ const ShopTools = () => {
 						</>
 					)}
 					<div className={styles.shopTools_options_sorting}>
-						<select name='sort' id='sort'>
-							<option>Sortuj po cenie od najniższej</option>
-							<option>Sortuj po cenie od najwyższej</option>
+						<select
+							name='sort'
+							id='sort'
+							onChange={(e) => {
+								handlerSortByPrice(e.target.value);
+								setSortMethod(e.target.value);
+							}}
+							value={sortMethod}
+						>
+							<option value='sortuj' disabled>
+								Sortuj
+							</option>
+							<option value='fromMin'>Sortuj po cenie od najniższej</option>
+							<option value='fromMax'>Sortuj po cenie od najwyższej</option>
 						</select>
 					</div>
 				</div>

@@ -53,12 +53,14 @@
 	color: black !important;
 }
 .shopTools_options_sorting select {
-	padding: 0.1rem;
+	padding: 0.2rem;
 	font-size: 0.8rem;
 	border: none;
-	cursor: pointer;
 	width: 180px;
+	border: 1px solid grey;
+	cursor: pointer;
 }
+
 .shopTools_options_filtrs {
 	display: flex;
 	align-items: center;

@@ -6,4 +6,5 @@ export interface ProductsQuery {
 	min?: string;
 	max?: string;
 	search?: string;
+	sortByPrice?: string;
 }
