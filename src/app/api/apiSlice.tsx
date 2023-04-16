@@ -10,7 +10,7 @@ import {
 // http://localhost:3000
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: 'https://comfortable-wasp-neckerchief.cyclic.app',
+	baseUrl: 'http://localhost:3000',
 	// credentials: 'include',
 	// prepareHeaders: (headers, { getState }) => {
 	// 	const token = (getState() as StoreState).auth.token;

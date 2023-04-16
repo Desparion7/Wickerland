@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './MobileMenu.module.css';
 import { BsSearch } from 'react-icons/bs';
 import { SlArrowUp, SlArrowDown } from 'react-icons/sl';
@@ -13,15 +13,19 @@ interface PropsType {
 
 const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 	const navigate = useNavigate();
+	const { search } = useLocation();
+	const queryParams = new URLSearchParams(search);
+
 	const [initialPath, setInitialPath] = useState(window.location.pathname);
 	const [isActive, setIsActive] = useState('left');
+	const [searchValue, setSearchValue] = useState('');
 	const [menuAnimation, setMenuAnimation] = useState(styles.show_menu);
 	const [isCategoryOpen, setIsCategoryOpen] = useState<string[]>([]);
 
 	// use efekt to close mobile menu when click on link.
 	useEffect(() => {
 		if (window.location.pathname !== initialPath) {
-			setIsMobileMenu(false);
+			handlerHideMenu();
 		}
 	}, [navigate, initialPath]);
 
@@ -42,12 +46,36 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 		}
 	};
 
+	const handlerSearch = () => {
+		queryParams.set('szukaj', searchValue);
+
+		const newSearch = queryParams.toString();
+
+		navigate({
+			pathname: location.pathname,
+			search: newSearch,
+		});
+		setSearchValue('');
+		handlerHideMenu();
+	};
+
 	return (
 		<div className={styles.mobileMenu}>
 			<div className={`${styles.mobileMenu__main} ${menuAnimation}`}>
 				<div className={styles.mobileMenu__main_search}>
-					<input type='text' placeholder='Szukaj' />
-					<button>
+					<input
+						type='text'
+						placeholder='Szukaj'
+						value={searchValue}
+						onChange={(e) => {
+							setSearchValue(e.target.value);
+						}}
+					/>
+					<button
+						onClick={() => {
+							handlerSearch();
+						}}
+					>
 						<BsSearch />
 					</button>
 				</div>
@@ -307,7 +335,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
 							<Link to='/kontakt'>Kontakt</Link>
 						</div>
 						<div className={styles.mobileMenu__main_options_title}>
-							<Link to='/logowanie'>Logowanie/Rejstracja</Link>
+							<Link to='/rejestracja'>Logowanie/Rejstracja</Link>
 						</div>
 					</div>
 				)}
