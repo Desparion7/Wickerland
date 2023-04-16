@@ -1,0 +1,15 @@
+.statute {
+	margin: 2em 4em;
+}
+.statute h2 {
+	margin: 1em 0;
+}
+.statute_box div {
+	margin: 0.5rem 0;
+}
+
+@media screen and (max-width: 600px) {
+	.statute {
+		margin: 1em;
+	}
+}

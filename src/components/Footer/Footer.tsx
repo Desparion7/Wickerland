@@ -22,11 +22,11 @@ const Footer = () => {
 				<div className={styles.footer_box_title}>Kontakt</div>
 				<p>
 					<FaPhone />{' '}
-					<span className={styles.footer_box_link}>723 930 427</span>
+					<span >723 930 427</span>
 				</p>
 				<p>
 					<MdEmail />
-					<span className={styles.footer_box_link}>kontakt@wickerland.pl</span>
+					<span >kontakt@wickerland.pl</span>
 				</p>
 				<p>
 					<FaFacebookF />
@@ -43,10 +43,10 @@ const Footer = () => {
 			</div>
 			<div className={styles.footer_box}>
 				<div className={styles.footer_box_title}>Zobacz równierz</div>
-				<Link to='/'>Blog</Link>
-				<Link to='/'>Dane Firmy</Link>
-				<Link to='/'>Regulamin</Link>
-				<Link to='/'>Polityka prywatności</Link>
+				<Link to='/blog'>Blog</Link>
+				<Link to='/kontakt'>Dane Firmy</Link>
+				<Link to='/regulamin'>Regulamin</Link>
+				<Link to='/polityka'>Polityka prywatności</Link>
 			</div>
 		</footer>
 	);
