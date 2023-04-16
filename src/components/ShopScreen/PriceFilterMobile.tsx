@@ -42,7 +42,7 @@ const PriceFilterMobile = ({ setIsFilterMenu }: PropsType) => {
 					<RiCloseFill />
 					<span>Zamknij</span>
 				</div>
-				<PriceFilter />
+				<PriceFilter handlerHideMenu={handlerHideMenu} />
 				<div className={styles.priceFilterMobile__main_category}>
 					<h3>Podkategorie</h3>
 					<h4 className={styles.priceFilterMobile__main_category_main}>

@@ -4,7 +4,11 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-const PriceFilter = () => {
+interface PriceFilterProps {
+	handlerHideMenu?: () => void;
+}
+
+const PriceFilter = ({ handlerHideMenu }: PriceFilterProps) => {
 	const params = useParams();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -49,6 +53,9 @@ const PriceFilter = () => {
 			pathname: location.pathname,
 			search: newSearch,
 		});
+		if (handlerHideMenu) {
+			handlerHideMenu();
+		}
 	};
 
 	return (
