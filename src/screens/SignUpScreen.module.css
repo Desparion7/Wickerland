@@ -50,7 +50,7 @@
 }
 .signUpScreen_form_restore {
 	margin-top: 1rem;
-	text-align: end;
+	text-align: center;
 	font-size: 1rem;
 	color: var(--main-background-color);
 	cursor: pointer;

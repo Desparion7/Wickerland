@@ -1,0 +1,14 @@
+.policy {
+	margin: 2em 4em;
+}
+.policy h2 {
+	margin: 1em 0;
+}
+.policy div {
+	margin: 1em 0;
+}
+@media screen and (max-width: 600px) {
+	.policy {
+		margin: 1em;
+	}
+}

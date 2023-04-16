@@ -10,7 +10,7 @@
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	font-size: 2rem;
+	font-size: 1.1em;
 }
 .cartScreen_products {
 	width: 100%;
@@ -102,6 +102,9 @@
 	}
 	.cartScreen_summary_totalPrice_amount {
 		font-size: 1.5rem;
+	}
+	.cartScreen_empty {
+		font-size: 2em;
 	}
 }
 
