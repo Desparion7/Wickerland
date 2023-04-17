@@ -107,7 +107,11 @@ const HeaderMiddle = () => {
 				)}
 				<div className={styles.headerMiddle__options_icons}>
 					<div className={styles.headerMiddle__options_icons_box}>
-						<BsHeart />
+						<BsHeart
+							onClick={() => {
+								navigate('/ulubione');
+							}}
+						/>
 						<span>0</span>
 					</div>
 					<div

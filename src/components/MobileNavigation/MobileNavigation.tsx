@@ -19,7 +19,7 @@ const MobileNavigation = () => {
 				<BsShop />
 				<p>Sklep</p>
 			</Link>
-			<Link to='/' className={styles.mobileNavigation_iconBox}>
+			<Link to='/ulubione' className={styles.mobileNavigation_iconBox}>
 				<VscHeart />
 				<span>0</span>
 				<p>Ulubione </p>
