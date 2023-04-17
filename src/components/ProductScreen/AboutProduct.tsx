@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
+import { store } from '../../app/store';
 
 export interface ProductType {
 	product: {
@@ -34,6 +35,7 @@ const AboutProduct = ({ product }: ProductType) => {
 			})
 		);
 		dispatch(toggleCartMenu(true));
+		localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
 	};
 
 	return (

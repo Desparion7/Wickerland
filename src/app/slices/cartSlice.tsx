@@ -7,33 +7,38 @@ export interface CartProduct {
 	price: number;
 }
 export interface RootState {
-	products: CartProduct[];
+	cartItems: CartProduct[];
 }
-const initialState: RootState = {
-	products: [],
-};
+
+const savedCartItems = localStorage.getItem('cartItems');
+const initialState: RootState = savedCartItems
+	? JSON.parse(savedCartItems)
+	: {
+			cartItems: [],
+	  };
+
 
 const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
 		addItem(state, action) {
-			const existItem = state.products.find(
+			const existItem = state.cartItems.find(
 				(item) => item.pid === action.payload.pid
 			);
 			if (existItem) {
 				existItem.qty = action.payload.qty;
 			} else {
-				state.products.push(action.payload);
+				state.cartItems.push(action.payload);
 			}
 		},
 		removeItem(state, action) {
-			state.products = state.products.filter(
+			state.cartItems = state.cartItems.filter(
 				(item) => item.pid !== action.payload
 			);
 		},
 		changeItemQty(state, action) {
-			const existItem = state.products.find(
+			const existItem = state.cartItems.find(
 				(item) => item.pid === action.payload.pid
 			);
 			if (existItem) {
@@ -45,4 +50,4 @@ const cartSlice = createSlice({
 export default cartSlice.reducer;
 
 export const { addItem, removeItem, changeItemQty } = cartSlice.actions;
-export const cartItems = (state: State) => state.cart.products;
+export const cartItems = (state: State) => state.cart.cartItems;

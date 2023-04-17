@@ -8,6 +8,7 @@ import { AiOutlineCheck } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
+import { store } from '../../app/store';
 
 interface PropsType {
 	setShowPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -55,6 +56,7 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 			})
 		);
 		dispatch(toggleCartMenu(true));
+		localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
 		setShowPreviewModal(false);
 	};
 

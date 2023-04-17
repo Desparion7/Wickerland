@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import PreviewModal from './PreviewModal';
+import { store } from '../../app/store';
 
 interface propsType {
 	product: {
@@ -40,6 +41,7 @@ const ProductPreview = ({ product, grid }: propsType) => {
 			})
 		);
 		dispatch(toggleCartMenu(true));
+		localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
 	};
 
 	const price = product.price.toFixed(2);
