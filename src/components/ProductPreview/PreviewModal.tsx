@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { store } from '../../app/store';
+import { whishListAddItem } from '../../app/slices/whishListSlice';
 
 interface PropsType {
 	setShowPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -62,6 +63,20 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 		dispatch(toggleCartMenu(true));
 		localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
 		setShowPreviewModal(false);
+	};
+	const handlerAddToWhishList = () => {
+		dispatch(
+			whishListAddItem({
+				pid: product.pid,
+				name: product.name,
+				price: product.price,
+				img: product.img,
+			})
+		);
+		localStorage.setItem(
+			'whishListItems',
+			JSON.stringify(store.getState().whishList)
+		);
 	};
 
 	return (
@@ -158,7 +173,12 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 								Brak w magazynie
 							</p>
 						)}
-						<div className={styles.previewModal_main_product_info_buy_like}>
+						<div
+							className={styles.previewModal_main_product_info_buy_like}
+							onClick={() => {
+								handlerAddToWhishList();
+							}}
+						>
 							<BsHeart />
 							<p>Dodaj do ulubionych</p>
 						</div>

@@ -8,6 +8,7 @@ import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import PreviewModal from './PreviewModal';
 import { store } from '../../app/store';
+import { whishListAddItem } from '../../app/slices/whishListSlice';
 
 interface propsType {
 	product: {
@@ -47,7 +48,20 @@ const ProductPreview = ({ product, grid }: propsType) => {
 		dispatch(toggleCartMenu(true));
 		localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
 	};
-
+	const handlerAddToWhishList = () => {
+		dispatch(
+			whishListAddItem({
+				pid: product.pid,
+				name: product.name,
+				price: product.price,
+				img: product.img,
+			})
+		);
+		localStorage.setItem(
+			'whishListItems',
+			JSON.stringify(store.getState().whishList)
+		);
+	};
 	const price = product.price.toFixed(2);
 	return (
 		<>
@@ -115,7 +129,12 @@ const ProductPreview = ({ product, grid }: propsType) => {
 										setShowPreviewModal(true);
 									}}
 								/>
-								<BsHeart title='Dodaj do ulubionych' />
+								<BsHeart
+									title='Dodaj do ulubionych'
+									onClick={() => {
+										handlerAddToWhishList();
+									}}
+								/>
 							</div>
 						</div>
 					)}
