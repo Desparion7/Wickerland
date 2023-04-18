@@ -81,6 +81,8 @@
 .headerMiddle__options_icons_box {
 	position: relative;
 	padding: 0.2rem;
+}
+.headerMiddle__options_icons_box svg {
 	cursor: pointer;
 }
 .headerMiddle__options_icons_price {

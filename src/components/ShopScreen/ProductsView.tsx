@@ -38,6 +38,11 @@ const ProductsView = () => {
 					Niestety nie udało się pobrać produktów z serwera!
 				</div>
 			)}
+			{data?.products.length === 0 && (
+				<div className={styles.productsView_error}>
+					Żaden produkt nie spełnia warunków wyszukiwania!
+				</div>
+			)}
 			<section className={styles.productsView}>
 				{data?.products.map((product) => (
 					<ProductPreview product={product} grid={grid} key={product.pid} />

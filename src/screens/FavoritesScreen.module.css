@@ -1,6 +1,10 @@
 .favoritesScreen {
-	margin: 1em 4em;
+	margin: 1em;
 	min-height: 55vh;
+}
+.favoritesScreen h2 {
+	font-size: 1.4rem;
+	text-align: center;
 }
 .favoritesScreen_productsBox {
 	display: flex;
@@ -10,4 +14,15 @@
 }
 .favoritesScreen_empty {
 	margin-top: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+	.favoritesScreen {
+		margin: 1em 4em;
+		min-height: 55vh;
+	}
+	.favoritesScreen h2 {
+		font-size: 1.6rem;
+		text-align: start;
+	}
 }

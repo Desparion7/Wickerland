@@ -116,13 +116,12 @@ const HeaderMiddle = () => {
 						/>
 						<span>{whishListProducts.length}</span>
 					</div>
-					<div
-						className={styles.headerMiddle__options_icons_box}
-						onClick={() => {
-							dispatch(toggleCartMenu(true));
-						}}
-					>
-						<GiBasket />
+					<div className={styles.headerMiddle__options_icons_box}>
+						<GiBasket
+							onClick={() => {
+								dispatch(toggleCartMenu(true));
+							}}
+						/>
 						<span>{cartProducts.length}</span>
 					</div>
 					{isDesktop && (
