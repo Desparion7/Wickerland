@@ -6,12 +6,14 @@ import { RxPerson } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartItems } from '../../app/slices/cartSlice';
+import { whishList } from '../../app/slices/whishListSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
 
 const MobileNavigation = () => {
 	const dispatch = useDispatch();
 	const cartProducts = useSelector(cartItems);
+	const whishListProducts = useSelector(whishList);
 
 	return (
 		<nav className={styles.mobileNavigation}>
@@ -21,7 +23,7 @@ const MobileNavigation = () => {
 			</Link>
 			<Link to='/ulubione' className={styles.mobileNavigation_iconBox}>
 				<VscHeart />
-				<span>0</span>
+				<span>{whishListProducts.length}</span>
 				<p>Ulubione </p>
 			</Link>
 			<div

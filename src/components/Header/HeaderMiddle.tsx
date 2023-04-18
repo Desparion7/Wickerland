@@ -14,6 +14,7 @@ import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
 import { loginMenuView } from '../../app/slices/slideMenuSlice';
 import { cartItems } from '../../app/slices/cartSlice';
+import { whishList } from '../../app/slices/whishListSlice';
 
 const HeaderMiddle = () => {
 	const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const HeaderMiddle = () => {
 	const isLoginMenu = useSelector(loginMenuView);
 
 	const cartProducts = useSelector(cartItems);
+	const whishListProducts = useSelector(whishList);
 	const totalPrice = cartProducts.reduce((acc, obiekt) => {
 		return acc + obiekt.qty * obiekt.price;
 	}, 0);
@@ -112,7 +114,7 @@ const HeaderMiddle = () => {
 								navigate('/ulubione');
 							}}
 						/>
-						<span>0</span>
+						<span>{whishListProducts.length}</span>
 					</div>
 					<div
 						className={styles.headerMiddle__options_icons_box}
