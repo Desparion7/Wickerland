@@ -1,13 +1,17 @@
 import styles from './AboutProduct.module.css';
 import { useState } from 'react';
-import { BsHeart } from 'react-icons/bs';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { store } from '../../app/store';
-import { whishListAddItem } from '../../app/slices/whishListSlice';
+import {
+	whishListAddItem,
+	whishListRemoveItem,
+} from '../../app/slices/whishListSlice';
+import { whishList } from '../../app/slices/whishListSlice';
 
 export interface ProductType {
 	product: {
@@ -24,8 +28,12 @@ export interface ProductType {
 }
 
 const AboutProduct = ({ product }: ProductType) => {
-	const [productAmount, setProductAmount] = useState(1);
 	const dispatch = useDispatch();
+	const [productAmount, setProductAmount] = useState(1);
+	const wishListProducts = useSelector(whishList);
+	const isAddToWishList = wishListProducts.find(
+		(obj) => obj.pid === product.pid
+	);
 
 	const handlerAddToCart = () => {
 		dispatch(
@@ -52,6 +60,13 @@ const AboutProduct = ({ product }: ProductType) => {
 				img: product.img,
 			})
 		);
+		localStorage.setItem(
+			'whishListItems',
+			JSON.stringify(store.getState().whishList)
+		);
+	};
+	const handlerRemoveFromWhishList = () => {
+		dispatch(whishListRemoveItem(product.pid));
 		localStorage.setItem(
 			'whishListItems',
 			JSON.stringify(store.getState().whishList)
@@ -130,13 +145,26 @@ const AboutProduct = ({ product }: ProductType) => {
 						Brak w magazynie
 					</p>
 				)}
-				<div
-					className={styles.aboutProduct_product_info_buy_like}
-					onClick={handlerAddToWhishList}
-				>
-					<BsHeart />
-					<p>Dodaj do ulubionych</p>
-				</div>
+
+				{!isAddToWishList && (
+					<div
+						className={styles.aboutProduct_product_info_buy_like}
+						onClick={handlerAddToWhishList}
+					>
+						<BsHeart />
+						<p>Dodaj do ulubionych</p>
+					</div>
+				)}
+				{isAddToWishList && (
+					<div
+						className={styles.aboutProduct_product_info_buy_like_added}
+						onClick={handlerRemoveFromWhishList}
+					>
+						<BsHeartFill />
+						<p>Usuń z ulubionych</p>
+					</div>
+				)}
+
 				<div className={styles.aboutProduct_product_info_buy_others}>
 					<p>
 						ID: <span>{product?.pid}</span>

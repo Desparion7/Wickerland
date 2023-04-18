@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import styles from './ProductPreview.module.css';
 import { BsSearch } from 'react-icons/bs';
-import { BsHeart } from 'react-icons/bs';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import PreviewModal from './PreviewModal';
 import { store } from '../../app/store';
-import { whishListAddItem } from '../../app/slices/whishListSlice';
+import { whishList } from '../../app/slices/whishListSlice';
+import {
+	whishListAddItem,
+	whishListRemoveItem,
+} from '../../app/slices/whishListSlice';
 
 interface propsType {
 	product: {
@@ -24,10 +28,15 @@ interface propsType {
 }
 
 const ProductPreview = ({ product, grid }: propsType) => {
-	const [isFocus, setIsFocus] = useState(false);
-	const [showPreviewModal, setShowPreviewModal] = useState(false);
 	const navigation = useNavigate();
 	const dispatch = useDispatch();
+	const [isFocus, setIsFocus] = useState(false);
+	const [showPreviewModal, setShowPreviewModal] = useState(false);
+
+	const wishListProducts = useSelector(whishList);
+	const isAddToWishList = wishListProducts.find(
+		(obj) => obj.pid === product.pid
+	);
 
 	const handelNavigation = (id: string, category: string) => {
 		navigation(`/produkt/${category}/${id}`);
@@ -57,6 +66,14 @@ const ProductPreview = ({ product, grid }: propsType) => {
 				img: product.img,
 			})
 		);
+		localStorage.setItem(
+			'whishListItems',
+			JSON.stringify(store.getState().whishList)
+		);
+	};
+
+	const handlerRemoveFromWhishList = () => {
+		dispatch(whishListRemoveItem(product.pid));
 		localStorage.setItem(
 			'whishListItems',
 			JSON.stringify(store.getState().whishList)
@@ -129,12 +146,32 @@ const ProductPreview = ({ product, grid }: propsType) => {
 										setShowPreviewModal(true);
 									}}
 								/>
-								<BsHeart
-									title='Dodaj do ulubionych'
-									onClick={() => {
-										handlerAddToWhishList();
-									}}
-								/>
+
+								{!isAddToWishList && (
+									<div>
+										<BsHeart
+											title='Dodaj do ulubionych'
+											onClick={() => {
+												handlerAddToWhishList();
+											}}
+										/>
+									</div>
+								)}
+
+								{isAddToWishList && (
+									<div
+										className={
+											styles.productPreview_img_focus_options_fillHeart
+										}
+									>
+										<BsHeartFill
+											title='Usuń z ulubionych'
+											onClick={() => {
+												handlerRemoveFromWhishList();
+											}}
+										/>
+									</div>
+								)}
 							</div>
 						</div>
 					)}

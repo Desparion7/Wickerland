@@ -43,6 +43,9 @@
 	font-size: 1.1rem;
 	cursor: pointer;
 }
+.productPreview_img_focus_options_fillHeart svg {
+	color: red;
+}
 .productPreview_info {
 	display: flex;
 	flex-direction: column;

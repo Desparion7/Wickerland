@@ -144,7 +144,8 @@
 	background-color: var(--button-bg-hover);
 }
 
-.previewModal_main_product_info_buy_like {
+.previewModal_main_product_info_buy_like,
+.previewModal_main_product_info_buy_like_added {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -159,7 +160,9 @@
 .previewModal_main_product_info_buy_like:hover svg {
 	color: red;
 }
-
+.previewModal_main_product_info_buy_like_added svg {
+	color: red;
+}
 
 /* Animation */
 .show_modal {

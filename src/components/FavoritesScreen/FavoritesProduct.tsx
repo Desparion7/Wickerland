@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { WhishListProduct } from '../../app/slices/whishListSlice';
 import { useDispatch } from 'react-redux';
 import { whishListRemoveItem } from '../../app/slices/whishListSlice';
+import { store } from '../../app/store';
 
 const FavoritesProduct = ({ product }: { product: WhishListProduct }) => {
 	const dispatch = useDispatch();
@@ -30,6 +31,10 @@ const FavoritesProduct = ({ product }: { product: WhishListProduct }) => {
 					<button
 						onClick={() => {
 							dispatch(whishListRemoveItem(product.pid));
+							localStorage.setItem(
+								'whishListItems',
+								JSON.stringify(store.getState().whishList)
+							);
 						}}
 					>
 						Usuń

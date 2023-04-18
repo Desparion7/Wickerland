@@ -6,7 +6,7 @@ import { ArticleType } from '../components/BlogScreen/ArticlePreview';
 const ArticleScreen = () => {
 	const location = useLocation();
 	const params = useParams();
-	console.log(location);
+	
 
 	const filteredArticles = articles.find((obj) => {
 		return obj.hasOwnProperty('link') && obj['link'] === params.id;

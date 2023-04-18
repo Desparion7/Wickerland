@@ -1,15 +1,19 @@
 import styles from './PreviewModal.module.css';
 import ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RiCloseFill } from 'react-icons/ri';
-import { BsHeart } from 'react-icons/bs';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { store } from '../../app/store';
-import { whishListAddItem } from '../../app/slices/whishListSlice';
+import {
+	whishListAddItem,
+	whishListRemoveItem,
+} from '../../app/slices/whishListSlice';
+import { whishList } from '../../app/slices/whishListSlice';
 
 interface PropsType {
 	setShowPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,6 +31,10 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 	const navigation = useNavigate();
 	const dispatch = useDispatch();
 	const [productAmount, setProductAmount] = useState(1);
+	const wishListProducts = useSelector(whishList);
+	const isAddToWishList = wishListProducts.find(
+		(obj) => obj.pid === product.pid
+	);
 
 	// useEffect to close full screen img on ESC
 	useEffect(() => {
@@ -73,6 +81,13 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 				img: product.img,
 			})
 		);
+		localStorage.setItem(
+			'whishListItems',
+			JSON.stringify(store.getState().whishList)
+		);
+	};
+	const handlerRemoveFromWhishList = () => {
+		dispatch(whishListRemoveItem(product.pid));
 		localStorage.setItem(
 			'whishListItems',
 			JSON.stringify(store.getState().whishList)
@@ -173,15 +188,27 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 								Brak w magazynie
 							</p>
 						)}
-						<div
-							className={styles.previewModal_main_product_info_buy_like}
-							onClick={() => {
-								handlerAddToWhishList();
-							}}
-						>
-							<BsHeart />
-							<p>Dodaj do ulubionych</p>
-						</div>
+						{!isAddToWishList && (
+							<div
+								className={styles.previewModal_main_product_info_buy_like}
+								onClick={() => {
+									handlerAddToWhishList();
+								}}
+							>
+								<BsHeart />
+								<p>Dodaj do ulubionych</p>
+							</div>
+						)}
+
+						{isAddToWishList && (
+							<div
+								className={styles.previewModal_main_product_info_buy_like_added}
+								onClick={handlerRemoveFromWhishList}
+							>
+								<BsHeartFill />
+								<p>Usuń z ulubionych</p>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
