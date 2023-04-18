@@ -51,8 +51,12 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
 		dispatch(
 			addItem({
 				pid: product.pid,
-				qty: productAmount,
+				name: product.name,
+				qty: 1,
+				amount: product.amount,
 				price: product.price,
+				category: product.category,
+				img: product.img,
 			})
 		);
 		dispatch(toggleCartMenu(true));

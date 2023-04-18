@@ -39,10 +39,10 @@ const Cart = () => {
 				</div>
 				<div className={styles.cart__main_items}>
 					{cartProducts.length > 0 ? (
-						cartProducts.map((item) => (
+						cartProducts.map((product) => (
 							<CartItemSmall
-								key={item.pid}
-								item={item}
+								key={product.pid}
+								product={product}
 								handlerHideMenu={handlerHideMenu}
 							/>
 						))

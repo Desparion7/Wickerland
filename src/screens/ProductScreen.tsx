@@ -1,11 +1,15 @@
 import styles from './ProductScreen.module.css';
 import { useState, useEffect } from 'react';
-import { products } from '../db/products';
 import { useParams } from 'react-router-dom';
 import ModalPhotoFull from '../components/ProductScreen/ModalPhotoFull';
 import ProductPhotoCarousel from '../components/ProductScreen/ProductPhotoCarousel';
 import MoreAboutProduct from '../components/ProductScreen/MoreAboutProduct';
 import AboutProduct from '../components/ProductScreen/AboutProduct';
+import { useGetProductByIdQuery } from '../app/slices/productsApiSlice';
+import { Product } from '../interface/products-interface';
+import LoadingSpinner from '../ui/LoadingSpinner';
+
+let product: Product;
 
 const ProductScreen = () => {
 	const param = useParams();
@@ -23,35 +27,50 @@ const ProductScreen = () => {
 			document.body.classList.remove('no-scroll');
 		}
 	}, [fullImg]);
-	// Temporary search product before backend will be ready
-	const product: any = products.find((obj) => obj.pid === param.id);
-	// ustawić typ gdy bedzie backend
 
+	// hook to fetch data about product
+	const { data, isSuccess, isLoading, isError } = useGetProductByIdQuery({
+		pid: param.id as string,
+	});
+
+	if (isSuccess) {
+		product = data.product;
+	}
 
 	return (
 		<>
-			{fullImg && (
-				<ModalPhotoFull
-					img={product?.img}
-					setFullImg={setFullImg}
-					currentSlide={currentSlide}
-				/>
-			)}
-			<div className={styles.productScreen}>
-				<div className={styles.productScreen_product}>
-					<ProductPhotoCarousel
-						img={product?.img as string[]}
-						alt={product?.name as string}
-						setFullImg={setFullImg}
-						setCurrentSlide={setCurrentSlide}
-					/>
-					<AboutProduct product={product} />
+			{isError && (
+				<div className={styles.errorMessage}>
+					Coś poszło nie tak. Nie udało się pobrać danego produktu!
 				</div>
-				<MoreAboutProduct
-					parameters={product?.parameters}
-					description={product?.description}
-				></MoreAboutProduct>
-			</div>
+			)}
+			{isLoading && <LoadingSpinner />}
+			{isSuccess && (
+				<>
+					{fullImg && (
+						<ModalPhotoFull
+							img={product?.img}
+							setFullImg={setFullImg}
+							currentSlide={currentSlide}
+						/>
+					)}
+					<div className={styles.productScreen}>
+						<div className={styles.productScreen_product}>
+							<ProductPhotoCarousel
+								img={product?.img as string[]}
+								alt={product?.name as string}
+								setFullImg={setFullImg}
+								setCurrentSlide={setCurrentSlide}
+							/>
+							<AboutProduct product={product} />
+						</div>
+						<MoreAboutProduct
+							parameters={product?.parameters}
+							description={product?.description}
+						></MoreAboutProduct>
+					</div>
+				</>
+			)}
 		</>
 	);
 };

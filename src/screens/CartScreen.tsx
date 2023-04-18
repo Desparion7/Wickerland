@@ -53,8 +53,8 @@ const CartScreen = () => {
 								</div>
 							</div>
 						)}
-						{cartProducts.map((item) => (
-							<CartScreenItem item={item} />
+						{cartProducts.map((product) => (
+							<CartScreenItem product={product} key={product.pid} />
 						))}
 					</div>
 					<div className={styles.cartScreen_summary}>

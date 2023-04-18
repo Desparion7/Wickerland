@@ -3,8 +3,12 @@ import { State } from '../store';
 
 export interface CartProduct {
 	pid: string;
+	name: string;
+	amount: number;
+	category: string;
 	qty: number;
 	price: number;
+	img: string[];
 }
 export interface RootState {
 	cartItems: CartProduct[];
@@ -16,7 +20,6 @@ const initialState: RootState = savedCartItems
 	: {
 			cartItems: [],
 	  };
-
 
 const cartSlice = createSlice({
 	name: 'cart',

@@ -6,6 +6,7 @@
 	flex-direction: column;
 	padding: 1rem 2rem;
 	width: 100%;
+	min-height: 55vh;
 }
 .productScreen_product {
 	display: flex;
@@ -120,6 +121,13 @@
 }
 .productScreen_product_info_buy_others span {
 	color: var(--text-color2);
+}
+.errorMessage {
+	min-height: 55vh;
+	text-align: center;
+	margin-top: 2em;
+	text-transform: uppercase;
+	color: var(--error-text);
 }
 @media screen and (min-width: 600px) {
 	.productScreen_product_info_name {

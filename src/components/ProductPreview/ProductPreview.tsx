@@ -36,8 +36,12 @@ const ProductPreview = ({ product, grid }: propsType) => {
 		dispatch(
 			addItem({
 				pid: product.pid,
+				name: product.name,
 				qty: 1,
+				amount: product.amount,
 				price: product.price,
+				category: product.category,
+				img: product.img,
 			})
 		);
 		dispatch(toggleCartMenu(true));

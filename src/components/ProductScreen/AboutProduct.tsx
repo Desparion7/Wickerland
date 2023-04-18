@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { store } from '../../app/store';
+import { whishListAddItem } from '../../app/slices/whishListSlice';
 
 export interface ProductType {
 	product: {
@@ -30,12 +31,31 @@ const AboutProduct = ({ product }: ProductType) => {
 		dispatch(
 			addItem({
 				pid: product.pid,
+				name: product.name,
 				qty: productAmount,
+				amount: product.amount,
 				price: product.price,
+				category: product.category,
+				img: product.img,
 			})
 		);
 		dispatch(toggleCartMenu(true));
 		localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
+	};
+
+	const handlerAddToWhishList = () => {
+		dispatch(
+			whishListAddItem({
+				pid: product.pid,
+				name: product.name,
+				price: product.price,
+				img: product.img,
+			})
+		);
+		localStorage.setItem(
+			'whishListItems',
+			JSON.stringify(store.getState().whishList)
+		);
 	};
 
 	return (
@@ -110,7 +130,10 @@ const AboutProduct = ({ product }: ProductType) => {
 						Brak w magazynie
 					</p>
 				)}
-				<div className={styles.aboutProduct_product_info_buy_like}>
+				<div
+					className={styles.aboutProduct_product_info_buy_like}
+					onClick={handlerAddToWhishList}
+				>
 					<BsHeart />
 					<p>Dodaj do ulubionych</p>
 				</div>

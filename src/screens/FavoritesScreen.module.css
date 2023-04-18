@@ -1,3 +1,13 @@
 .favoritesScreen {
 	margin: 1em 4em;
+	min-height: 55vh;
+}
+.favoritesScreen_productsBox {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 2em;
+}
+.favoritesScreen_empty {
+	margin-top: 1rem;
 }

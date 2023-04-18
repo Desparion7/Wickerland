@@ -1,5 +1,9 @@
 import { apiSlice } from '../api/apiSlice';
-import { GetProductsResponse } from '../../interface/products-interface';
+import {
+	GetProductsResponse,
+	ProductData,
+} from '../../interface/products-interface';
+
 import { ProductsQuery } from '../../interface/products-query-interface';
 
 const productsApiSlice = apiSlice.injectEndpoints({
@@ -20,6 +24,13 @@ const productsApiSlice = apiSlice.injectEndpoints({
 			}),
 			providesTags: [{ type: 'Products', id: 'LIST' }],
 		}),
+		getProductById: builder.query<ProductData, { pid: string }>({
+			query: ({ pid }) => ({
+				url: `/products/${pid}`,
+				method: 'GET',
+			}),
+			providesTags: [{ type: 'Product', id: 'LIST' }],
+		}),
 	}),
 });
-export const { useGetProductsQuery } = productsApiSlice;
+export const { useGetProductsQuery, useGetProductByIdQuery } = productsApiSlice;
