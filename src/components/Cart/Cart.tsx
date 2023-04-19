@@ -76,7 +76,15 @@ const Cart = () => {
 					>
 						Zobacz koszyk
 					</button>
-					<button className={styles.cart__main_bottom_order}>Zamówienie</button>
+					<button
+						className={styles.cart__main_bottom_order}
+						onClick={() => {
+							navigate('/zamówienie');
+							handlerHideMenu();
+						}}
+					>
+						Zamówienie
+					</button>
 				</div>
 			</div>
 			<div

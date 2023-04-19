@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import { cartItems } from '../app/slices/cartSlice';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 
 const CartScreen = () => {
+	const navigate = useNavigate();
 	const cartProducts = useSelector(cartItems);
 	const [selectedValue, setSelectedValue] = useState(
 		'Kurier, Pocztex: 29,00 zł'
@@ -108,7 +110,13 @@ const CartScreen = () => {
 								{totalPriceWithDelivery.toFixed(2)} zł
 							</p>
 						</div>
-						<button>Przejdz do płatności</button>
+						<button
+							onClick={() => {
+								navigate('/zamówienie');
+							}}
+						>
+							Przejdz do płatności
+						</button>
 					</div>
 				</>
 			)}

@@ -13,6 +13,7 @@ import CartScreen from './screens/CartScreen';
 import StatuteSceen from './screens/StatuteSceen';
 import PolicyScreen from './screens/PolicyScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import OrderScreen from './screens/OrderScreen';
 
 const router = createBrowserRouter([
 	{
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
 			{
 				path: '/koszyk',
 				element: <CartScreen />,
+			},
+			{
+				path: '/zamówienie',
+				element: <OrderScreen />,
 			},
 			{
 				path: '/ulubione',
