@@ -16,83 +16,83 @@ import FavoritesScreen from './screens/FavoritesScreen';
 import OrderScreen from './screens/OrderScreen';
 
 const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Layout />,
-		children: [
-			{
-				path: '*',
-				element: <ErrorBoundary />,
-			},
-			{
-				path: '/',
-				element: <HomePage />,
-			},
-			{
-				path: '/sklep',
-				element: <ShopScreen />,
-				children: [
-					{
-						path: ':category',
-						element: <ShopScreen />,
-						children: [{ path: ':subcategory', element: <ShopScreen /> }],
-					},
-					{
-						path: '*',
-						element: <ShopScreen />,
-					},
-				],
-			},
-			{
-				path: '/produkt/:name/:id',
-				element: <ProductScreen />,
-			},
-			{
-				path: '/blog',
-				element: <BlogScreen />,
-			},
-			{
-				path: '/blog/:id',
-				element: <ArticleScreen />,
-			},
-			{
-				path: '/onas',
-				element: <AboutUsScreen />,
-			},
-			{
-				path: '/kontakt',
-				element: <ContactScreen />,
-			},
-			{
-				path: '/rejestracja',
-				element: <SignUpScreen />,
-			},
-			{
-				path: '/koszyk',
-				element: <CartScreen />,
-			},
-			{
-				path: '/zamówienie',
-				element: <OrderScreen />,
-			},
-			{
-				path: '/ulubione',
-				element: <FavoritesScreen />,
-			},
-			{
-				path: '/regulamin',
-				element: <StatuteSceen />,
-			},
-			{
-				path: '/polityka',
-				element: <PolicyScreen />,
-			},
-		],
-	},
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '*',
+        element: <ErrorBoundary />,
+      },
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/sklep',
+        element: <ShopScreen />,
+        children: [
+          {
+            path: ':category',
+            element: <ShopScreen />,
+            children: [{ path: ':subcategory', element: <ShopScreen /> }],
+          },
+          {
+            path: '*',
+            element: <ShopScreen />,
+          },
+        ],
+      },
+      {
+        path: '/produkt/:name/:id',
+        element: <ProductScreen />,
+      },
+      {
+        path: '/blog',
+        element: <BlogScreen />,
+      },
+      {
+        path: '/blog/:id',
+        element: <ArticleScreen />,
+      },
+      {
+        path: '/onas',
+        element: <AboutUsScreen />,
+      },
+      {
+        path: '/kontakt',
+        element: <ContactScreen />,
+      },
+      {
+        path: '/rejestracja',
+        element: <SignUpScreen />,
+      },
+      {
+        path: '/koszyk',
+        element: <CartScreen />,
+      },
+      {
+        path: '/zamówienie',
+        element: <OrderScreen />,
+      },
+      {
+        path: '/ulubione',
+        element: <FavoritesScreen />,
+      },
+      {
+        path: '/regulamin',
+        element: <StatuteSceen />,
+      },
+      {
+        path: '/polityka',
+        element: <PolicyScreen />,
+      },
+    ],
+  },
 ]);
 
 function App() {
-	return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
