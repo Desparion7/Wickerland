@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import styles from './HomePageCarousel.module.css';
 
 const HomePageCarousel = () => {
+  const navigate = useNavigate();
   const [slideNumber, setSlideNumber] = useState(1);
 
   useEffect(() => {
@@ -83,8 +85,15 @@ const HomePageCarousel = () => {
             <h3>Wytrzymały ekologiczny pojemnik</h3>
             <p>Kufer wiklinowy, skrzynia</p>
             <div className={styles.homePageCarousel_item_info_buy}>
-              <p>250 zł</p>
-              <button type="button">Kup Teraz</button>
+              <p>340,00 zł</p>
+              <button
+                onClick={() => {
+                  navigate('/produkt/pojemniki/p-1-1');
+                }}
+                type="button"
+              >
+                Kup Teraz
+              </button>
             </div>
           </div>
         </div>
@@ -104,8 +113,15 @@ const HomePageCarousel = () => {
             <p>Uniwersalny, wytrzymały</p>
             <h3>Klasyczny kosz wiklinowy</h3>
             <div className={styles.homePageCarousel_item_info_buy}>
-              <p>250 zł</p>
-              <button type="button">Kup Teraz</button>
+              <p>28,00 zł</p>
+              <button
+                onClick={() => {
+                  navigate('/produkt/koszyki/k-2-1');
+                }}
+                type="button"
+              >
+                Kup Teraz
+              </button>
             </div>
           </div>
         </div>
@@ -124,8 +140,15 @@ const HomePageCarousel = () => {
             <p>Wykonany z pełnowartościowej wikliny</p>
             <h3>Fotel bujany Wickerland</h3>
             <div className={styles.homePageCarousel_item_info_buy}>
-              <p>580 zł</p>
-              <button type="button">Kup Teraz</button>
+              <p>580,00 zł</p>
+              <button
+                onClick={() => {
+                  navigate('/produkt/meble/m-2-2');
+                }}
+                type="button"
+              >
+                Kup Teraz
+              </button>
             </div>
           </div>
         </div>
