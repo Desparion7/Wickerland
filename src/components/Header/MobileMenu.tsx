@@ -14,10 +14,9 @@ interface PropsType {
 const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
   const navigate = useNavigate();
   const { search } = useLocation();
-  const location = useLocation();
   const queryParams = new URLSearchParams(search);
 
-  const [initialPath, setInitialPath] = useState(window.location.pathname);
+  const [initialPath] = useState(window.location.pathname);
   const [isActive, setIsActive] = useState('left');
   const [searchValue, setSearchValue] = useState('');
   const [menuAnimation, setMenuAnimation] = useState(styles.show_menu);
@@ -52,7 +51,7 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
     const newSearch = queryParams.toString();
 
     navigate({
-      pathname: location.pathname,
+      pathname: '/sklep',
       search: newSearch,
     });
     setSearchValue('');
@@ -69,6 +68,11 @@ const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
             value={searchValue}
             onChange={(e) => {
               setSearchValue(e.target.value);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                handlerSearch();
+              }
             }}
           />
           <button

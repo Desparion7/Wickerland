@@ -19,7 +19,6 @@ import { whishList } from '../../app/slices/whishListSlice';
 
 const HeaderMiddle = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
@@ -43,7 +42,7 @@ const HeaderMiddle = () => {
     const newSearch = queryParams.toString();
 
     navigate({
-      pathname: location.pathname,
+      pathname: '/sklep',
       search: newSearch,
     });
     setSearchValue('');
@@ -82,8 +81,8 @@ const HeaderMiddle = () => {
             onChange={(e) => {
               setSearchValue(e.target.value);
             }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
                 handlerSearch();
               }
             }}
