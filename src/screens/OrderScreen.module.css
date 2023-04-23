@@ -1,138 +1,149 @@
 .orderScreen {
-	display: flex;
-	flex-direction: row;
-	gap: 2em;
-	width: 100%;
-	margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  width: 100%;
+  margin: 1rem;
 }
 .orderScreen h2 {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 .orderScreen_from {
-	width: 45%;
+  width: 45%;
 }
 .orderScreen_from form {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .orderScreen_from span {
-	color: red;
+  color: red;
 }
 
 .orderScreen_from input {
-	padding: 0.3rem;
-	border: 1px solid grey;
+  padding: 0.3rem;
+  border: 1px solid grey;
+}
+input.error_input::placeholder {
+  color: var(--error-text);
+}
+input.error_input {
+  border-color: var(--error-text);
+}
+.statusError {
+  font-size: 0.8rem;
+  color: var(--error-text);
 }
 .orderScreen_from textarea {
-	max-width: 100%;
-	min-height: 100px;
-	max-height: 200px;
+  padding: 0.3rem;
+  max-width: 100%;
+  min-height: 100px;
+  max-height: 200px;
 }
 .orderScreen_order {
-	width: 40%;
+  width: 40%;
 }
 .orderScreen_order input {
-	margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 .orderScreen_order input,
 .orderScreen_order label {
-	cursor: pointer;
+  cursor: pointer;
 }
 .orderScreen_order_head {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 1rem;
-	font-size: 1rem;
-	font-weight: bold;
-	text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .orderScreen_order_body {
-	display: flex;
-	justify-content: space-between;
-	margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
 }
 .orderScreen_order_delivery {
-	margin-top: 2rem;
-	display: flex;
-	justify-content: space-between;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 .orderScreen_order_delivery h3 {
-	font-size: 1rem;
-	font-weight: bold;
-	text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .orderScreen_order_delivery_method {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	text-align: end;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: end;
 }
 .orderScreen_order_summary {
-	margin-top: 2rem;
-	display: flex;
-	justify-content: space-between;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 .orderScreen_order_summary h3 {
-	font-size: 1rem;
-	font-weight: bold;
-	text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .orderScreen_order_summary_price {
-	font-size: 1.4rem;
-	color: var(--main-background-color);
+  font-size: 1.4rem;
+  color: var(--main-background-color);
 }
 .orderScreen_order_payment {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 2em;
 }
 .orderScreen_order_payment p {
-	margin-top: 1rem;
-	font-size: 0.9rem;
-	color: gray;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: gray;
 }
 .orderScreen_order_payment h3 {
-	font-size: 1rem;
-	font-weight: bold;
-	text-transform: uppercase;
-	margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 .orderScreen_order_payment_method {
-	margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 .orderScreen_order_statute {
-	margin-top: 1rem;
-	display: flex;
-	align-items: center;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
 }
 .orderScreen_order_statute span {
-	color: red;
+  color: red;
 }
 .orderScreen_order button {
-	padding: 0.5rem 2rem;
-	width: 100%;
-	margin-top: 1rem;
-	font-size: 1rem;
-	text-transform: uppercase;
-	border: none;
-	color: var(--text-color);
-	background-color: var(--main-background-color);
-	transition: background-color 0.3s;
-	cursor: pointer;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: none;
+  color: var(--text-color);
+  background-color: var(--main-background-color);
+  transition: background-color 0.3s;
+  cursor: pointer;
 }
 .orderScreen_order button:hover {
-	background-color: var(--button-bg-hover);
+  background-color: var(--button-bg-hover);
 }
 .errorMessage {
-	font-size: 0.8rem;
-	margin: 0.5rem 0;
-	color: red;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  color: red;
 }
 @media screen and (min-width: 600px) {
-	.orderScreen {
-		margin: 2em 4em;
-	}
+  .orderScreen {
+    margin: 2em 4em;
+  }
 }
