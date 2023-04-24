@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './OrderScreen.module.css';
 import { cartItems } from '../app/slices/cartSlice';
+import useCreateOrderMutation from '../app/slices/orderApiSlice';
+import { OrderType } from '../interface/order-interface';
 
 interface FormErrors {
   name?: string;
@@ -19,6 +21,8 @@ interface FormErrors {
 const OrderScreen = () => {
   const cartProducts = useSelector(cartItems);
   const formRef = useRef<HTMLFormElement>(null);
+  const [createOrder, { isSuccess, isLoading, isError }] =
+    useCreateOrderMutation();
 
   const [customer, setCustomer] = useState<FormErrors>({
     name: '',
@@ -35,19 +39,19 @@ const OrderScreen = () => {
   const [status, setStatus] = useState(false);
   const [statusError, setStatusError] = useState(false);
 
-  const [selectedValue, setSelectedValue] = useState(
+  const [deliveryMethod, setDeliveryMethod] = useState(
     'Kurier, Pocztex: 29,00 zł'
   );
   const [paymentMethod, setPaymentMethod] = useState('Przelew bankowy');
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(e.target.value);
+    setDeliveryMethod(e.target.value);
   };
   // function to count full price
   const totalPrice = cartProducts.reduce((acc, obiekt) => {
     return acc + obiekt.qty * obiekt.price;
   }, 0);
   let totalPriceWithDelivery: number;
-  if (selectedValue === 'Kurier, Pocztex: 29,00 zł') {
+  if (deliveryMethod === 'Kurier, Pocztex: 29,00 zł') {
     totalPriceWithDelivery = totalPrice + 29;
   } else {
     totalPriceWithDelivery = totalPrice + 39;
@@ -88,42 +92,53 @@ const OrderScreen = () => {
   }, [customer]);
 
   // submit form
-  const handlerSendForm = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const validationErrors = validate();
+  const handlerSendForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const validationErrors = validate();
 
-      if (Object.keys(validationErrors).length === 0) {
-        if (!status) {
-          setStatusError(true);
-          return;
-        }
-        // send to Api
-        //  console.log({});
-        // clean inputs
-        setCustomer({
-          name: '',
-          surname: '',
-          companyName: '',
-          street: '',
-          postcode: '',
-          city: '',
-          phone: '',
-          email: '',
-          message: '',
-        });
-        // clean errors
-        setErrors({});
-      } else {
-        if (!status) {
-          setStatusError(true);
-        }
-        setErrors(validationErrors);
+    if (Object.keys(validationErrors).length === 0) {
+      if (!status) {
+        setStatusError(true);
+        return;
       }
-    },
-    [validate, status]
-  );
-
+      // send to Api
+      const response = await createOrder({
+        name: customer.name,
+        surname: customer.surname,
+        companyName: customer.companyName,
+        street: customer.street,
+        postcode: customer.postcode,
+        city: customer.city,
+        phone: customer.phone,
+        email: customer.email,
+        message: customer.message,
+        price: totalPriceWithDelivery,
+        paymentMethod,
+        deliveryMethod,
+        products: cartProducts,
+      } as OrderType);
+      console.log(response);
+      // clean inputs
+      setCustomer({
+        name: '',
+        surname: '',
+        companyName: '',
+        street: '',
+        postcode: '',
+        city: '',
+        phone: '',
+        email: '',
+        message: '',
+      });
+      // clean errors
+      setErrors({});
+    } else {
+      if (!status) {
+        setStatusError(true);
+      }
+      setErrors(validationErrors);
+    }
+  };
   // function to set change inputs value
   const handleCustomerChange = (key: string, value: string) => {
     setCustomer({ ...customer, [key]: value });
@@ -259,7 +274,7 @@ const OrderScreen = () => {
                 type="radio"
                 name="Kurier, Pocztex: 29,00 zł"
                 value="Kurier, Pocztex: 29,00 zł"
-                checked={selectedValue === 'Kurier, Pocztex: 29,00 zł'}
+                checked={deliveryMethod === 'Kurier, Pocztex: 29,00 zł'}
                 onChange={handleOptionChange}
               />
               <label htmlFor="Kurier, Pocztex: 29,00 zł">
@@ -272,7 +287,7 @@ const OrderScreen = () => {
                 type="radio"
                 name="Kurier pobranie, Pocztex 39,00 zł"
                 value="Kurier pobranie, Pocztex 39,00 zł"
-                checked={selectedValue === 'Kurier pobranie, Pocztex 39,00 zł'}
+                checked={deliveryMethod === 'Kurier pobranie, Pocztex 39,00 zł'}
                 onChange={handleOptionChange}
               />
               <label htmlFor="Kurier pobranie, Pocztex 39,00 zł">

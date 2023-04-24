@@ -10,7 +10,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // http://localhost:3000
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://comfortable-wasp-neckerchief.cyclic.app',
+  baseUrl: 'http://localhost:3000',
   // credentials: 'include',
   // prepareHeaders: (headers, { getState }) => {
   // 	const token = (getState() as StoreState).auth.token;
@@ -24,7 +24,7 @@ const baseQuery = fetchBaseQuery({
 const apiSlice = createApi({
   reducerPath: 'api', // optional
   baseQuery,
-  tagTypes: ['Products', 'Product'],
+  tagTypes: ['Products', 'Product', 'Orders'],
   endpoints: () => ({}),
 });
 export default apiSlice;

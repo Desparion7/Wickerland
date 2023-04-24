@@ -12,8 +12,8 @@ const productsApiSlice = apiSlice.injectEndpoints({
       query: ({
         pageNumber = 1,
         pageSize = 9,
-        min,
-        max,
+        min = 0,
+        max = 2000,
         category,
         subcategory,
         search,
