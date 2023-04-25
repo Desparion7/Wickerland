@@ -1,16 +1,18 @@
 .orderScreen {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   gap: 2em;
   width: 100%;
-  margin: 1rem;
+  padding: 2rem;
 }
 .orderScreen h2 {
   text-transform: uppercase;
 }
 .orderScreen_from {
-  width: 45%;
+  width: 100%;
 }
+
 .orderScreen_from form {
   width: 100%;
   display: flex;
@@ -20,7 +22,6 @@
 .orderScreen_from span {
   color: red;
 }
-
 .orderScreen_from input {
   padding: 0.3rem;
   border: 1px solid grey;
@@ -46,9 +47,7 @@ input.error_input {
   margin: 0.5rem 0;
   color: red;
 }
-.orderScreen_order {
-  width: 40%;
-}
+
 .orderScreen_order input {
   margin-right: 0.5rem;
 }
@@ -67,7 +66,12 @@ input.error_input {
 .orderScreen_order_body {
   display: flex;
   justify-content: space-between;
+  gap: 0.5rem;
   margin: 0.5rem 0;
+}
+.orderScreen_order_body_price {
+  min-width: 30%;
+  text-align: end;
 }
 .orderScreen_order_delivery {
   margin-top: 2rem;
@@ -148,7 +152,17 @@ input.error_input {
 }
 
 @media screen and (min-width: 600px) {
+}
+@media screen and (min-width: 1000px) {
   .orderScreen {
+    padding: 0;
     margin: 2em 4em;
+    flex-direction: row;
+  }
+  .orderScreen_from {
+    width: 45%;
+  }
+  .orderScreen_order {
+    width: 40%;
   }
 }

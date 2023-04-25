@@ -268,7 +268,9 @@ const OrderScreen = () => {
             <p>
               {product.name} x {product.qty} szt.
             </p>
-            <p>{(product.qty * product.price).toFixed(2)} zł</p>
+            <p className={styles.orderScreen_order_body_price}>
+              {(product.qty * product.price).toFixed(2)} zł
+            </p>
           </div>
         ))}
         <div className={styles.orderScreen_order_delivery}>
@@ -319,7 +321,7 @@ const OrderScreen = () => {
               checked={paymentMethod === 'Przelew bankowy'}
               onChange={handleChangePayment}
             />
-            <label htmlFor="Przelew bankowy">Przelew bankowy</label>
+            <label htmlFor="Przelew bankowy">Przelew tradycyjny</label>
           </div>
           <div className={styles.orderScreen_order_payment_method}>
             <input
@@ -331,7 +333,7 @@ const OrderScreen = () => {
               onChange={handleChangePayment}
             />
             <label htmlFor="Proste i łatwe płatności">
-              Proste i łatwe płatności Przelwy24
+              Przelew PayU lub Przelewy24
             </label>
           </div>
           <p>
