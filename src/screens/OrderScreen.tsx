@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './OrderScreen.module.css';
 import { cartItems } from '../app/slices/cartSlice';
-import useCreateOrderMutation from '../app/slices/orderApiSlice';
+import { useCreateOrderMutation } from '../app/slices/orderApiSlice';
 import { OrderType } from '../interface/order-interface';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
 

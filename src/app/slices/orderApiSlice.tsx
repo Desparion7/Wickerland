@@ -11,8 +11,17 @@ const orderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'Orders', id: 'LIST' }],
     }),
+    getSingleOrder: builder.query<
+      OrderResponseType,
+      { id: string | undefined }
+    >({
+      query: ({ id }) => ({
+        url: `/orders/${id}`,
+        method: 'GET',
+      }),
+      providesTags: [{ type: 'Order', id: 'LIST' }],
+    }),
   }),
 });
 
-const { useCreateOrderMutation } = orderApiSlice;
-export default useCreateOrderMutation;
+export const { useCreateOrderMutation, useGetSingleOrderQuery } = orderApiSlice;

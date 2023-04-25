@@ -4,6 +4,13 @@
   margin: 1rem;
   min-height: 53vh;
 }
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--error-text);
+}
 .paymentScreen h2 {
   text-align: center;
   color: var(--main-background-color);

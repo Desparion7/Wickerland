@@ -31,4 +31,5 @@ export interface OrderResponseType {
   price: number;
   paid: boolean;
   products: CartProduct[];
+  error?: string;
 }
