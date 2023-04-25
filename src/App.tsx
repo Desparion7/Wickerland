@@ -14,6 +14,7 @@ import StatuteSceen from './screens/StatuteSceen';
 import PolicyScreen from './screens/PolicyScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import OrderScreen from './screens/OrderScreen';
+import PaymentScreen from './screens/PaymentScreen';
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: '/zamówienie',
         element: <OrderScreen />,
+      },
+      {
+        path: '/płatność/:id',
+        element: <PaymentScreen />,
       },
       {
         path: '/ulubione',

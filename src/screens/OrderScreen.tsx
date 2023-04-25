@@ -1,6 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import { useState, useRef, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './OrderScreen.module.css';
 import { cartItems } from '../app/slices/cartSlice';
 import useCreateOrderMutation from '../app/slices/orderApiSlice';
@@ -20,10 +21,10 @@ interface FormErrors {
 }
 
 const OrderScreen = () => {
+  const navigate = useNavigate();
   const cartProducts = useSelector(cartItems);
   const formRef = useRef<HTMLFormElement>(null);
-  const [createOrder, { isSuccess, isLoading, isError }] =
-    useCreateOrderMutation();
+  const [createOrder, { isLoading, isError }] = useCreateOrderMutation();
 
   const [customer, setCustomer] = useState<FormErrors>({
     name: '',
@@ -103,7 +104,7 @@ const OrderScreen = () => {
         return;
       }
       // send to Api
-      await createOrder({
+      const response = await createOrder({
         name: customer.name,
         surname: customer.surname,
         companyName: customer.companyName,
@@ -119,6 +120,10 @@ const OrderScreen = () => {
         products: cartProducts,
       } as OrderType);
 
+      if ('data' in response) {
+        const { data } = response;
+        navigate(`/płatność/${data?._id}`);
+      }
       // clean inputs
       setCustomer({
         name: '',
