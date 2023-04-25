@@ -41,6 +41,11 @@ input.error_input {
   min-height: 100px;
   max-height: 200px;
 }
+.errorMessage {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  color: red;
+}
 .orderScreen_order {
   width: 40%;
 }
@@ -123,10 +128,10 @@ input.error_input {
   color: red;
 }
 .orderScreen_order button {
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   width: 100%;
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   border: none;
   color: var(--text-color);
@@ -137,11 +142,11 @@ input.error_input {
 .orderScreen_order button:hover {
   background-color: var(--button-bg-hover);
 }
-.errorMessage {
-  font-size: 0.8rem;
-  margin: 0.5rem 0;
+.orderScreen_order_error {
+  margin-top: 1rem;
   color: red;
 }
+
 @media screen and (min-width: 600px) {
   .orderScreen {
     margin: 2em 4em;

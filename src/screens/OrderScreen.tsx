@@ -5,6 +5,7 @@ import styles from './OrderScreen.module.css';
 import { cartItems } from '../app/slices/cartSlice';
 import useCreateOrderMutation from '../app/slices/orderApiSlice';
 import { OrderType } from '../interface/order-interface';
+import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
 
 interface FormErrors {
   name?: string;
@@ -102,7 +103,7 @@ const OrderScreen = () => {
         return;
       }
       // send to Api
-      const response = await createOrder({
+      await createOrder({
         name: customer.name,
         surname: customer.surname,
         companyName: customer.companyName,
@@ -117,7 +118,7 @@ const OrderScreen = () => {
         deliveryMethod,
         products: cartProducts,
       } as OrderType);
-      console.log(response);
+
       // clean inputs
       setCustomer({
         name: '',
@@ -355,8 +356,14 @@ const OrderScreen = () => {
           </div>
         )}
         <button type="submit" form="myForm">
-          Kupuję i płacę
+          {isLoading ? <LoadingSpinnerOnButton /> : ' Kupuję i płacę'}
         </button>
+        {isError && (
+          <div className={styles.orderScreen_order_error}>
+            Przepraszamy, ale nie udało się złożyć zamówienia z powodu błędu po
+            stronie serwera. Prosimy spróbować ponownie.
+          </div>
+        )}
       </div>
     </section>
   );
