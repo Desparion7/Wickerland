@@ -93,7 +93,7 @@ const OrderScreen = () => {
     return validationErrors;
   }, [customer]);
 
-  // submit form
+  // function to create new order
   const handlerSendForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate();

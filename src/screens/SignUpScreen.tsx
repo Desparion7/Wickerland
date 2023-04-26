@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './SignUpScreen.module.css';
-import { useSignUpMutation } from '../app/slices/usersApiSlice';
+import useSignUpMutation from '../app/slices/usersApiSlice';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
 
 interface Errors {
@@ -8,11 +8,9 @@ interface Errors {
   password?: string;
   confirmPassword?: string;
 }
-
 const SignUpScreen = () => {
-  const [addNewUser, { isLoading }] = useSignUpMutation();
+  const [addNewUser, { isSuccess, isLoading, isError }] = useSignUpMutation();
   const [toggleForm, setToggleFrom] = useState(false);
-
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
@@ -22,6 +20,11 @@ const SignUpScreen = () => {
 
   const [errors, setErrors] = useState<Errors>({});
 
+  // response from signup
+  const [responseData, setResponseData] = useState('');
+  const [responseError, setResponseError] = useState('');
+
+  // function to validate signup form
   const validateSignUp = () => {
     const validationErrors: Errors = {};
     if (!signUpEmail) {
@@ -40,19 +43,23 @@ const SignUpScreen = () => {
     }
     return validationErrors;
   };
-
+  // function to login
   const handlerLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
+  // function to signup new user
   const handlerSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validateSignUp();
     if (Object.keys(validationErrors).length === 0) {
-      const response = await addNewUser({
+      await addNewUser({
         email: signUpEmail,
         password: signUpPassword,
-      });
-      console.log(response);
+      })
+        .unwrap()
+        .then((payload) => setResponseData(payload.email))
+        .catch((error) => setResponseError(error.data.message));
+
       setLSignUpEmail('');
       setSignUpPassword('');
       setConfirmePassword('');
@@ -99,74 +106,86 @@ const SignUpScreen = () => {
       )}
       {!toggleForm && (
         <div className={styles.signUpScreen_form}>
-          <h1>Rejestracja</h1>
-          <form
-            onSubmit={(e) => {
-              handlerSignUp(e);
-            }}
-          >
-            <label htmlFor="signup_email">
-              Adres email: <span>*</span>
-            </label>
-            {errors.email === 'Nieprawidłowy adres e-mail' && (
-              <p className={styles.error_message}>Nieprawidłowy adres e-mail</p>
-            )}
-            <input
-              type="text"
-              id="signup_email"
-              value={signUpEmail}
-              onChange={(e) => {
-                setLSignUpEmail(e.target.value);
-              }}
-              className={errors.email ? styles.error_input : ''}
-              placeholder={errors.email ? errors.email : ''}
-            />
-            <label htmlFor="signup_password">
-              Hasło: <span>*</span>
-            </label>
-            {errors.password ===
-              'Hasło musi mieć minimum 8 znaków, w tym jeden znak specjalny' && (
-              <p className={styles.error_message}>
-                Hasło musi mieć minimum 8 znaków, w tym znak specjalny
-              </p>
-            )}
-            <input
-              type="password"
-              id="signup_password"
-              value={signUpPassword}
-              onChange={(e) => {
-                setSignUpPassword(e.target.value);
-              }}
-              className={errors.password ? styles.error_input : ''}
-              placeholder={errors.password ? errors.password : ''}
-            />
-            <label htmlFor="confirm_password">
-              Powtórzone hasło: <span>*</span>
-            </label>
-            {errors.confirmPassword && (
-              <p className={styles.error_message}>Hasła muszą się zgadzać</p>
-            )}
-            <input
-              type="password"
-              id="confirm_password"
-              value={confirmePassword}
-              onChange={(e) => {
-                setConfirmePassword(e.target.value);
-              }}
-            />
-            <p>
-              Na adres e-mail zostanie wysłany odnośnik do ustawienia nowego
-              hasła.
-            </p>
-            <p>
-              Twoje dane osobowe zostaną użyte do obsługi twojej wizyty na
-              naszej stronie, zarządzania dostępem do twojego konta i dla innych
-              celów o których mówi nasza polityka prywatności.
-            </p>
-            <button type="submit">
-              {isLoading ? <LoadingSpinnerOnButton /> : 'Zarejestruj się'}
-            </button>
-          </form>
+          {isSuccess ? (
+            <div className={styles.signUpScreen_form_success}>
+              Nowy użytkownik <span>{responseData}</span> został pomyśle dodany.
+              Możesz przejść do logowania
+            </div>
+          ) : (
+            <>
+              <h1>Rejestracja</h1>
+              <form
+                onSubmit={(e) => {
+                  handlerSignUp(e);
+                }}
+              >
+                <label htmlFor="signup_email">
+                  Adres email: <span>*</span>
+                </label>
+                {errors.email === 'Nieprawidłowy adres e-mail' && (
+                  <p className={styles.error_message}>
+                    Nieprawidłowy adres e-mail
+                  </p>
+                )}
+                <input
+                  type="text"
+                  id="signup_email"
+                  value={signUpEmail}
+                  onChange={(e) => {
+                    setLSignUpEmail(e.target.value);
+                  }}
+                  className={errors.email ? styles.error_input : ''}
+                  placeholder={errors.email ? errors.email : ''}
+                />
+                <label htmlFor="signup_password">
+                  Hasło: <span>*</span>
+                </label>
+                {errors.password ===
+                  'Hasło musi mieć minimum 8 znaków, w tym jeden znak specjalny' && (
+                  <p className={styles.error_message}>
+                    Hasło musi mieć minimum 8 znaków, w tym znak specjalny
+                  </p>
+                )}
+                <input
+                  type="password"
+                  id="signup_password"
+                  value={signUpPassword}
+                  onChange={(e) => {
+                    setSignUpPassword(e.target.value);
+                  }}
+                  className={errors.password ? styles.error_input : ''}
+                  placeholder={errors.password ? errors.password : ''}
+                />
+                <label htmlFor="confirm_password">
+                  Powtórzone hasło: <span>*</span>
+                </label>
+                {errors.confirmPassword && (
+                  <p className={styles.error_message}>
+                    Hasła muszą się zgadzać
+                  </p>
+                )}
+                <input
+                  type="password"
+                  id="confirm_password"
+                  value={confirmePassword}
+                  onChange={(e) => {
+                    setConfirmePassword(e.target.value);
+                  }}
+                />
+                {isError && (
+                  <div className={styles.error_message}>{responseError}</div>
+                )}
+                <p>
+                  Twoje dane osobowe zostaną użyte do obsługi twojej wizyty na
+                  naszej stronie, zarządzania dostępem do twojego konta i dla
+                  innych celów o których mówi nasza polityka prywatności.
+                </p>
+                <button type="submit">
+                  {isLoading ? <LoadingSpinnerOnButton /> : 'Zarejestruj się'}
+                </button>
+              </form>
+            </>
+          )}
         </div>
       )}
       <div className={styles.signUpScreen_toggleView}>
