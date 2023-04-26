@@ -1,89 +1,95 @@
 .signUpScreen {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	gap: 5%;
-	min-height: 60vh;
-	padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5%;
+  min-height: 60vh;
+  padding: 2rem;
 }
 .signUpScreen_form {
-	width: 100%;
-	margin-bottom: 2em;
+  width: 100%;
+  margin-bottom: 2em;
 }
 .signUpScreen_form h1 {
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 .signUpScreen_form form {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .signUpScreen_form label {
-	font-size: 1rem;
-	margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 .signUpScreen_form span {
-	color: red;
+  color: red;
 }
 .signUpScreen_form input {
-	font-size: 1rem;
-	margin-bottom: 0.5rem;
-	padding: 0.3rem;
-	border: 1px solid rgb(184, 184, 184);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
+  border: 1px solid rgb(184, 184, 184);
+}
+.error_message {
+  font-size: 0.8rem;
+  color: var(--error-text);
+}
+.error_input::placeholder {
+  color: var(--error-text);
 }
 
 .signUpScreen_form button {
-	text-transform: uppercase;
-	padding: 0.5rem 1rem;
-	font-size: 1.1rem;
-	border: none;
-	color: var(--text-color);
-	background-color: var(--main-background-color);
-	cursor: pointer;
-	transition: background-color 0.4s;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  border: none;
+  color: var(--text-color);
+  background-color: var(--main-background-color);
+  cursor: pointer;
+  transition: background-color 0.4s;
 }
 .signUpScreen_form form button {
-	margin-top: 2rem;
+  margin-top: 2rem;
 }
 .signUpScreen_form button:hover {
-	background-color: var(--button-bg-hover);
+  background-color: var(--button-bg-hover);
 }
 .signUpScreen_form_restore {
-	margin-top: 1rem;
-	text-align: center;
-	font-size: 1rem;
-	color: var(--main-background-color);
-	cursor: pointer;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--main-background-color);
+  cursor: pointer;
 }
 .signUpScreen_toggleView {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 .signUpScreen_toggleView button {
-	font-size: 1rem;
-	text-transform: uppercase;
-	margin-bottom: 2rem;
-	padding: 1rem;
-	border: none;
-	border: 1px solid rgb(170, 168, 168);
-	cursor: pointer;
-	background-color: transparent;
-	transition: background-color 0.4s;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: none;
+  border: 1px solid rgb(170, 168, 168);
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.4s;
 }
 .signUpScreen_toggleView button:hover {
-	background-color: rgb(214, 213, 213);
+  background-color: rgb(214, 213, 213);
 }
 
 @media screen and (min-width: 600px) {
-	.signUpScreen {
-		flex-direction: row;
-	}
-	.signUpScreen_form {
-		width: 40%;
-	}
-	.signUpScreen_toggleView {
-		width: 40%;
-	}
+  .signUpScreen {
+    flex-direction: row;
+  }
+  .signUpScreen_form {
+    width: 40%;
+  }
+  .signUpScreen_toggleView {
+    width: 40%;
+  }
 }
