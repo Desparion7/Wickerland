@@ -10,7 +10,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // http://localhost:3000
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://comfortable-wasp-neckerchief.cyclic.app',
   // credentials: 'include',
   // prepareHeaders: (headers, { getState }) => {
   // 	const token = (getState() as StoreState).auth.token;
