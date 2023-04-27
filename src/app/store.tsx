@@ -6,8 +6,10 @@ import shopViewSlice from './slices/shopViewSlice';
 import slideMenuSlice from './slices/slideMenuSlice';
 import cartSlice from './slices/cartSlice';
 import whishListSlice, { WhishListState } from './slices/whishListSlice';
+import authSlice, { AuthState } from './slices/authSlice';
 
 export interface State {
+  auth: AuthState;
   cart: RootState;
   whishList: WhishListState;
   shopView: {
@@ -22,6 +24,7 @@ export interface State {
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    auth: authSlice /* autentication for keep access token */,
     cart: cartSlice /* products in cart */,
     whishList: whishListSlice /* products in whishlist */,
     shopView:
