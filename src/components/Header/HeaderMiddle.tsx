@@ -16,6 +16,7 @@ import {
 } from '../../app/slices/slideMenuSlice';
 import { cartItems } from '../../app/slices/cartSlice';
 import { whishList } from '../../app/slices/whishListSlice';
+import useAuthToken from '../../hooks/useAuthToken';
 
 const HeaderMiddle = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const HeaderMiddle = () => {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
 
+  const { email } = useAuthToken();
   const isDesktop = useMediaQuery({ minWidth: '1000px' });
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -112,7 +114,7 @@ const HeaderMiddle = () => {
             role="button"
             tabIndex={0}
           >
-            Logowanie/Rejestracja
+            {email || 'Logowanie / Rejestracja'}
           </div>
         )}
         <div className={styles.headerMiddle__options_icons}>

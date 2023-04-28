@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styles from './SignUp.Login.module.css';
 import { useLoginMutation } from '../../app/slices/authApiSlice';
 import { setCredentials } from '../../app/slices/authSlice';
@@ -12,11 +13,13 @@ interface Errors {
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, isError }] = useLoginMutation();
 
   const [errors, setErrors] = useState<Errors>({});
+  const [responseError, setResponseError] = useState('');
 
   // function to validate
   const validateLogin = () => {
@@ -34,12 +37,21 @@ const Login = () => {
   const handlerLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validateLogin();
+    setResponseError('');
     if (Object.keys(validationErrors).length === 0) {
-      const { accessToken } = await login({
+      await login({
         email: loginEmail,
         password: loginPassword,
-      }).unwrap();
-      dispatch(setCredentials({ accessToken }));
+      })
+        .unwrap()
+        .then((payload) => {
+          const { accessToken } = payload;
+          dispatch(setCredentials({ accessToken }));
+          if (accessToken) {
+            navigate('/sklep');
+          }
+        })
+        .catch((error) => setResponseError(error.data.message));
 
       setLoginEmail('');
       setLoginPassword('');
@@ -77,6 +89,14 @@ const Login = () => {
           className={errors.email ? styles.error_input : ''}
           placeholder={errors.email ? errors.email : ''}
         />
+        {responseError && (
+          <div className={styles.error_message}>{responseError}</div>
+        )}
+        {isError && responseError === '' && (
+          <div className={styles.error_message}>
+            Przepraszamy, ale wystąpił problem z połączeniem z serwerem
+          </div>
+        )}
         <button type="submit">
           {isLoading ? <LoadingSpinnerOnButton /> : 'Zaloguj się'}
         </button>
