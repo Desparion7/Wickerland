@@ -19,9 +19,10 @@ export const authApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
+          // clean token
           dispatch(logOut());
-
-          dispatch(apiSlice.util.resetApiState());
+          // reset user state
+          dispatch(apiSlice.util.invalidateTags(['User']));
         } catch (err) {
           //   console.log(err);
         }

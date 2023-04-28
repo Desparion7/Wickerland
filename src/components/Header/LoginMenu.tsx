@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { RiCloseFill } from 'react-icons/ri';
 import styles from './LoginMenu.module.css';
 import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
-import { useLoginMutation } from '../../app/slices/authApiSlice';
+import {
+  useLoginMutation,
+  useSendLogoutMutation,
+} from '../../app/slices/authApiSlice';
 import { setCredentials } from '../../app/slices/authSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 import useAuthToken from '../../hooks/useAuthToken';
@@ -22,6 +25,7 @@ const LoginMenu = () => {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [login, { isLoading, isError }] = useLoginMutation();
+  const [logout, { isLoading: logoutLoading }] = useSendLogoutMutation();
 
   const [errors, setErrors] = useState<Errors>({});
   const [responseError, setResponseError] = useState('');
@@ -69,6 +73,7 @@ const LoginMenu = () => {
       setErrors(validationErrors);
     }
   };
+
   return (
     <div className={styles.loginMenu}>
       <div className={`${styles.loginMenu__main} ${cartAnimation}`}>
@@ -131,8 +136,8 @@ const LoginMenu = () => {
             </>
           )}
           {email ? (
-            <button type="button">
-              {isLoading ? <LoadingSpinnerOnButton /> : ' Wyloguj się'}
+            <button type="button" onClick={logout}>
+              {logoutLoading ? <LoadingSpinnerOnButton /> : ' Wyloguj się'}
             </button>
           ) : (
             <button type="button" onClick={handlerLogin}>
