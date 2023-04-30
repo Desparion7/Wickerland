@@ -51,9 +51,16 @@ const cartSlice = createSlice({
         existItem.qty = action.payload.qty;
       }
     },
+    emptyCart(state) {
+      return {
+        ...state,
+        cartItems: [],
+      };
+    },
   },
 });
 export default cartSlice.reducer;
 
-export const { addItem, removeItem, changeItemQty } = cartSlice.actions;
+export const { addItem, removeItem, changeItemQty, emptyCart } =
+  cartSlice.actions;
 export const cartItems = (state: State) => state.cart.cartItems;

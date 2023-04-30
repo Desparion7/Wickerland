@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import { useState, useRef, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './OrderScreen.module.css';
-import { cartItems } from '../app/slices/cartSlice';
+import { cartItems, emptyCart } from '../app/slices/cartSlice';
 import { useCreateOrderMutation } from '../app/slices/orderApiSlice';
 import { OrderType } from '../interface/order-interface';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
@@ -22,6 +22,7 @@ interface FormErrors {
 
 const OrderScreen = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cartProducts = useSelector(cartItems);
   const formRef = useRef<HTMLFormElement>(null);
   const [createOrder, { isLoading, isError }] = useCreateOrderMutation();
@@ -122,6 +123,7 @@ const OrderScreen = () => {
 
       if ('data' in response) {
         const { data } = response;
+        dispatch(emptyCart());
         navigate(`/płatność/${data?._id}`);
       }
       // clean inputs
