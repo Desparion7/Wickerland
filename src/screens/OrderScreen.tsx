@@ -7,6 +7,7 @@ import { cartItems, emptyCart } from '../app/slices/cartSlice';
 import { useCreateOrderMutation } from '../app/slices/orderApiSlice';
 import { OrderType } from '../interface/order-interface';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
+import { store } from '../app/store';
 
 interface FormErrors {
   name?: string;
@@ -124,6 +125,10 @@ const OrderScreen = () => {
       if ('data' in response) {
         const { data } = response;
         dispatch(emptyCart());
+        localStorage.setItem(
+          'cartItems',
+          JSON.stringify(store.getState().cart)
+        );
         navigate(`/płatność/${data?._id}`);
       }
       // clean inputs
