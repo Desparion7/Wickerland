@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './OrderScreen.module.css';
@@ -50,6 +50,13 @@ const OrderScreen = () => {
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDeliveryMethod(e.target.value);
   };
+  // If cart is empty no access to order screen
+  useEffect(() => {
+    if (cartProducts.length === 0) {
+      navigate('/');
+    }
+  }, [cartProducts, navigate]);
+
   // function to count full price
   const totalPrice = cartProducts.reduce((acc, obiekt) => {
     return acc + obiekt.qty * obiekt.price;
