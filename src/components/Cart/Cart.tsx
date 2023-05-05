@@ -85,16 +85,18 @@ const Cart = () => {
           >
             Zobacz koszyk
           </button>
-          <button
-            type="button"
-            className={styles.cart__main_bottom_order}
-            onClick={() => {
-              navigate('/zamówienie');
-              handlerHideMenu();
-            }}
-          >
-            Zamówienie
-          </button>
+          {!(cartProducts.length === 0) && (
+            <button
+              type="button"
+              className={styles.cart__main_bottom_order}
+              onClick={() => {
+                navigate('/zamówienie');
+                handlerHideMenu();
+              }}
+            >
+              Zamówienie
+            </button>
+          )}
         </div>
       </div>
       <div
