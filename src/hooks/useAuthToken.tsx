@@ -8,16 +8,13 @@ interface TokenType {
     email: string;
   };
 }
-
 const useAuthToken = () => {
   const token = useSelector(currentToken);
   // const token = useSelector((state: any) => state.auth.token);
 
   if (token) {
     const decoded = jwtDecode(token) as TokenType;
-
     const { id, email } = decoded.UserInfo;
-
     return { id, email };
   }
   return { id: '', email: '' };

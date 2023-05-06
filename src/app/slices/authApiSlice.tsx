@@ -1,15 +1,30 @@
 import apiSlice from '../api/apiSlice';
-import { UserLogin } from '../../interface/user-interface';
+import { UserLogin, UserResponseLogin } from '../../interface/user-interface';
 import { logOut, setCredentials } from './authSlice';
+import { updateCart } from './cartSlice';
+import { store } from '../store';
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<{ accessToken: string }, UserLogin>({
+    login: builder.mutation<UserResponseLogin, UserLogin>({
       query: (data) => ({
         url: '/users/login',
         method: 'POST',
         body: { ...data },
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          const { cart } = data;
+          dispatch(updateCart(cart));
+          localStorage.setItem(
+            'cartItems',
+            JSON.stringify(store.getState().cart)
+          );
+        } catch (err) {
+          //   console.log(err);
+        }
+      },
     }),
     sendLogout: builder.mutation({
       query: () => ({

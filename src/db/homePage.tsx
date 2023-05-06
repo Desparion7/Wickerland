@@ -25,7 +25,7 @@ export const homeBasket = [
     pid: 'k-1-3',
     name: 'Koszyk wielkanocny',
     category: 'koszyki',
-    amount: 10,
+    amount: 0,
     price: 55,
     img: [
       '/products/koszyki/koszyk1-3.PNG',
