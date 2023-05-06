@@ -10,7 +10,7 @@ interface Errors {
 }
 
 const SignUp = () => {
-  const [addNewUser, { isSuccess, isLoading, isError }] = useSignUpMutation();
+  const [addNewUser, { isSuccess, isLoading }] = useSignUpMutation();
 
   const [signUpEmail, setLSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
@@ -52,7 +52,13 @@ const SignUp = () => {
       })
         .unwrap()
         .then((payload) => setResponseData(payload.email))
-        .catch((error) => setResponseError(error.data.message));
+        .catch((error) => {
+          if (error?.data?.message) {
+            setResponseError(error.data.message);
+          } else {
+            setResponseError('Problem połączenia z serwerem');
+          }
+        });
 
       setLSignUpEmail('');
       setSignUpPassword('');
@@ -126,7 +132,7 @@ const SignUp = () => {
                 setConfirmePassword(e.target.value);
               }}
             />
-            {isError && (
+            {responseError && (
               <div className={styles.error_message}>{responseError}</div>
             )}
             <p>
