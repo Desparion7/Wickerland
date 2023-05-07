@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import styles from './CartItemSmall.module.css';
 import { removeItem, CartProduct } from '../../app/slices/cartSlice';
 import { store } from '../../app/store';
+import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
 
 interface PropsType {
   product: CartProduct;
@@ -11,6 +12,8 @@ interface PropsType {
 function CartItemSmall({ product, handlerHideMenu }: PropsType) {
   const navigation = useNavigate();
   const dispatch = useDispatch();
+
+  const [updateCart] = useUpdateUserCartMutation();
 
   const handelNavigation = (id: string, category: string) => {
     navigation(`/produkt/${category}/${id}`);
@@ -70,10 +73,8 @@ function CartItemSmall({ product, handlerHideMenu }: PropsType) {
       <button
         onClick={() => {
           dispatch(removeItem(product?.pid));
-          localStorage.setItem(
-            'cartItems',
-            JSON.stringify(store.getState().cart)
-          );
+          const newCart = { ...store.getState().cart };
+          updateCart(newCart.cartItems);
         }}
         type="button"
       >

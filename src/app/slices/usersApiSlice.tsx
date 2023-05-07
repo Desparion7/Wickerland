@@ -1,5 +1,7 @@
 import apiSlice from '../api/apiSlice';
 import { UserSignUp, UserResponseSignUp } from '../../interface/user-interface';
+import { CartProduct } from './cartSlice';
+import { store } from '../store';
 
 const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -14,8 +16,23 @@ const usersApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'User', id: 'LIST' }],
     }),
+    updateUserCart: builder.mutation<CartProduct[], CartProduct[]>({
+      query: (cart) => ({
+        url: '/users/cart',
+        method: 'PATCH',
+        body: {
+          cart,
+        },
+      }),
+      async onQueryStarted() {
+        localStorage.setItem(
+          'cartItems',
+          JSON.stringify(store.getState().cart)
+        );
+      },
+      invalidatesTags: [{ type: 'User', id: 'LIST' }],
+    }),
   }),
 });
 
-const { useSignUpMutation } = usersApiSlice;
-export default useSignUpMutation;
+export const { useSignUpMutation, useUpdateUserCartMutation } = usersApiSlice;

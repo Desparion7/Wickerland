@@ -132,6 +132,7 @@
 }
 .previewModal_main_product_info_buy_cart_btnAdd {
 	text-transform: uppercase;
+	min-width: 150px;
 	margin-left: 1rem;
 	padding: 0.5rem 1rem;
 	border: none;

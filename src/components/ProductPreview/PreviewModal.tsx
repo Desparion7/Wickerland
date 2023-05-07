@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import ReactDOM from 'react-dom';
 import { useState, useEffect } from 'react';
@@ -15,6 +16,8 @@ import {
   whishListRemoveItem,
   whishList,
 } from '../../app/slices/whishListSlice';
+import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 
 interface PropsType {
   setShowPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,6 +40,8 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
     (obj) => obj.pid === product.pid
   );
 
+  const [updateCart, { isLoading: addCartLoading, isSuccess: addCartSuccess }] =
+    useUpdateUserCartMutation();
   // useEffect to close full screen img on ESC
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -69,10 +74,17 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
         img: product.img,
       })
     );
-    dispatch(toggleCartMenu(true));
-    localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
-    setShowPreviewModal(false);
+    const newCart = { ...store.getState().cart };
+    updateCart(newCart.cartItems);
   };
+  // Open cart slide menu if successed add on backend
+  useEffect(() => {
+    if (addCartSuccess) {
+      dispatch(toggleCartMenu(true));
+      setShowPreviewModal(false);
+    }
+  }, [addCartSuccess, setShowPreviewModal, dispatch]);
+
   const handlerAddToWhishList = () => {
     dispatch(
       whishListAddItem({
@@ -191,7 +203,11 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
                     onClick={handlerAddToCart}
                     type="button"
                   >
-                    Dodaj do koszyka
+                    {addCartLoading ? (
+                      <LoadingSpinnerOnButton />
+                    ) : (
+                      'Dodaj do koszyka'
+                    )}
                   </button>
                 </div>
               </>

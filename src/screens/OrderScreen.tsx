@@ -8,6 +8,7 @@ import { useCreateOrderMutation } from '../app/slices/orderApiSlice';
 import { OrderType } from '../interface/order-interface';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
 import { store } from '../app/store';
+import { useUpdateUserCartMutation } from '../app/slices/usersApiSlice';
 
 interface FormErrors {
   name?: string;
@@ -27,6 +28,7 @@ const OrderScreen = () => {
   const cartProducts = useSelector(cartItems);
   const formRef = useRef<HTMLFormElement>(null);
   const [createOrder, { isLoading, isError }] = useCreateOrderMutation();
+  const [updateCart] = useUpdateUserCartMutation();
 
   const [customer, setCustomer] = useState<FormErrors>({
     name: '',
@@ -132,10 +134,8 @@ const OrderScreen = () => {
       if ('data' in response) {
         const { data } = response;
         dispatch(emptyCart());
-        localStorage.setItem(
-          'cartItems',
-          JSON.stringify(store.getState().cart)
-        );
+        const newCart = { ...store.getState().cart };
+        updateCart(newCart.cartItems);
         navigate(`/płatność/${data?._id}`);
       }
       // clean inputs

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,8 @@ import {
   whishListAddItem,
   whishListRemoveItem,
 } from '../../app/slices/whishListSlice';
+import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
+import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
 
 export interface ProductType {
   product: {
@@ -34,6 +36,8 @@ const AboutProduct = ({ product }: ProductType) => {
   const isAddToWishList = wishListProducts.find(
     (obj) => obj.pid === product.pid
   );
+  const [updateCart, { isLoading: addCartLoading, isSuccess: addCartSuccess }] =
+    useUpdateUserCartMutation();
 
   const handlerAddToCart = () => {
     dispatch(
@@ -48,8 +52,15 @@ const AboutProduct = ({ product }: ProductType) => {
       })
     );
     dispatch(toggleCartMenu(true));
-    localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
+    const newCart = { ...store.getState().cart };
+    updateCart(newCart.cartItems);
   };
+  // Open cart slide menu if successed add on backend
+  useEffect(() => {
+    if (addCartSuccess) {
+      dispatch(toggleCartMenu(true));
+    }
+  }, [addCartSuccess, dispatch]);
 
   const handlerAddToWhishList = () => {
     dispatch(
@@ -139,7 +150,11 @@ const AboutProduct = ({ product }: ProductType) => {
                 onClick={handlerAddToCart}
                 type="button"
               >
-                Dodaj do koszyka
+                {addCartLoading ? (
+                  <LoadingSpinnerOnButton />
+                ) : (
+                  ' Dodaj do koszyka'
+                )}
               </button>
             </div>
           </>

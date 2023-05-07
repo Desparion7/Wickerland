@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './SignUp.Login.module.css';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
-import useSignUpMutation from '../../app/slices/usersApiSlice';
+import { useSignUpMutation } from '../../app/slices/usersApiSlice';
 
 interface Errors {
   email?: string;

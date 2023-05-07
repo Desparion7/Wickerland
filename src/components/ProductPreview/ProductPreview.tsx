@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BsSearch, BsHeart, BsHeartFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,8 @@ import {
   whishListAddItem,
   whishListRemoveItem,
 } from '../../app/slices/whishListSlice';
+import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 
 interface PropsType {
   product: {
@@ -37,6 +39,9 @@ const ProductPreview = ({ product, grid }: PropsType) => {
     (obj) => obj.pid === product.pid
   );
 
+  const [updateCart, { isLoading: addCartLoading, isSuccess: addCartSuccess }] =
+    useUpdateUserCartMutation();
+
   const handelNavigation = (id: string, category: string) => {
     navigation(`/produkt/${category}/${id}`);
   };
@@ -53,9 +58,15 @@ const ProductPreview = ({ product, grid }: PropsType) => {
         img: product.img,
       })
     );
-    dispatch(toggleCartMenu(true));
-    localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
+    const newCart = { ...store.getState().cart };
+    updateCart(newCart.cartItems);
   };
+  // Open cart slide menu if successed add on backend
+  useEffect(() => {
+    if (addCartSuccess) {
+      dispatch(toggleCartMenu(true));
+    }
+  }, [addCartSuccess, setShowPreviewModal, dispatch]);
   const handlerAddToWhishList = () => {
     dispatch(
       whishListAddItem({
@@ -231,7 +242,11 @@ const ProductPreview = ({ product, grid }: PropsType) => {
                     tabIndex={0}
                     role="button"
                   >
-                    <p>Dodaj do koszyka</p>
+                    {addCartLoading ? (
+                      <LoadingSpinnerOnButton />
+                    ) : (
+                      <p>Dodaj do koszyka</p>
+                    )}
                   </div>
                 ) : (
                   <span>Brak na magazynie</span>

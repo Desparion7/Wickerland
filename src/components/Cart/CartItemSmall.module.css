@@ -6,6 +6,12 @@
   padding: 1rem 0 0.5rem;
   border-bottom: 1px solid var(--border-color);
 }
+.cartItemSmall p {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-left: 2rem;
+}
 .cartItemSmall_img {
   width: 25%;
   height: 100%;

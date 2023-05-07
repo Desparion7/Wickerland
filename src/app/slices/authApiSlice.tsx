@@ -14,6 +14,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
+          // update cart from backend
           const { data } = await queryFulfilled;
           const { cart } = data;
           dispatch(updateCart(cart));

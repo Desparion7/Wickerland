@@ -10,6 +10,7 @@ import {
 } from '../../app/slices/cartSlice';
 import { store } from '../../app/store';
 import styles from './CartScreenItem.module.css';
+import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
 
 const CartScreenItem = ({ product }: { product: CartProduct }) => {
   const navigation = useNavigate();
@@ -17,6 +18,7 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
   const isDesktop = useMediaQuery({ minWidth: '1000px' });
 
   const [productAmount, setProductAmount] = useState(product?.qty);
+  const [updateCart] = useUpdateUserCartMutation();
 
   const handelNavigation = (id: string, category: string) => {
     navigation(`/produkt/${category}/${id}`);
@@ -28,10 +30,8 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
           <button
             onClick={() => {
               dispatch(removeItem(product?.pid));
-              localStorage.setItem(
-                'cartItems',
-                JSON.stringify(store.getState().cart)
-              );
+              const newCart = { ...store.getState().cart };
+              updateCart(newCart.cartItems);
             }}
             type="button"
           >
@@ -80,10 +80,8 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
           <button
             onClick={() => {
               dispatch(removeItem(product?.pid));
-              localStorage.setItem(
-                'cartItems',
-                JSON.stringify(store.getState().cart)
-              );
+              const newCart = { ...store.getState().cart };
+              updateCart(newCart.cartItems);
             }}
             type="button"
           >
@@ -107,10 +105,8 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount - 1,
                     })
                   );
-                  localStorage.setItem(
-                    'cartItems',
-                    JSON.stringify(store.getState().cart)
-                  );
+                  const newCart = { ...store.getState().cart };
+                  updateCart(newCart.cartItems);
                   setProductAmount(productAmount - 1);
                 }
               }}
@@ -139,10 +135,8 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount + 1,
                     })
                   );
-                  localStorage.setItem(
-                    'cartItems',
-                    JSON.stringify(store.getState().cart)
-                  );
+                  const newCart = { ...store.getState().cart };
+                  updateCart(newCart.cartItems);
                   setProductAmount(productAmount + 1);
                 }
               }}
@@ -172,10 +166,8 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount - 1,
                     })
                   );
-                  localStorage.setItem(
-                    'cartItems',
-                    JSON.stringify(store.getState().cart)
-                  );
+                  const newCart = { ...store.getState().cart };
+                  updateCart(newCart.cartItems);
                   setProductAmount(productAmount - 1);
                 }
               }}
@@ -204,10 +196,8 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount + 1,
                     })
                   );
-                  localStorage.setItem(
-                    'cartItems',
-                    JSON.stringify(store.getState().cart)
-                  );
+                  const newCart = { ...store.getState().cart };
+                  updateCart(newCart.cartItems);
                   setProductAmount(productAmount + 1);
                 }
               }}
