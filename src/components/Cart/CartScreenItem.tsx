@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { RxCross2 } from 'react-icons/rx';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   changeItemQty,
@@ -11,10 +11,12 @@ import {
 import { store } from '../../app/store';
 import styles from './CartScreenItem.module.css';
 import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+import { currentToken } from '../../app/slices/authSlice';
 
 const CartScreenItem = ({ product }: { product: CartProduct }) => {
   const navigation = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(currentToken);
   const isDesktop = useMediaQuery({ minWidth: '1000px' });
 
   const [productAmount, setProductAmount] = useState(product?.qty);
@@ -30,8 +32,15 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
           <button
             onClick={() => {
               dispatch(removeItem(product?.pid));
-              const newCart = { ...store.getState().cart };
-              updateCart(newCart.cartItems);
+              if (token) {
+                const newCart = { ...store.getState().cart };
+                updateCart(newCart.cartItems);
+              } else {
+                localStorage.setItem(
+                  'cartItems',
+                  JSON.stringify(store.getState().cart)
+                );
+              }
             }}
             type="button"
           >
@@ -80,8 +89,15 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
           <button
             onClick={() => {
               dispatch(removeItem(product?.pid));
-              const newCart = { ...store.getState().cart };
-              updateCart(newCart.cartItems);
+              if (token) {
+                const newCart = { ...store.getState().cart };
+                updateCart(newCart.cartItems);
+              } else {
+                localStorage.setItem(
+                  'cartItems',
+                  JSON.stringify(store.getState().cart)
+                );
+              }
             }}
             type="button"
           >
@@ -105,8 +121,15 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount - 1,
                     })
                   );
-                  const newCart = { ...store.getState().cart };
-                  updateCart(newCart.cartItems);
+                  if (token) {
+                    const newCart = { ...store.getState().cart };
+                    updateCart(newCart.cartItems);
+                  } else {
+                    localStorage.setItem(
+                      'cartItems',
+                      JSON.stringify(store.getState().cart)
+                    );
+                  }
                   setProductAmount(productAmount - 1);
                 }
               }}
@@ -135,8 +158,15 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount + 1,
                     })
                   );
-                  const newCart = { ...store.getState().cart };
-                  updateCart(newCart.cartItems);
+                  if (token) {
+                    const newCart = { ...store.getState().cart };
+                    updateCart(newCart.cartItems);
+                  } else {
+                    localStorage.setItem(
+                      'cartItems',
+                      JSON.stringify(store.getState().cart)
+                    );
+                  }
                   setProductAmount(productAmount + 1);
                 }
               }}
@@ -166,8 +196,15 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount - 1,
                     })
                   );
-                  const newCart = { ...store.getState().cart };
-                  updateCart(newCart.cartItems);
+                  if (token) {
+                    const newCart = { ...store.getState().cart };
+                    updateCart(newCart.cartItems);
+                  } else {
+                    localStorage.setItem(
+                      'cartItems',
+                      JSON.stringify(store.getState().cart)
+                    );
+                  }
                   setProductAmount(productAmount - 1);
                 }
               }}
@@ -196,8 +233,15 @@ const CartScreenItem = ({ product }: { product: CartProduct }) => {
                       qty: productAmount + 1,
                     })
                   );
-                  const newCart = { ...store.getState().cart };
-                  updateCart(newCart.cartItems);
+                  if (token) {
+                    const newCart = { ...store.getState().cart };
+                    updateCart(newCart.cartItems);
+                  } else {
+                    localStorage.setItem(
+                      'cartItems',
+                      JSON.stringify(store.getState().cart)
+                    );
+                  }
                   setProductAmount(productAmount + 1);
                 }
               }}

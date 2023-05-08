@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './CartItemSmall.module.css';
 import { removeItem, CartProduct } from '../../app/slices/cartSlice';
 import { store } from '../../app/store';
 import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+import { currentToken } from '../../app/slices/authSlice';
 
 interface PropsType {
   product: CartProduct;
@@ -12,7 +13,7 @@ interface PropsType {
 function CartItemSmall({ product, handlerHideMenu }: PropsType) {
   const navigation = useNavigate();
   const dispatch = useDispatch();
-
+  const token = useSelector(currentToken);
   const [updateCart] = useUpdateUserCartMutation();
 
   const handelNavigation = (id: string, category: string) => {
@@ -73,8 +74,15 @@ function CartItemSmall({ product, handlerHideMenu }: PropsType) {
       <button
         onClick={() => {
           dispatch(removeItem(product?.pid));
-          const newCart = { ...store.getState().cart };
-          updateCart(newCart.cartItems);
+          if (token) {
+            const newCart = { ...store.getState().cart };
+            updateCart(newCart.cartItems);
+          } else {
+            localStorage.setItem(
+              'cartItems',
+              JSON.stringify(store.getState().cart)
+            );
+          }
         }}
         type="button"
       >

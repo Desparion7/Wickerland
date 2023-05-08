@@ -12,6 +12,7 @@ import {
   whishListAddItem,
   whishListRemoveItem,
 } from '../../app/slices/whishListSlice';
+import { currentToken } from '../../app/slices/authSlice';
 import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 
@@ -31,6 +32,7 @@ interface PropsType {
 const ProductPreview = ({ product, grid }: PropsType) => {
   const navigation = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(currentToken);
   const [isFocus, setIsFocus] = useState(false);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
 
@@ -58,8 +60,13 @@ const ProductPreview = ({ product, grid }: PropsType) => {
         img: product.img,
       })
     );
-    const newCart = { ...store.getState().cart };
-    updateCart(newCart.cartItems);
+    if (token) {
+      const newCart = { ...store.getState().cart };
+      updateCart(newCart.cartItems);
+    } else {
+      localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
+      dispatch(toggleCartMenu(true));
+    }
   };
   // Open cart slide menu if successed add on backend
   useEffect(() => {

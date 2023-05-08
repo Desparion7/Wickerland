@@ -16,6 +16,7 @@ import {
   whishListRemoveItem,
   whishList,
 } from '../../app/slices/whishListSlice';
+import { currentToken } from '../../app/slices/authSlice';
 import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 
@@ -34,6 +35,7 @@ interface PropsType {
 const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
   const navigation = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(currentToken);
   const [productAmount, setProductAmount] = useState(1);
   const wishListProducts = useSelector(whishList);
   const isAddToWishList = wishListProducts.find(
@@ -74,8 +76,14 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
         img: product.img,
       })
     );
-    const newCart = { ...store.getState().cart };
-    updateCart(newCart.cartItems);
+    if (token) {
+      const newCart = { ...store.getState().cart };
+      updateCart(newCart.cartItems);
+    } else {
+      localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
+      dispatch(toggleCartMenu(true));
+      setShowPreviewModal(false);
+    }
   };
   // Open cart slide menu if successed add on backend
   useEffect(() => {

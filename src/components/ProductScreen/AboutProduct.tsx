@@ -14,6 +14,7 @@ import {
 } from '../../app/slices/whishListSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+import { currentToken } from '../../app/slices/authSlice';
 
 export interface ProductType {
   product: {
@@ -31,6 +32,7 @@ export interface ProductType {
 
 const AboutProduct = ({ product }: ProductType) => {
   const dispatch = useDispatch();
+  const token = useSelector(currentToken);
   const [productAmount, setProductAmount] = useState(1);
   const wishListProducts = useSelector(whishList);
   const isAddToWishList = wishListProducts.find(
@@ -51,9 +53,13 @@ const AboutProduct = ({ product }: ProductType) => {
         img: product.img,
       })
     );
-    dispatch(toggleCartMenu(true));
-    const newCart = { ...store.getState().cart };
-    updateCart(newCart.cartItems);
+    if (token) {
+      const newCart = { ...store.getState().cart };
+      updateCart(newCart.cartItems);
+    } else {
+      localStorage.setItem('cartItems', JSON.stringify(store.getState().cart));
+      dispatch(toggleCartMenu(true));
+    }
   };
   // Open cart slide menu if successed add on backend
   useEffect(() => {
