@@ -1,7 +1,7 @@
 import apiSlice from '../api/apiSlice';
 import { UserLogin, UserResponseLogin } from '../../interface/user-interface';
 import { logOut, setCredentials } from './authSlice';
-import { updateCart } from './cartSlice';
+import { updateCart, emptyCart } from './cartSlice';
 import { store } from '../store';
 
 export const authApiSlice = apiSlice.injectEndpoints({
@@ -14,7 +14,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
-          // update cart from backend
+          // update cart from backend state
           const { data } = await queryFulfilled;
           const { cart } = data;
           dispatch(updateCart(cart));
@@ -37,6 +37,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
           await queryFulfilled;
           // clean token
           dispatch(logOut());
+          // clean cart local sotrage
+          dispatch(emptyCart());
+          localStorage.setItem(
+            'cartItems',
+            JSON.stringify(store.getState().cart)
+          );
           // reset user state
           dispatch(apiSlice.util.invalidateTags(['User']));
         } catch (err) {
