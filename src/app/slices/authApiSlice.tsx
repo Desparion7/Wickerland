@@ -2,6 +2,7 @@ import apiSlice from '../api/apiSlice';
 import { UserLogin, UserResponseLogin } from '../../interface/user-interface';
 import { logOut, setCredentials } from './authSlice';
 import { updateCart, emptyCart } from './cartSlice';
+import { updateWishList, emptyWishList } from './wishListSlice';
 import { store } from '../store';
 
 export const authApiSlice = apiSlice.injectEndpoints({
@@ -14,13 +15,18 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
-          // update cart from backend state
+          // update cart and wishlist from backend state
           const { data } = await queryFulfilled;
-          const { cart } = data;
+          const { cart, wishlist } = data;
           dispatch(updateCart(cart));
+          dispatch(updateWishList(wishlist));
           localStorage.setItem(
             'cartItems',
             JSON.stringify(store.getState().cart)
+          );
+          localStorage.setItem(
+            'wishListItems',
+            JSON.stringify(store.getState().wishList)
           );
         } catch (err) {
           //   console.log(err);
@@ -37,11 +43,16 @@ export const authApiSlice = apiSlice.injectEndpoints({
           await queryFulfilled;
           // clean token
           dispatch(logOut());
-          // clean cart local sotrage
+          // clean cart and wishlist local sotrage
           dispatch(emptyCart());
+          dispatch(emptyWishList());
           localStorage.setItem(
             'cartItems',
             JSON.stringify(store.getState().cart)
+          );
+          localStorage.setItem(
+            'wishListItems',
+            JSON.stringify(store.getState().wishList)
           );
           // reset user state
           dispatch(apiSlice.util.invalidateTags(['User']));

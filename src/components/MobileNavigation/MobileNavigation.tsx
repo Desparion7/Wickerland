@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './MobileNavigation.module.css';
 import { cartItems } from '../../app/slices/cartSlice';
-import { whishList } from '../../app/slices/whishListSlice';
+import { wishList } from '../../app/slices/wishListSlice';
 import {
   toggleCartMenu,
   toggleLoginMenuView,
@@ -15,7 +15,7 @@ import {
 const MobileNavigation = () => {
   const dispatch = useDispatch();
   const cartProducts = useSelector(cartItems);
-  const whishListProducts = useSelector(whishList);
+  const wishListProducts = useSelector(wishList);
 
   return (
     <nav className={styles.mobileNavigation}>
@@ -25,7 +25,7 @@ const MobileNavigation = () => {
       </Link>
       <Link to="/ulubione" className={styles.mobileNavigation_iconBox}>
         <VscHeart />
-        <span>{whishListProducts.length}</span>
+        <span>{wishListProducts.length}</span>
         <p>Ulubione </p>
       </Link>
       <div

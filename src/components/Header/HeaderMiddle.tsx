@@ -15,7 +15,7 @@ import {
   loginMenuView,
 } from '../../app/slices/slideMenuSlice';
 import { cartItems } from '../../app/slices/cartSlice';
-import { whishList } from '../../app/slices/whishListSlice';
+import { wishList } from '../../app/slices/wishListSlice';
 import useAuthToken from '../../hooks/useAuthToken';
 
 const HeaderMiddle = () => {
@@ -33,7 +33,7 @@ const HeaderMiddle = () => {
   const isLoginMenu = useSelector(loginMenuView);
 
   const cartProducts = useSelector(cartItems);
-  const whishListProducts = useSelector(whishList);
+  const wishListProducts = useSelector(wishList);
   const totalPrice = cartProducts.reduce((acc, obiekt) => {
     return acc + obiekt.qty * obiekt.price;
   }, 0);
@@ -124,7 +124,7 @@ const HeaderMiddle = () => {
                 navigate('/ulubione');
               }}
             />
-            <span>{whishListProducts.length}</span>
+            <span>{wishListProducts.length}</span>
           </div>
           <div className={styles.headerMiddle__options_icons_box}>
             <GiBasket

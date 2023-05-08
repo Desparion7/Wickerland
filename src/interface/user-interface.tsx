@@ -1,4 +1,5 @@
 import { CartProduct } from '../app/slices/cartSlice';
+import { WishListProduct } from '../app/slices/wishListSlice';
 
 export interface UserSignUp {
   email: string;
@@ -15,4 +16,5 @@ export interface UserResponseSignUp {
 export interface UserResponseLogin {
   accessToken: string;
   cart: CartProduct[];
+  wishlist: WishListProduct[];
 }

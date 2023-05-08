@@ -8,12 +8,15 @@ import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { store } from '../../app/store';
 import {
-  whishList,
-  whishListAddItem,
-  whishListRemoveItem,
-} from '../../app/slices/whishListSlice';
+  wishList,
+  wishListAddItem,
+  wishListRemoveItem,
+} from '../../app/slices/wishListSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
-import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+import {
+  useUpdateUserCartMutation,
+  useUpdateUserWishListMutation,
+} from '../../app/slices/usersApiSlice';
 import { currentToken } from '../../app/slices/authSlice';
 
 export interface ProductType {
@@ -34,12 +37,13 @@ const AboutProduct = ({ product }: ProductType) => {
   const dispatch = useDispatch();
   const token = useSelector(currentToken);
   const [productAmount, setProductAmount] = useState(1);
-  const wishListProducts = useSelector(whishList);
+  const wishListProducts = useSelector(wishList);
   const isAddToWishList = wishListProducts.find(
     (obj) => obj.pid === product.pid
   );
   const [updateCart, { isLoading: addCartLoading, isSuccess: addCartSuccess }] =
     useUpdateUserCartMutation();
+  const [updateWishList] = useUpdateUserWishListMutation();
 
   const handlerAddToCart = () => {
     dispatch(
@@ -68,26 +72,36 @@ const AboutProduct = ({ product }: ProductType) => {
     }
   }, [addCartSuccess, dispatch]);
 
-  const handlerAddToWhishList = () => {
+  const handlerAddToWishList = () => {
     dispatch(
-      whishListAddItem({
+      wishListAddItem({
         pid: product.pid,
         name: product.name,
         price: product.price,
         img: product.img,
       })
     );
-    localStorage.setItem(
-      'whishListItems',
-      JSON.stringify(store.getState().whishList)
-    );
+    if (token) {
+      const newWishList = { ...store.getState().wishList };
+      updateWishList(newWishList.wishList);
+    } else {
+      localStorage.setItem(
+        'wishListItems',
+        JSON.stringify(store.getState().wishList)
+      );
+    }
   };
-  const handlerRemoveFromWhishList = () => {
-    dispatch(whishListRemoveItem(product.pid));
-    localStorage.setItem(
-      'whishListItems',
-      JSON.stringify(store.getState().whishList)
-    );
+  const handlerRemoveFromWishList = () => {
+    dispatch(wishListRemoveItem(product.pid));
+    if (token) {
+      const newWishList = { ...store.getState().wishList };
+      updateWishList(newWishList.wishList);
+    } else {
+      localStorage.setItem(
+        'wishListItems',
+        JSON.stringify(store.getState().wishList)
+      );
+    }
   };
 
   return (
@@ -173,10 +187,10 @@ const AboutProduct = ({ product }: ProductType) => {
         {!isAddToWishList && (
           <div
             className={styles.aboutProduct_product_info_buy_like}
-            onClick={handlerAddToWhishList}
+            onClick={handlerAddToWishList}
             onKeyDown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
-                handlerAddToWhishList();
+                handlerAddToWishList();
               }
             }}
             tabIndex={0}
@@ -189,10 +203,10 @@ const AboutProduct = ({ product }: ProductType) => {
         {isAddToWishList && (
           <div
             className={styles.aboutProduct_product_info_buy_like_added}
-            onClick={handlerRemoveFromWhishList}
+            onClick={handlerRemoveFromWishList}
             onKeyDown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
-                handlerRemoveFromWhishList();
+                handlerRemoveFromWishList();
               }
             }}
             tabIndex={0}

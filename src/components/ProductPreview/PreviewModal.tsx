@@ -12,13 +12,16 @@ import { addItem } from '../../app/slices/cartSlice';
 import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import { store } from '../../app/store';
 import {
-  whishListAddItem,
-  whishListRemoveItem,
-  whishList,
-} from '../../app/slices/whishListSlice';
-import { currentToken } from '../../app/slices/authSlice';
-import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+  wishListAddItem,
+  wishListRemoveItem,
+  wishList,
+} from '../../app/slices/wishListSlice';
+import {
+  useUpdateUserCartMutation,
+  useUpdateUserWishListMutation,
+} from '../../app/slices/usersApiSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
+import { currentToken } from '../../app/slices/authSlice';
 
 interface PropsType {
   setShowPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,13 +40,14 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
   const dispatch = useDispatch();
   const token = useSelector(currentToken);
   const [productAmount, setProductAmount] = useState(1);
-  const wishListProducts = useSelector(whishList);
+  const wishListProducts = useSelector(wishList);
   const isAddToWishList = wishListProducts.find(
     (obj) => obj.pid === product.pid
   );
 
   const [updateCart, { isLoading: addCartLoading, isSuccess: addCartSuccess }] =
     useUpdateUserCartMutation();
+  const [updateWishList] = useUpdateUserWishListMutation();
   // useEffect to close full screen img on ESC
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -93,26 +97,37 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
     }
   }, [addCartSuccess, setShowPreviewModal, dispatch]);
 
-  const handlerAddToWhishList = () => {
+  const handlerAddToWishList = () => {
     dispatch(
-      whishListAddItem({
+      wishListAddItem({
         pid: product.pid,
         name: product.name,
         price: product.price,
         img: product.img,
+        category: product.category,
       })
     );
-    localStorage.setItem(
-      'whishListItems',
-      JSON.stringify(store.getState().whishList)
-    );
+    if (token) {
+      const newWishList = { ...store.getState().wishList };
+      updateWishList(newWishList.wishList);
+    } else {
+      localStorage.setItem(
+        'wishListItems',
+        JSON.stringify(store.getState().wishList)
+      );
+    }
   };
-  const handlerRemoveFromWhishList = () => {
-    dispatch(whishListRemoveItem(product.pid));
-    localStorage.setItem(
-      'whishListItems',
-      JSON.stringify(store.getState().whishList)
-    );
+  const handlerRemoveFromWishList = () => {
+    dispatch(wishListRemoveItem(product.pid));
+    if (token) {
+      const newWishList = { ...store.getState().wishList };
+      updateWishList(newWishList.wishList);
+    } else {
+      localStorage.setItem(
+        'wishListItems',
+        JSON.stringify(store.getState().wishList)
+      );
+    }
   };
 
   return (
@@ -228,11 +243,11 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
               <div
                 className={styles.previewModal_main_product_info_buy_like}
                 onClick={() => {
-                  handlerAddToWhishList();
+                  handlerAddToWishList();
                 }}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
-                    handlerAddToWhishList();
+                    handlerAddToWishList();
                   }
                 }}
                 tabIndex={0}
@@ -246,10 +261,10 @@ const PhotoFull = ({ setShowPreviewModal, product }: PropsType) => {
             {isAddToWishList && (
               <div
                 className={styles.previewModal_main_product_info_buy_like_added}
-                onClick={handlerRemoveFromWhishList}
+                onClick={handlerRemoveFromWishList}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
-                    handlerRemoveFromWhishList();
+                    handlerRemoveFromWishList();
                   }
                 }}
                 tabIndex={0}

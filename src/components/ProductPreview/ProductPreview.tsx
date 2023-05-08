@@ -8,12 +8,15 @@ import { toggleCartMenu } from '../../app/slices/slideMenuSlice';
 import PreviewModal from './PreviewModal';
 import { store } from '../../app/store';
 import {
-  whishList,
-  whishListAddItem,
-  whishListRemoveItem,
-} from '../../app/slices/whishListSlice';
+  wishList,
+  wishListAddItem,
+  wishListRemoveItem,
+} from '../../app/slices/wishListSlice';
 import { currentToken } from '../../app/slices/authSlice';
-import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
+import {
+  useUpdateUserCartMutation,
+  useUpdateUserWishListMutation,
+} from '../../app/slices/usersApiSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 
 interface PropsType {
@@ -36,13 +39,14 @@ const ProductPreview = ({ product, grid }: PropsType) => {
   const [isFocus, setIsFocus] = useState(false);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
 
-  const wishListProducts = useSelector(whishList);
+  const wishListProducts = useSelector(wishList);
   const isAddToWishList = wishListProducts.find(
     (obj) => obj.pid === product.pid
   );
 
   const [updateCart, { isLoading: addCartLoading, isSuccess: addCartSuccess }] =
     useUpdateUserCartMutation();
+  const [updateWishList] = useUpdateUserWishListMutation();
 
   const handelNavigation = (id: string, category: string) => {
     navigation(`/produkt/${category}/${id}`);
@@ -74,27 +78,37 @@ const ProductPreview = ({ product, grid }: PropsType) => {
       dispatch(toggleCartMenu(true));
     }
   }, [addCartSuccess, setShowPreviewModal, dispatch]);
-  const handlerAddToWhishList = () => {
+  const handlerAddToWishList = () => {
     dispatch(
-      whishListAddItem({
+      wishListAddItem({
         pid: product.pid,
         name: product.name,
         price: product.price,
         img: product.img,
       })
     );
-    localStorage.setItem(
-      'whishListItems',
-      JSON.stringify(store.getState().whishList)
-    );
+    if (token) {
+      const newWishList = { ...store.getState().wishList };
+      updateWishList(newWishList.wishList);
+    } else {
+      localStorage.setItem(
+        'wishListItems',
+        JSON.stringify(store.getState().wishList)
+      );
+    }
   };
 
-  const handlerRemoveFromWhishList = () => {
-    dispatch(whishListRemoveItem(product.pid));
-    localStorage.setItem(
-      'whishListItems',
-      JSON.stringify(store.getState().whishList)
-    );
+  const handlerRemoveFromWishList = () => {
+    dispatch(wishListRemoveItem(product.pid));
+    if (token) {
+      const newWishList = { ...store.getState().wishList };
+      updateWishList(newWishList.wishList);
+    } else {
+      localStorage.setItem(
+        'wishListItems',
+        JSON.stringify(store.getState().wishList)
+      );
+    }
   };
   const price = product.price.toFixed(2);
 
@@ -192,7 +206,7 @@ const ProductPreview = ({ product, grid }: PropsType) => {
                     <BsHeart
                       title="Dodaj do ulubionych"
                       onClick={() => {
-                        handlerAddToWhishList();
+                        handlerAddToWishList();
                       }}
                     />
                   </div>
@@ -207,7 +221,7 @@ const ProductPreview = ({ product, grid }: PropsType) => {
                     <BsHeartFill
                       title="Usuń z ulubionych"
                       onClick={() => {
-                        handlerRemoveFromWhishList();
+                        handlerRemoveFromWishList();
                       }}
                     />
                   </div>

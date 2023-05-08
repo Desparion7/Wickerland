@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './FavoritesProduct.module.css';
 import {
-  WhishListProduct,
-  whishListRemoveItem,
-} from '../../app/slices/whishListSlice';
+  WishListProduct,
+  wishListRemoveItem,
+} from '../../app/slices/wishListSlice';
+import { useUpdateUserWishListMutation } from '../../app/slices/usersApiSlice';
+import { currentToken } from '../../app/slices/authSlice';
 
 import { store } from '../../app/store';
 
-const FavoritesProduct = ({ product }: { product: WhishListProduct }) => {
+const FavoritesProduct = ({ product }: { product: WishListProduct }) => {
   const dispatch = useDispatch();
-
+  const token = useSelector(currentToken);
+  const [updateWishList] = useUpdateUserWishListMutation();
   return (
     <div className={styles.favoritesProduct_product} key={product.pid}>
       <div className={styles.favoritesProduct_product_info}>
@@ -32,11 +35,16 @@ const FavoritesProduct = ({ product }: { product: WhishListProduct }) => {
       <div className={styles.favoritesProduct_product_btn}>
         <button
           onClick={() => {
-            dispatch(whishListRemoveItem(product.pid));
-            localStorage.setItem(
-              'whishListItems',
-              JSON.stringify(store.getState().whishList)
-            );
+            dispatch(wishListRemoveItem(product.pid));
+            if (token) {
+              const newWishList = { ...store.getState().wishList };
+              updateWishList(newWishList.wishList);
+            } else {
+              localStorage.setItem(
+                'wishListItems',
+                JSON.stringify(store.getState().wishList)
+              );
+            }
           }}
           type="button"
         >

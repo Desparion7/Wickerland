@@ -5,13 +5,13 @@ import apiSlice from './api/apiSlice';
 import shopViewSlice from './slices/shopViewSlice';
 import slideMenuSlice from './slices/slideMenuSlice';
 import cartSlice from './slices/cartSlice';
-import whishListSlice, { WhishListState } from './slices/whishListSlice';
+import wishListSlice, { WishListState } from './slices/wishListSlice';
 import authSlice, { AuthState } from './slices/authSlice';
 
 export interface State {
   auth: AuthState;
   cart: RootState;
-  whishList: WhishListState;
+  wishList: WishListState;
   shopView: {
     grid: number;
   };
@@ -26,7 +26,7 @@ export const store = configureStore({
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authSlice /* autentication for keep access token */,
     cart: cartSlice /* products in cart */,
-    whishList: whishListSlice /* products in whishlist */,
+    wishList: wishListSlice /* products in wishlist */,
     shopView:
       shopViewSlice /* state to manage what grid is use on shop screen */,
     slideMenuView: slideMenuSlice /* state to toggle slide menu for login */,
