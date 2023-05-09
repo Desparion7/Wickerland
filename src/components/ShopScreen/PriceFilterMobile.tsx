@@ -1,6 +1,6 @@
 import { RiCloseFill } from 'react-icons/ri';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import PriceFilter from './PriceFilter';
 import styles from './PriceFilterMobile.module.css';
 
@@ -9,24 +9,23 @@ interface PropsType {
 }
 
 const PriceFilterMobile = ({ setIsFilterMenu }: PropsType) => {
-  const [initialPath, setInitialPath] = useState(window.location.pathname);
+  const navigate = useNavigate();
+  const [initialPath] = useState(window.location.pathname);
   const [filterMenuAnimation, setFilterMenuAnimation] = useState(
     styles.show_menu
   );
-
-  // use efekt to close mobile menu when click on link.
-  useEffect(() => {
-    if (window.location.pathname !== initialPath) {
-      setIsFilterMenu(false);
-    }
-  }, [setIsFilterMenu, initialPath]);
-
-  const handlerHideMenu = () => {
+  const handlerHideMenu = useCallback(() => {
     setTimeout(() => {
       setIsFilterMenu(false);
     }, 150);
     setFilterMenuAnimation(styles.hide_menu);
-  };
+  }, [setIsFilterMenu]);
+  // use efekt to close mobile menu when click on link.
+  useEffect(() => {
+    if (window.location.pathname !== initialPath) {
+      handlerHideMenu();
+    }
+  }, [navigate, handlerHideMenu, initialPath]);
 
   return (
     <div className={styles.priceFilterMobile}>
