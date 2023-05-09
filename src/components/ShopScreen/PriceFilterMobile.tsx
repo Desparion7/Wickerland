@@ -19,6 +19,7 @@ const PriceFilterMobile = ({ setIsFilterMenu }: PropsType) => {
     }, 150);
     setFilterMenuAnimation(styles.hide_menu);
   }, [setIsFilterMenu]);
+
   // use efekt to close mobile menu when click on link.
   useEffect(() => {
     if (window.location.pathname !== initialPath) {
