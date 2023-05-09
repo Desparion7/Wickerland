@@ -7,7 +7,6 @@ import styles from './PriceFilterMobile.module.css';
 interface PropsType {
   setIsFilterMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
 const PriceFilterMobile = ({ setIsFilterMenu }: PropsType) => {
   const navigate = useNavigate();
   const [initialPath] = useState(window.location.pathname);
