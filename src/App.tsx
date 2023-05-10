@@ -15,6 +15,7 @@ import PolicyScreen from './screens/PolicyScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import OrderScreen from './screens/OrderScreen';
 import PaymentScreen from './screens/PaymentScreen';
+import PasswordRecoveryScreen from './screens/PasswordRecoveryScreen';
 
 const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: '/polityka',
         element: <PolicyScreen />,
+      },
+      {
+        path: '/odzyskanie',
+        element: <PasswordRecoveryScreen />,
       },
     ],
   },

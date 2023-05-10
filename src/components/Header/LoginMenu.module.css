@@ -68,6 +68,10 @@
 .loginMenu__main button:hover {
   background-color: var(--button-bg-hover);
 }
+.loginMenu__main_link {
+  display: flex;
+  justify-content: end;
+}
 .loginMenu__main_restore {
   margin-right: 2rem;
   text-align: end;

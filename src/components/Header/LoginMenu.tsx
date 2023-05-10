@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { RiCloseFill } from 'react-icons/ri';
 import styles from './LoginMenu.module.css';
 import { toggleLoginMenuView } from '../../app/slices/slideMenuSlice';
@@ -147,8 +147,17 @@ const LoginMenu = () => {
         </form>
         {!email && (
           <>
-            {' '}
-            <p className={styles.loginMenu__main_restore}>Zapomniałeś hasła?</p>
+            <Link
+              to="/odzyskanie"
+              className={styles.loginMenu__main_link}
+              onClick={() => {
+                handlerHideMenu();
+              }}
+            >
+              <p className={styles.loginMenu__main_restore}>
+                Zapomniałeś hasła?
+              </p>
+            </Link>
             <div className={styles.loginMenu__main_sigupBox}>
               <p>Nie masz jeszcze konta ?</p>
               <button
