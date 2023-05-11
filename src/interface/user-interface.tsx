@@ -18,3 +18,7 @@ export interface UserResponseLogin {
   cart: CartProduct[];
   wishlist: WishListProduct[];
 }
+export interface ResetResponseType {
+  message?: string;
+  error?: string;
+}

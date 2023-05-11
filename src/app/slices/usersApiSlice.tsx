@@ -1,5 +1,9 @@
 import apiSlice from '../api/apiSlice';
-import { UserSignUp, UserResponseSignUp } from '../../interface/user-interface';
+import {
+  UserSignUp,
+  UserResponseSignUp,
+  ResetResponseType,
+} from '../../interface/user-interface';
 import { CartProduct } from './cartSlice';
 import { WishListProduct } from './wishListSlice';
 import { store } from '../store';
@@ -16,6 +20,13 @@ const usersApiSlice = apiSlice.injectEndpoints({
         },
       }),
       invalidatesTags: [{ type: 'User', id: 'LIST' }],
+    }),
+    resetPassword: builder.mutation<ResetResponseType, { email: string }>({
+      query: ({ email }) => ({
+        url: '/users/reset',
+        method: 'POST',
+        body: { email },
+      }),
     }),
     updateUserCart: builder.mutation<CartProduct[], CartProduct[]>({
       query: (cart) => ({
@@ -54,6 +65,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useSignUpMutation,
+  useResetPasswordMutation,
   useUpdateUserCartMutation,
   useUpdateUserWishListMutation,
 } = usersApiSlice;
