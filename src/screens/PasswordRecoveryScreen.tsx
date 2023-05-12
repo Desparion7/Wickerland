@@ -23,6 +23,7 @@ const PasswordRecoveryScreen = () => {
         .then((payload) => {
           if (payload.message) {
             setResponseData(payload.message);
+            setResponseError('');
           }
         })
         .catch((error) => {
