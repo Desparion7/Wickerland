@@ -3,6 +3,9 @@ import styles from './SignUp.Login.module.css';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 import { useSignUpMutation } from '../../app/slices/usersApiSlice';
 
+const passwordRegex =
+  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
 interface Errors {
   email?: string;
   password?: string;
@@ -32,7 +35,7 @@ const SignUp = () => {
     }
     if (!signUpPassword) {
       validationErrors.password = 'Pole wymagane';
-    } else if (signUpPassword.length < 8 || !/\W/.test(signUpPassword)) {
+    } else if (!passwordRegex.test(signUpPassword)) {
       validationErrors.password =
         'Hasło musi mieć minimum 8 znaków, w tym jeden znak specjalny';
     }

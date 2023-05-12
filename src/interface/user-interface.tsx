@@ -22,3 +22,7 @@ export interface ResetResponseType {
   message?: string;
   error?: string;
 }
+export interface UpdatePasswordType {
+  password: string;
+  token: string;
+}

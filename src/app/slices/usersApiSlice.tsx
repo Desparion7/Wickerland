@@ -3,6 +3,7 @@ import {
   UserSignUp,
   UserResponseSignUp,
   ResetResponseType,
+  UpdatePasswordType,
 } from '../../interface/user-interface';
 import { CartProduct } from './cartSlice';
 import { WishListProduct } from './wishListSlice';
@@ -26,6 +27,16 @@ const usersApiSlice = apiSlice.injectEndpoints({
         url: '/users/reset',
         method: 'POST',
         body: { email },
+      }),
+    }),
+    createNewPassword: builder.mutation<ResetResponseType, UpdatePasswordType>({
+      query: ({ password, token }) => ({
+        url: '/users/reset',
+        method: 'PATCH',
+        body: {
+          password,
+          token,
+        },
       }),
     }),
     updateUserCart: builder.mutation<CartProduct[], CartProduct[]>({
@@ -68,4 +79,5 @@ export const {
   useResetPasswordMutation,
   useUpdateUserCartMutation,
   useUpdateUserWishListMutation,
+  useCreateNewPasswordMutation,
 } = usersApiSlice;

@@ -16,6 +16,7 @@ import FavoritesScreen from './screens/FavoritesScreen';
 import OrderScreen from './screens/OrderScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PasswordRecoveryScreen from './screens/PasswordRecoveryScreen';
+import NewPasswordScreen from './screens/NewPasswordScreen';
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: '/odzyskanie',
         element: <PasswordRecoveryScreen />,
+      },
+      {
+        path: '/nowehasło',
+        element: <NewPasswordScreen />,
       },
     ],
   },
