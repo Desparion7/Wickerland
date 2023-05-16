@@ -1,29 +1,35 @@
 .favoritesScreen {
-	margin: 1em;
-	min-height: 55vh;
+  margin: 1em;
+  min-height: 55vh;
 }
 .favoritesScreen h2 {
-	font-size: 1.4rem;
-	text-align: center;
+  font-size: 1.4rem;
+  text-align: center;
 }
 .favoritesScreen_productsBox {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 2em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
 }
 .favoritesScreen_empty {
-	margin-top: 1rem;
-	text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.1em;
 }
 
 @media screen and (min-width: 600px) {
-	.favoritesScreen {
-		margin: 1em 4em;
-		min-height: 55vh;
-	}
-	.favoritesScreen h2 {
-		font-size: 1.6rem;
-		text-align: start;
-	}
+  .favoritesScreen {
+    margin: 1em 4em;
+    min-height: 55vh;
+  }
+  .favoritesScreen h2 {
+    font-size: 1.6rem;
+    text-align: start;
+  }
+  .favoritesScreen_empty {
+    font-size: 2em;
+  }
 }
