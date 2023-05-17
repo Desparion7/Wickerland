@@ -94,7 +94,12 @@ const LoginMenu = () => {
             <p>Zamknij</p>
           </div>
         </div>
-
+        {email && (
+          <div className={styles.loginMenu__main_logged}>
+            <Link to="/zamówienia">Moje zamówienia</Link>
+            <Link to="/ustawienia">Ustawienia konta</Link>
+          </div>
+        )}
         <form>
           {!email && (
             <>
