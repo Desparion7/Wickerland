@@ -10,11 +10,10 @@ import type { StoreState } from '../store';
 // http://localhost:3000
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://comfortable-wasp-neckerchief.cyclic.app',
+  baseUrl: 'http://localhost:3000',
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const { token } = (getState() as StoreState).auth;
-
     if (token) {
       headers.set('authorization', `Bearer ${token}`);
     }
@@ -24,7 +23,7 @@ const baseQuery = fetchBaseQuery({
 const apiSlice = createApi({
   reducerPath: 'api', // optional
   baseQuery,
-  tagTypes: ['Products', 'Product', 'Order', 'Orders', 'User'],
+  tagTypes: ['Products', 'Product', 'UserOrders', 'Order', 'Orders', 'User'],
   endpoints: () => ({}),
 });
 export default apiSlice;

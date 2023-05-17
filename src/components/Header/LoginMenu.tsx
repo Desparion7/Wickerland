@@ -96,8 +96,12 @@ const LoginMenu = () => {
         </div>
         {email && (
           <div className={styles.loginMenu__main_logged}>
-            <Link to="/zamówienia">Moje zamówienia</Link>
-            <Link to="/ustawienia">Ustawienia konta</Link>
+            <Link to="/zamówienia" onClick={handlerHideMenu}>
+              Moje zamówienia
+            </Link>
+            <Link to="/ustawienia" onClick={handlerHideMenu}>
+              Ustawienia konta
+            </Link>
           </div>
         )}
         <form>

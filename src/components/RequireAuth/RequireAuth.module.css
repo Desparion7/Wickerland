@@ -1,0 +1,8 @@
+.requireAuth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 55vh;
+  padding: 1.5em 1em;
+  font-size: 1.5rem;
+}
