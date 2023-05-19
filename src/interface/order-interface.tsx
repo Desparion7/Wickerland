@@ -30,6 +30,7 @@ export interface OrderResponseType {
   deliveryMethod: string;
   price: number;
   paid: boolean;
+  date: Date;
   products: CartProduct[];
   error?: string;
 }
