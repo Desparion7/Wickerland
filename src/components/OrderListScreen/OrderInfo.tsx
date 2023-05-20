@@ -29,19 +29,22 @@ const OrderInfo = ({ order }: PropsType) => {
           </div>
           <div className={styles.orderInfo_product_prop}>
             <p>{product.name}</p>
-            <p>{product.qty} szt. x</p>
-            <p>{product.price.toFixed(2)} zł</p>
+            <p className={styles.orderInfo_product_prop_qty}>
+              {product.qty} x {product.price.toFixed(2)}zł
+            </p>
           </div>
         </div>
       ))}
-      <div className={styles.orderInfo_summary}>
-        Dostawa: {order?.deliveryMethod}
-      </div>
-      <div className={styles.orderInfo_summary}>
-        Razem:<span>{order?.price.toFixed(2)} zł</span>
-      </div>
-      <div className={styles.orderInfo_summary}>
-        <Link to="/">Więcej</Link>
+      <div className={styles.orderInfo_summary_box}>
+        <div className={styles.orderInfo_summary}>
+          Dostawa: <span>{order?.deliveryMethod}</span>
+        </div>
+        <div className={styles.orderInfo_summary}>
+          Razem:<span>{order?.price.toFixed(2)} zł</span>
+        </div>
+        <div className={styles.orderInfo_summary}>
+          <Link to="/">Więcej</Link>
+        </div>
       </div>
     </div>
   );

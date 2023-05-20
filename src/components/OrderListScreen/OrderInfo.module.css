@@ -1,16 +1,19 @@
 .orderInfo {
   margin-top: 1rem;
   width: 90vw;
+  border: 1px solid rgb(204, 204, 204);
 }
 .orderInfo_dateTime {
   display: flex;
   gap: 0.5rem;
   background-color: rgb(218, 218, 218);
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   margin-bottom: 1rem;
 }
 .orderInfo_product {
   display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
 }
 .orderInfo_product {
   display: flex;
@@ -28,11 +31,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
   gap: 0.5rem;
+}
+.orderInfo_product_prop_qty {
+  white-space: nowrap;
+  color: rgb(124, 124, 124);
 }
 .orderInfo_summary {
   display: flex;
-  justify-content: flex-end;
+  padding: 0 0.5rem;
 }
 .orderInfo_summary span {
   margin-left: 5px;
@@ -42,7 +50,19 @@
   margin-top: 0.5rem;
   color: var(--text-color3);
   text-decoration: none;
+  transition: 0.3s;
 }
 .orderInfo_summary a:hover {
-  text-decoration: underline;
+  color: var(--main-background-color);
+}
+@media screen and (min-width: 600px) {
+  .orderInfo_product {
+    flex-direction: row;
+  }
+  .orderInfo_summary_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
 }

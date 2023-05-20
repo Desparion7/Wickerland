@@ -5,7 +5,7 @@ import LoadingSpinner from '../ui/LoadingSpinner';
 
 const OrdersListScreen = () => {
   const { data, isLoading, isError } = useGetUserOrdersQuery();
-  // console.log(data);
+
   return (
     <section className={styles.ordersList}>
       <h1>Moje zamówienia</h1>
