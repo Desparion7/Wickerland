@@ -20,6 +20,7 @@ import NewPasswordScreen from './screens/NewPasswordScreen';
 import OrdersListScreen from './screens/OrdersListScreen';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import RefreshLogin from './components/RefreshLogin.tsx/RefreshLogin';
+import OrderInfoScreen from './screens/OrderInfoScreen';
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
                 path: '/zamówienia',
                 element: <OrdersListScreen />,
               },
+              {
+                path: '/zamówienia/:id',
+                element: <OrderInfoScreen />,
+              },
             ],
           },
           {
@@ -128,5 +133,3 @@ function App() {
 }
 
 export default App;
-
-// ustawić typ gdy bedzie backend dla product

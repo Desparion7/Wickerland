@@ -1,0 +1,78 @@
+.orderInfoScreen {
+  min-height: 60vh;
+  margin: 1em;
+}
+.orderInfoScreen span {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--main-background-color);
+}
+.orderInfoScreen_products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+  gap: 1em;
+}
+.orderInfoScreen_products_product {
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+  width: 200px;
+}
+
+.orderInfoScreen_products_product_img {
+  height: auto;
+  cursor: pointer;
+}
+.orderInfoScreen_products_product_img img {
+  width: 200px;
+  height: 170px;
+}
+.orderInfoScreen_summary {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+.orderInfoScreen_summary p {
+  margin: 0.5rem 0;
+}
+.orderInfoScreen_payment {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.orderInfoScreen_payment_no {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: var(--error-text);
+}
+.orderInfoScreen_payment_yes {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: var(--main-background-color);
+}
+.orderInfoScreen_payment button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: none;
+  color: var(--text-color);
+  background-color: var(--main-background-color);
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.orderInfoScreen_payment button:hover {
+  background-color: var(--button-bg-hover);
+}
+.errorMessage {
+  color: var(--error-text);
+}
+@media screen and (min-width: 1000px) {
+  .orderInfoScreen {
+    margin: 1em 4em;
+  }
+}
