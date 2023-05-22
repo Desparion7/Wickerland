@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import styles from './OrderInfoScreen.module.css';
 import { useGetSingleOrderQuery } from '../app/slices/orderApiSlice';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 const OrderInfoScreen = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const id = params?.id;
 
@@ -44,12 +45,25 @@ const OrderInfoScreen = () => {
               className={styles.orderInfoScreen_products_product}
               key={product.pid}
             >
-              <div className={styles.orderInfoScreen_products_product_img}>
+              <div
+                className={styles.orderInfoScreen_products_product_img}
+                onClick={() => {
+                  navigate(`/produkt/${product.category}/${product.pid}`);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    navigate(`/`);
+                  }
+                }}
+                tabIndex={0}
+                role="link"
+              >
                 <img src={product.img[0]} alt={product.name} />
+                <p> {product.name}</p>
               </div>
-              <p> {product.name}</p>
               <p>
-                Cena: {product.qty} x {product.price.toFixed(2)}zł
+                {product.qty} x {product.price.toFixed(2)}zł ={' '}
+                {(product.qty * product.price).toFixed(2)}zł
               </p>
             </div>
           ))}
@@ -73,7 +87,16 @@ const OrderInfoScreen = () => {
           <p className={styles.orderInfoScreen_payment_no}>
             {!data?.paid && 'Nieopłacone'}
           </p>
-          {!data?.paid && <button type="button">Opłać</button>}
+          {!data?.paid && (
+            <button
+              type="button"
+              onClick={() => {
+                navigate(`/płatność/${id}`);
+              }}
+            >
+              Opłać
+            </button>
+          )}
         </div>
       </div>
     );

@@ -43,7 +43,7 @@ const OrderInfo = ({ order }: PropsType) => {
           Razem:<span>{order?.price.toFixed(2)} zł</span>
         </div>
         <div className={styles.orderInfo_summary}>
-          <Link to={`/zamówienia/${order._id}`}>Więcej</Link>
+          <Link to={`/zamówienie/${order._id}`}>Więcej</Link>
         </div>
       </div>
     </div>

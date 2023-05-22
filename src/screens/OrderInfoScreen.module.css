@@ -15,11 +15,14 @@
   gap: 1em;
 }
 .orderInfoScreen_products_product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid rgb(196, 196, 196);
   border-radius: 5px;
   padding: 0.5rem;
   text-align: center;
-  width: 200px;
+  width: 210px;
 }
 
 .orderInfoScreen_products_product_img {

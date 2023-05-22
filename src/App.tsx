@@ -85,7 +85,11 @@ const router = createBrowserRouter([
                 element: <OrdersListScreen />,
               },
               {
-                path: '/zamówienia/:id',
+                path: '/zamówienia/:page',
+                element: <OrdersListScreen />,
+              },
+              {
+                path: '/zamówienie/:id',
                 element: <OrderInfoScreen />,
               },
             ],
