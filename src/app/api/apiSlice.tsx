@@ -6,11 +6,16 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { StoreState } from '../store';
 
-// https://comfortable-wasp-neckerchief.cyclic.app
-// http://localhost:3000
+let apiUrl;
+
+if (import.meta.env.MODE === 'development') {
+  apiUrl = 'http://localhost:3000';
+} else {
+  apiUrl = 'https://comfortable-wasp-neckerchief.cyclic.app';
+}
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://comfortable-wasp-neckerchief.cyclic.app',
+  baseUrl: apiUrl,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const { token } = (getState() as StoreState).auth;
