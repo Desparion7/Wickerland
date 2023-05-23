@@ -212,7 +212,7 @@ const OrderScreen = () => {
             placeholder={
               errors.street
                 ? errors.street
-                : 'nazwa ulicy,numer budynku/numer lokalu'
+                : 'nazwa ulicy, numer budynku/numer lokalu'
             }
           />
           <label htmlFor="postcode">

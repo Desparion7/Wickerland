@@ -21,6 +21,7 @@ import OrdersListScreen from './screens/OrdersListScreen';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import RefreshLogin from './components/RefreshLogin.tsx/RefreshLogin';
 import OrderInfoScreen from './screens/OrderInfoScreen';
+import ChangeAddressScreen from './screens/ChangeAddressScreen';
 
 const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
               {
                 path: '/zamówienie/:id',
                 element: <OrderInfoScreen />,
+              },
+              {
+                path: '/adres',
+                element: <ChangeAddressScreen />,
               },
             ],
           },

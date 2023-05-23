@@ -99,8 +99,11 @@ const LoginMenu = () => {
             <Link to="/zamówienia" onClick={handlerHideMenu}>
               Moje zamówienia
             </Link>
-            <Link to="/ustawienia" onClick={handlerHideMenu}>
-              Ustawienia konta
+            <Link to="/adres" onClick={handlerHideMenu}>
+              Adres do wysyłki
+            </Link>
+            <Link to="/odzyskanie" onClick={handlerHideMenu}>
+              Zmień hasło
             </Link>
           </div>
         )}
