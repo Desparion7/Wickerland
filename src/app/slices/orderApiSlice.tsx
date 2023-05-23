@@ -1,11 +1,18 @@
 import apiSlice from '../api/apiSlice';
-import { OrderType, OrderResponseType } from '../../interface/order-interface';
+import {
+  OrderType,
+  OrderResponseType,
+  OrderResponseTypeWithPage,
+} from '../../interface/order-interface';
 
 const orderApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getUserOrders: builder.query<OrderResponseType[], void>({
-      query: () => ({
-        url: '/orders',
+    getUserOrders: builder.query<
+      OrderResponseTypeWithPage,
+      { page: string | null }
+    >({
+      query: ({ page = '1' }) => ({
+        url: `/orders/${page}`,
         method: 'GET',
       }),
       providesTags: [{ type: 'Orders', id: 'LIST' }],
@@ -23,7 +30,7 @@ const orderApiSlice = apiSlice.injectEndpoints({
       { id: string | undefined }
     >({
       query: ({ id }) => ({
-        url: `/orders/${id}`,
+        url: `/orders/order/${id}`,
         method: 'GET',
       }),
       providesTags: [{ type: 'Order', id: 'LIST' }],

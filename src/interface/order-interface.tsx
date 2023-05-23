@@ -34,3 +34,7 @@ export interface OrderResponseType {
   products: CartProduct[];
   error?: string;
 }
+export interface OrderResponseTypeWithPage {
+  orders: OrderResponseType[];
+  totalPages: number;
+}

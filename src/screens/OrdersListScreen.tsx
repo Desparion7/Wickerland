@@ -1,10 +1,15 @@
+import { useLocation } from 'react-router-dom';
 import styles from './OrdersListScreen.module.css';
 import { useGetUserOrdersQuery } from '../app/slices/orderApiSlice';
 import OrderInfo from '../components/OrderListScreen/OrderInfo';
 import LoadingSpinner from '../ui/LoadingSpinner';
+import Pagination from '../ui/Pagination';
 
 const OrdersListScreen = () => {
-  const { data, isLoading, isError } = useGetUserOrdersQuery();
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  const page = queryParams.get('strona');
+  const { data, isLoading, isError } = useGetUserOrdersQuery({ page });
 
   return (
     <section className={styles.ordersList}>
@@ -16,12 +21,13 @@ const OrdersListScreen = () => {
         </div>
       )}
       <div className={styles.ordersList_box}>
-        {data?.map((order) => (
+        {data?.orders.map((order) => (
           <div key={order._id}>
             <OrderInfo order={order} />
           </div>
         ))}
       </div>
+      <Pagination pages={data?.totalPages} />
     </section>
   );
 };
