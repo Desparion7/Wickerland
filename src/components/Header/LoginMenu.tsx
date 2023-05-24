@@ -136,6 +136,7 @@ const LoginMenu = () => {
                 }}
                 className={errors.email ? styles.error_input : ''}
                 placeholder={errors.email ? errors.email : ''}
+                autoComplete="true"
               />
               {responseError && (
                 <div className={styles.error_message}>{responseError}</div>

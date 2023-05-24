@@ -7,6 +7,7 @@ import {
 } from '../../interface/user-interface';
 import { CartProduct } from './cartSlice';
 import { WishListProduct } from './wishListSlice';
+import { FormValues } from '../../interface/address-interface';
 import { store } from '../store';
 
 const usersApiSlice = apiSlice.injectEndpoints({
@@ -38,6 +39,23 @@ const usersApiSlice = apiSlice.injectEndpoints({
           token,
         },
       }),
+    }),
+    getUserAddress: builder.query<FormValues, void>({
+      query: () => ({
+        url: '/users/address',
+        method: 'GET',
+      }),
+      providesTags: [{ type: 'User', id: 'LIST' }],
+    }),
+    updateUserAddress: builder.mutation<FormValues, FormValues>({
+      query: (address) => ({
+        url: '/users/address',
+        method: 'PATCH',
+        body: {
+          ...address,
+        },
+      }),
+      invalidatesTags: [{ type: 'User', id: 'LIST' }],
     }),
     updateUserCart: builder.mutation<CartProduct[], CartProduct[]>({
       query: (cart) => ({
@@ -77,6 +95,8 @@ const usersApiSlice = apiSlice.injectEndpoints({
 export const {
   useSignUpMutation,
   useResetPasswordMutation,
+  useGetUserAddressQuery,
+  useUpdateUserAddressMutation,
   useUpdateUserCartMutation,
   useUpdateUserWishListMutation,
   useCreateNewPasswordMutation,

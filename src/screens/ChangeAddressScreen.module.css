@@ -5,6 +5,16 @@
   flex-direction: column;
   align-items: center;
 }
+.changeAddressScreen_success {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: var(--success-text);
+}
+.changeAddressScreen_error {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: var(--error-text);
+}
 .changeAddressScreen_address {
   margin-top: 1rem;
   width: 50%;
@@ -20,6 +30,10 @@
   padding: 0.3rem;
   margin-bottom: 0.5rem;
   border: 1px solid grey;
+}
+.changeAddressScreen_address_box {
+  display: flex;
+  flex-direction: column;
 }
 .changeAddressScreen_address button {
   padding: 1rem;

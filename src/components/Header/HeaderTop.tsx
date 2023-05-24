@@ -8,18 +8,10 @@ const HeaderTop = () => {
       <h1 className={styles.headerTop__companyName}>Sklep z wikliną</h1>
       <div className={styles.headerTop__contactBox}>
         <div className={styles.headerTop__contactBox_media}>
-          <a
-            href="https://www.facebook.com/piotr.szabat.16"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="/" target="_blank" rel="noreferrer">
             <FaFacebookF />
           </a>
-          <a
-            href="https://www.instagram.com/ciabatek/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="/" target="_blank" rel="noreferrer">
             <FaInstagram />
           </a>
         </div>

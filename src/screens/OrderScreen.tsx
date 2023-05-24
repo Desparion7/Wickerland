@@ -7,7 +7,10 @@ import { useCreateOrderMutation } from '../app/slices/orderApiSlice';
 import { OrderType } from '../interface/order-interface';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
 import { store } from '../app/store';
-import { useUpdateUserCartMutation } from '../app/slices/usersApiSlice';
+import {
+  useGetUserAddressQuery,
+  useUpdateUserCartMutation,
+} from '../app/slices/usersApiSlice';
 
 interface FormErrors {
   name?: string;
@@ -25,7 +28,11 @@ const OrderScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartProducts = useSelector(cartItems);
+
   const formRef = useRef<HTMLFormElement>(null);
+
+  const { data: userAddress } = useGetUserAddressQuery();
+
   const [createOrder, { isLoading, isError }] = useCreateOrderMutation();
   const [updateCart] = useUpdateUserCartMutation();
 
@@ -40,6 +47,7 @@ const OrderScreen = () => {
     email: '',
     message: '',
   });
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState(false);
   const [statusError, setStatusError] = useState(false);
@@ -175,7 +183,7 @@ const OrderScreen = () => {
           <input
             type="text"
             id="name"
-            value={customer.name}
+            value={userAddress ? userAddress?.name : customer.name}
             onChange={(e) => handleCustomerChange('name', e.target.value)}
             className={errors.name ? styles.error_input : ''}
             placeholder={errors.name ? errors.name : ''}

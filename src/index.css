@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap');
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
@@ -19,48 +19,49 @@ input::-webkit-inner-spin-button {
 } */
 
 h2 {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-	--main-background-color: #70a01f;
-	--text-color: white;
-	--text-color2: rgb(113, 113, 113);
-	--text-color3: rgb(0, 0, 0);
-	--error-text: rgb(180, 18, 18);
-	--text-color-hover: rgb(102, 102, 102);
-	--border-color: rgb(191, 191, 191);
-	--button-bg-hover: rgb(91, 129, 24);
-	--button-border-hover: rgb(181, 181, 181);
+  --main-background-color: #70a01f;
+  --text-color: white;
+  --text-color2: rgb(113, 113, 113);
+  --text-color3: rgb(0, 0, 0);
+  --success-text: rgb(18, 84, 137);
+  --error-text: rgb(180, 18, 18);
+  --text-color-hover: rgb(102, 102, 102);
+  --border-color: rgb(191, 191, 191);
+  --button-bg-hover: rgb(91, 129, 24);
+  --button-border-hover: rgb(181, 181, 181);
 }
 .no-scroll {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 /* styles for product screen carousel */
 .carousel .slide {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: zoom-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
 }
 .carousel .thumbs-wrapper {
-	overflow-x: scroll;
-	margin: 0.5rem 0;
+  overflow-x: scroll;
+  margin: 0.5rem 0;
 }
 .carousel img {
-	object-fit: scale-down !important;
+  object-fit: scale-down !important;
 }
 .thumb {
-	width: 100px !important;
-	height: 100px !important;
-	cursor: pointer;
+  width: 100px !important;
+  height: 100px !important;
+  cursor: pointer;
 }
 .carousel img {
-	object-fit: fill;
-	width: 100%;
-	height: 100%;
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
 }

@@ -20,7 +20,7 @@ const RefreshLogin = () => {
         try {
           await refresh();
         } catch (err) {
-          // console.error(err);
+          // console.log(err);
         }
       };
       if (!token) verifyRefreshToken();
