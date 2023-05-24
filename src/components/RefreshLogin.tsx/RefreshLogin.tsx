@@ -7,7 +7,6 @@ import LoadingSpinner from '../../ui/LoadingSpinner';
 
 const RefreshLogin = () => {
   const effectRan = useRef(false);
-
   const token = useSelector(currentToken);
 
   const [refresh, { isUninitialized, isLoading, isSuccess, isError }] =
