@@ -8,9 +8,10 @@ import { OrderType } from '../interface/order-interface';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
 import { store } from '../app/store';
 import {
-  useGetUserAddressQuery,
+  useLazyGetUserAddressQuery,
   useUpdateUserCartMutation,
 } from '../app/slices/usersApiSlice';
+import { currentToken } from '../app/slices/authSlice';
 
 interface FormErrors {
   name?: string;
@@ -27,11 +28,18 @@ interface FormErrors {
 const OrderScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(currentToken);
   const cartProducts = useSelector(cartItems);
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { data: userAddress } = useGetUserAddressQuery();
+  const [getAddress, userAddress] = useLazyGetUserAddressQuery();
+
+  useEffect(() => {
+    if (token) {
+      getAddress();
+    }
+  }, [getAddress, token]);
 
   const [createOrder, { isLoading, isError }] = useCreateOrderMutation();
   const [updateCart] = useUpdateUserCartMutation();
@@ -183,7 +191,7 @@ const OrderScreen = () => {
           <input
             type="text"
             id="name"
-            value={userAddress ? userAddress?.name : customer.name}
+            value={userAddress.data ? userAddress.data?.name : customer.name}
             onChange={(e) => handleCustomerChange('name', e.target.value)}
             className={errors.name ? styles.error_input : ''}
             placeholder={errors.name ? errors.name : ''}
@@ -194,7 +202,9 @@ const OrderScreen = () => {
           <input
             type="text"
             id="surname"
-            value={customer.surname}
+            value={
+              userAddress.data ? userAddress.data?.surname : customer.surname
+            }
             onChange={(e) => handleCustomerChange('surname', e.target.value)}
             className={errors.surname ? styles.error_input : ''}
             placeholder={errors.surname ? errors.surname : ''}
@@ -214,7 +224,9 @@ const OrderScreen = () => {
           <input
             type="text"
             id="street"
-            value={customer.street}
+            value={
+              userAddress.data ? userAddress.data?.street : customer.street
+            }
             onChange={(e) => handleCustomerChange('street', e.target.value)}
             className={errors.street ? styles.error_input : ''}
             placeholder={
@@ -230,7 +242,9 @@ const OrderScreen = () => {
             type="text"
             pattern="[0-9\-]*"
             id="postcode"
-            value={customer.postcode}
+            value={
+              userAddress.data ? userAddress.data?.postcode : customer.postcode
+            }
             onChange={(e) => handleCustomerChange('postcode', e.target.value)}
             className={errors.postcode ? styles.error_input : ''}
             placeholder={errors.postcode ? errors.postcode : ''}
@@ -241,7 +255,7 @@ const OrderScreen = () => {
           <input
             type="text"
             id="city"
-            value={customer.city}
+            value={userAddress.data ? userAddress.data?.city : customer.city}
             onChange={(e) => handleCustomerChange('city', e.target.value)}
             className={errors.city ? styles.error_input : ''}
             placeholder={errors.city ? errors.city : ''}
@@ -252,7 +266,7 @@ const OrderScreen = () => {
           <input
             type="number"
             id="phone"
-            value={customer.phone}
+            value={userAddress.data ? userAddress.data?.phone : customer.phone}
             onChange={(e) => handleCustomerChange('phone', e.target.value)}
             className={errors.phone ? styles.error_input : ''}
             placeholder={errors.phone ? errors.phone : ''}

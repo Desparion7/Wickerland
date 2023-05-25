@@ -96,6 +96,7 @@ export const {
   useSignUpMutation,
   useResetPasswordMutation,
   useGetUserAddressQuery,
+  useLazyGetUserAddressQuery,
   useUpdateUserAddressMutation,
   useUpdateUserCartMutation,
   useUpdateUserWishListMutation,
