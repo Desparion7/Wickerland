@@ -29,7 +29,7 @@
 
 .contactForm button {
   font-size: 1rem;
-  width: auto;
+  width: 100px;
   margin-top: 1rem;
   padding: 0.3rem 1rem;
   border: none;
@@ -57,6 +57,19 @@
 .errorText {
   font-size: 0.8rem;
   color: rgb(200, 21, 21);
+}
+.successSendMessage {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: var(--success-text);
+}
+.errorSendMessage {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: var(--error-text);
+}
+.errorSendMessage span {
+  color: black;
 }
 @media screen and (min-width: 600px) {
   .contactForm_name {
