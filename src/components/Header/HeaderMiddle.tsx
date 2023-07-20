@@ -40,14 +40,22 @@ const HeaderMiddle = () => {
 
   const handlerSearch = () => {
     queryParams.set('szukaj', searchValue);
-
     const newSearch = queryParams.toString();
-
     navigate({
       pathname: '/sklep',
       search: newSearch,
     });
     setSearchValue('');
+  };
+  const handleToggleCart = () => {
+    dispatch(toggleCartMenu(true));
+  };
+  const handleToggleCartByPrice = (
+    event: React.KeyboardEvent<HTMLDivElement>
+  ) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      dispatch(toggleCartMenu(true));
+    }
   };
 
   return (
@@ -84,7 +92,7 @@ const HeaderMiddle = () => {
               setSearchValue(e.target.value);
             }}
             onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') {
+              if (event.key === 'Enter' || event.key === '') {
                 handlerSearch();
               }
             }}
@@ -107,7 +115,7 @@ const HeaderMiddle = () => {
               dispatch(toggleLoginMenuView(true));
             }}
             onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') {
+              if (event.key === 'Enter' || event.key === '') {
                 dispatch(toggleLoginMenuView(true));
               }
             }}
@@ -127,23 +135,13 @@ const HeaderMiddle = () => {
             <span>{wishListProducts.length}</span>
           </div>
           <div className={styles.headerMiddle__options_icons_box}>
-            <GiBasket
-              onClick={() => {
-                dispatch(toggleCartMenu(true));
-              }}
-            />
+            <GiBasket onClick={handleToggleCart} />
             <span>{cartProducts.length}</span>
           </div>
           {isDesktop && (
             <div
-              onClick={() => {
-                dispatch(toggleCartMenu(true));
-              }}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  dispatch(toggleCartMenu(true));
-                }
-              }}
+              onClick={handleToggleCart}
+              onKeyDown={handleToggleCartByPrice}
               role="button"
               tabIndex={0}
             >
