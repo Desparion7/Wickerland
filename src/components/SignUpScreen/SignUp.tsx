@@ -6,11 +6,11 @@ import { useSignUpMutation } from '../../app/slices/usersApiSlice';
 const passwordRegex =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
-interface Errors {
+type Errors = {
   email?: string;
   password?: string;
   confirmPassword?: string;
-}
+};
 
 const SignUp = () => {
   const [addNewUser, { isSuccess, isLoading }] = useSignUpMutation();

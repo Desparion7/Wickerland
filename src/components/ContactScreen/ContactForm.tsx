@@ -3,7 +3,7 @@ import useSendMessageMutation from '../../app/slices/messageApi.slice';
 import {
   MessageFormValues,
   MessageFormValuesError,
-} from '../../interface/message-interface';
+} from '../../types/message-type';
 import styles from './ContactForm.module.css';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 

@@ -4,9 +4,9 @@ import 'rc-slider/assets/index.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './PriceFilter.module.css';
 
-interface PriceFilterProps {
+type PriceFilterProps = {
   handlerHideMenu?: () => void;
-}
+};
 
 const PriceFilter: FunctionComponent<PriceFilterProps> = ({
   handlerHideMenu,

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './ArticlePreview.module.css';
 
-export interface ArticleType {
+export type ArticleType = {
   link: string;
   img: string;
   alt: string;
@@ -10,7 +10,7 @@ export interface ArticleType {
   title: string;
   text1: string;
   text2?: string[];
-}
+};
 
 const ArticlePreview = ({
   link,

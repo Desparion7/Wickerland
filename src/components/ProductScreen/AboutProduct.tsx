@@ -19,7 +19,7 @@ import {
 } from '../../app/slices/usersApiSlice';
 import { currentToken } from '../../app/slices/authSlice';
 
-export interface ProductType {
+export type ProductType = {
   product: {
     pid: string;
     name: string;
@@ -31,7 +31,7 @@ export interface ProductType {
     parameters: Record<string, unknown>[];
     img: string[];
   };
-}
+};
 
 const AboutProduct = ({ product }: ProductType) => {
   const dispatch = useDispatch();

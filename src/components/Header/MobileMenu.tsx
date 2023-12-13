@@ -7,9 +7,9 @@ import { GiBasket } from 'react-icons/gi';
 import { CgBox } from 'react-icons/cg';
 import styles from './MobileMenu.module.css';
 
-interface PropsType {
+type PropsType = {
   setIsMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
 const MobileMenu = ({ setIsMobileMenu }: PropsType) => {
   const navigate = useNavigate();

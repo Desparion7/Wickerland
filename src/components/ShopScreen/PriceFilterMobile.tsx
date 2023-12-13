@@ -4,9 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import PriceFilter from './PriceFilter';
 import styles from './PriceFilterMobile.module.css';
 
-interface PropsType {
+type PropsType = {
   setIsFilterMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 const PriceFilterMobile = ({ setIsFilterMenu }: PropsType) => {
   const navigate = useNavigate();
   const [initialPath] = useState(window.location.pathname);

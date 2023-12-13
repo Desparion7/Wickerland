@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './OrderScreen.module.css';
 import { cartItems, emptyCart } from '../app/slices/cartSlice';
 import { useCreateOrderMutation } from '../app/slices/orderApiSlice';
-import { OrderType } from '../interface/order-interface';
+import { OrderType } from '../types/order-type';
 import LoadingSpinnerOnButton from '../ui/LoadingSpinnerOnButton';
 import { store } from '../app/store';
 import {
@@ -13,7 +13,7 @@ import {
 } from '../app/slices/usersApiSlice';
 import { currentToken } from '../app/slices/authSlice';
 
-interface FormErrors {
+type FormErrors = {
   name?: string;
   surname?: string;
   companyName?: string;
@@ -23,7 +23,7 @@ interface FormErrors {
   phone?: string;
   email?: string;
   message?: string;
-}
+};
 
 const OrderScreen = () => {
   const navigate = useNavigate();

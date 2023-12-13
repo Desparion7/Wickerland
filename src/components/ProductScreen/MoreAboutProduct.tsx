@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './MoreAboutProduct.module.css';
 
-interface PropsType {
+type PropsType = {
   description: string | undefined;
   parameters: any;
-}
+};
 
 const MoreAboutProduct = ({ parameters, description }: PropsType) => {
   const [activeProducts, setActiveProducts] = useState<string>('opis');

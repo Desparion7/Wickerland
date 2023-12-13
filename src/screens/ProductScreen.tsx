@@ -6,7 +6,7 @@ import ProductPhotoCarousel from '../components/ProductScreen/ProductPhotoCarous
 import MoreAboutProduct from '../components/ProductScreen/MoreAboutProduct';
 import AboutProduct from '../components/ProductScreen/AboutProduct';
 import { useGetProductByIdQuery } from '../app/slices/productsApiSlice';
-import { Product } from '../interface/products-interface';
+import { Product } from '../types/products-type';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 let product: Product;

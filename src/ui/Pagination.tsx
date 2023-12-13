@@ -3,9 +3,9 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Pagination.module.css';
 
-interface PaginationPropsType {
+type PaginationPropsType = {
   pages: number | undefined;
-}
+};
 let activePage;
 
 const Pagination = ({ pages }: PaginationPropsType) => {

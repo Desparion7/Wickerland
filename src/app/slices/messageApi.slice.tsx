@@ -1,5 +1,5 @@
 import apiSlice from '../api/apiSlice';
-import { MessageFormValues } from '../../interface/message-interface';
+import { MessageFormValues } from '../../types/message-type';
 
 const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

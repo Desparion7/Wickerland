@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import { RiCloseFill } from 'react-icons/ri';
 import styles from './ModalPhotoFull.module.css';
 
-interface PropsType {
+type PropsType = {
   img: string[] | undefined;
   setFullImg: React.Dispatch<React.SetStateAction<boolean>>;
   currentSlide: number;
-}
+};
 
 const PhotoFull = ({ img, setFullImg, currentSlide }: PropsType) => {
   // useEffect to srolle up when modal open to see close menu

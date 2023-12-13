@@ -8,7 +8,7 @@ import cartSlice from './slices/cartSlice';
 import wishListSlice, { WishListState } from './slices/wishListSlice';
 import authSlice, { AuthState } from './slices/authSlice';
 
-export interface State {
+export type State = {
   auth: AuthState;
   cart: RootState;
   wishList: WishListState;
@@ -19,7 +19,7 @@ export interface State {
     loginMenuIsOpen: boolean;
     cartMenuIsOpen: boolean;
   };
-}
+};
 
 export const store = configureStore({
   reducer: {

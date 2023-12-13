@@ -1,10 +1,7 @@
 import apiSlice from '../api/apiSlice';
-import {
-  GetProductsResponse,
-  ProductData,
-} from '../../interface/products-interface';
+import { GetProductsResponse, ProductData } from '../../types/products-type';
 
-import { ProductsQuery } from '../../interface/products-query-interface';
+import { ProductsQuery } from '../../types/products-query-type';
 
 const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

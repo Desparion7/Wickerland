@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { State } from '../store';
 
-export interface AuthState {
+export type AuthState = {
   token: string | null;
-}
+};
 
 const authSlice = createSlice({
   name: 'auth',

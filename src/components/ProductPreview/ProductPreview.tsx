@@ -19,7 +19,7 @@ import {
 } from '../../app/slices/usersApiSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 
-interface PropsType {
+type PropsType = {
   product: {
     pid: string;
     img: string[];
@@ -30,7 +30,7 @@ interface PropsType {
   };
   // Render the same component in different gird view
   grid: number;
-}
+};
 
 const ProductPreview = ({ product, grid }: PropsType) => {
   const navigation = useNavigate();

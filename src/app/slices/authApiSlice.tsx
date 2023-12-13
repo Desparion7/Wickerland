@@ -1,5 +1,5 @@
 import apiSlice from '../api/apiSlice';
-import { UserLogin, UserResponseLogin } from '../../interface/user-interface';
+import { UserLogin, UserResponseLogin } from '../../types/user-type';
 import { logOut, setCredentials } from './authSlice';
 import { updateCart, emptyCart } from './cartSlice';
 import { updateWishList, emptyWishList } from './wishListSlice';

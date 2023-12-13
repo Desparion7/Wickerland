@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { State } from '../store';
 
-export interface WishListProduct {
+export type WishListProduct = {
   pid: string;
   name: string;
   category: string;
   price: number;
   img: string[];
-}
-export interface WishListState {
+};
+export type WishListState = {
   wishList: WishListProduct[];
-}
+};
 
 const wishListItems = localStorage.getItem('wishListItems');
 const initialState: WishListState = wishListItems

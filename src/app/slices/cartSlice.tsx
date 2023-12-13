@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { State } from '../store';
 
-export interface CartProduct {
+export type CartProduct = {
   pid: string;
   name: string;
   amount: number;
@@ -9,10 +9,10 @@ export interface CartProduct {
   qty: number;
   price: number;
   img: string[];
-}
-export interface RootState {
+};
+export type RootState = {
   cartItems: CartProduct[];
-}
+};
 
 const savedCartItems = localStorage.getItem('cartItems');
 const initialState: RootState = savedCartItems

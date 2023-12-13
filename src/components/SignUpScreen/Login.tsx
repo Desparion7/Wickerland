@@ -6,10 +6,10 @@ import { useLoginMutation } from '../../app/slices/authApiSlice';
 import { setCredentials } from '../../app/slices/authSlice';
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 
-interface Errors {
+type Errors = {
   email?: string;
   password?: string;
-}
+};
 
 const Login = () => {
   const dispatch = useDispatch();

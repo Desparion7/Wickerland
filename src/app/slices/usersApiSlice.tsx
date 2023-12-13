@@ -4,10 +4,10 @@ import {
   UserResponseSignUp,
   ResetResponseType,
   UpdatePasswordType,
-} from '../../interface/user-interface';
+} from '../../types/user-type';
 import { CartProduct } from './cartSlice';
 import { WishListProduct } from './wishListSlice';
-import { FormValues } from '../../interface/address-interface';
+import { FormValues } from '../../types/address-type';
 import { store } from '../store';
 
 const usersApiSlice = apiSlice.injectEndpoints({

@@ -1,6 +1,6 @@
 import { CartProduct } from '../app/slices/cartSlice';
 
-export interface OrderType {
+export type OrderType = {
   name: string;
   surname: string;
   companyName?: string;
@@ -14,8 +14,8 @@ export interface OrderType {
   deliveryMethod: string;
   price: number;
   products: CartProduct[];
-}
-export interface OrderResponseType {
+};
+export type OrderResponseType = {
   _id: string;
   name: string;
   surname: string;
@@ -33,8 +33,8 @@ export interface OrderResponseType {
   date: Date;
   products: CartProduct[];
   error?: string;
-}
-export interface OrderResponseTypeWithPage {
+};
+export type OrderResponseTypeWithPage = {
   orders: OrderResponseType[];
   totalPages: number;
-}
+};

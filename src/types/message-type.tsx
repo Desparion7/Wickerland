@@ -1,16 +1,16 @@
-export interface MessageFormValues {
+export type MessageFormValues = {
   name: string;
   surname: string;
   email: string;
   phone: string;
   message: string;
   consent: boolean;
-}
-export interface MessageFormValuesError {
+};
+export type MessageFormValuesError = {
   name: string;
   surname: string;
   email: string;
   phone: string;
   message: string;
   consent: string;
-}
+};

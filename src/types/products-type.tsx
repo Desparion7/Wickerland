@@ -1,4 +1,4 @@
-export interface Product {
+export type Product = {
   pid: string;
   name: string;
   description: string;
@@ -8,8 +8,8 @@ export interface Product {
   price: number;
   parameters: Record<string, unknown>[];
   img: string[];
-}
-export interface ProductData {
+};
+export type ProductData = {
   product: {
     pid: string;
     name: string;
@@ -21,8 +21,8 @@ export interface ProductData {
     parameters: Record<string, unknown>[];
     img: string[];
   };
-}
-export interface GetProductsResponse {
+};
+export type GetProductsResponse = {
   products: Product[];
   totalPages: number;
-}
+};

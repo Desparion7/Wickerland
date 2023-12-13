@@ -1,4 +1,4 @@
-export interface FormValues {
+export type FormValues = {
   name: string;
   surname: string;
   street: string;
@@ -6,4 +6,4 @@ export interface FormValues {
   postcode: string;
   phone: string;
   company: string;
-}
+};

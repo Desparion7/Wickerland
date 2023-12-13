@@ -1,6 +1,6 @@
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import styles from './ChangeAddressScreen.module.css';
-import { FormValues } from '../interface/address-interface';
+import { FormValues } from '../types/address-type';
 import {
   useGetUserAddressQuery,
   useUpdateUserAddressMutation,

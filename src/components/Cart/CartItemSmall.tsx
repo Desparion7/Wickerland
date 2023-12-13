@@ -6,10 +6,10 @@ import { store } from '../../app/store';
 import { useUpdateUserCartMutation } from '../../app/slices/usersApiSlice';
 import { currentToken } from '../../app/slices/authSlice';
 
-interface PropsType {
+type PropsType = {
   product: CartProduct;
   handlerHideMenu: () => void;
-}
+};
 function CartItemSmall({ product, handlerHideMenu }: PropsType) {
   const navigation = useNavigate();
   const dispatch = useDispatch();

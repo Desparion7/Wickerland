@@ -23,7 +23,7 @@ import {
 import LoadingSpinnerOnButton from '../../ui/LoadingSpinnerOnButton';
 import { currentToken } from '../../app/slices/authSlice';
 
-interface PropsType {
+type PropsType = {
   setShowPreviewModal: React.Dispatch<React.SetStateAction<boolean>>;
   product: {
     pid: string;

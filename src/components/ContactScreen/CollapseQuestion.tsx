@@ -2,13 +2,13 @@ import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import { useRef } from 'react';
 import styles from './CollapseQuestion.module.css';
 
-interface PropsType {
+type PropsType = {
   setActive: React.Dispatch<React.SetStateAction<string>>;
   active: string;
   id: string;
   question: string;
   answer: string;
-}
+};
 
 const CollapseQuestion = ({
   id,

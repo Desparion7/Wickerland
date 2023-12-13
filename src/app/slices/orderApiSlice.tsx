@@ -3,7 +3,7 @@ import {
   OrderType,
   OrderResponseType,
   OrderResponseTypeWithPage,
-} from '../../interface/order-interface';
+} from '../../types/order-type';
 
 const orderApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

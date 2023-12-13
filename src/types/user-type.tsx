@@ -1,28 +1,28 @@
 import { CartProduct } from '../app/slices/cartSlice';
 import { WishListProduct } from '../app/slices/wishListSlice';
 
-export interface UserSignUp {
+export type UserSignUp = {
   email: string;
   password: string;
-}
-export interface UserLogin {
+};
+export type UserLogin = {
   email: string;
   password: string;
-}
+};
 
-export interface UserResponseSignUp {
+export type UserResponseSignUp = {
   email: string;
-}
-export interface UserResponseLogin {
+};
+export type UserResponseLogin = {
   accessToken: string;
   cart: CartProduct[];
   wishlist: WishListProduct[];
-}
-export interface ResetResponseType {
+};
+export type ResetResponseType = {
   message?: string;
   error?: string;
-}
-export interface UpdatePasswordType {
+};
+export type UpdatePasswordType = {
   password: string;
   token: string;
-}
+};

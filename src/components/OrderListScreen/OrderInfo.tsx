@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import styles from './OrderInfo.module.css';
-import { OrderResponseType } from '../../interface/order-interface';
+import { OrderResponseType } from '../../types/order-type';
 
-interface PropsType {
+type PropsType = {
   order: OrderResponseType;
-}
+};
 
 const OrderInfo = ({ order }: PropsType) => {
   const { date } = order;

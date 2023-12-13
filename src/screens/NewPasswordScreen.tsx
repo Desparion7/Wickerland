@@ -7,10 +7,10 @@ import LoadingSpinner from '../ui/LoadingSpinner';
 const passwordRegex =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
-interface Errors {
+type Errors = {
   password?: string;
   confirmPassword?: string;
-}
+};
 
 const NewPasswordScreen = () => {
   const location = useLocation();
